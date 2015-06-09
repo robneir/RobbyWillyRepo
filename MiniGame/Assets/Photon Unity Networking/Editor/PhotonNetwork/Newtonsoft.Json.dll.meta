@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0268f98d7c649564a818b0768fc68d4b
+guid: 278cdd302e2816740bcc8689466ebcbf
 labels:
 - ExitGames
 - PUN
@@ -12,8 +12,12 @@ PluginImporter:
   isPreloaded: 0
   platformData:
     Any:
-      enabled: 1
+      enabled: 0
       settings: {}
+    Editor:
+      enabled: 1
+      settings:
+        DefaultValueInitialized: true
   userData: 
   assetBundleName: 
   assetBundleVariant: 
