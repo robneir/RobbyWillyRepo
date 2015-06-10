@@ -1,36 +1,36 @@
 fileFormatVersion: 2
 guid: 2500c6dcda434ab4aa618fb59ee249a5
-timeCreated: 1433903974
+timeCreated: 1433917302
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: hero_sprites_0
-    21300002: hero_sprites_1
-    21300004: hero_sprites_2
-    21300006: hero_sprites_3
-    21300008: hero_sprites_4
-    21300010: hero_sprites_5
-    21300012: hero_sprites_6
-    21300014: hero_sprites_7
-    21300016: hero_sprites_8
-    21300018: hero_sprites_9
-    21300020: hero_sprites_10
-    21300022: hero_sprites_11
-    21300024: hero_sprites_12
-    21300026: hero_sprites_13
-    21300028: hero_sprites_14
-    21300030: hero_sprites_15
-    21300032: hero_sprites_16
-    21300034: hero_sprites_17
-    21300036: hero_sprites_18
-    21300038: hero_sprites_19
-    21300040: hero_sprites_20
-    21300042: hero_sprites_21
-    21300044: hero_sprites_22
-    21300046: hero_sprites_23
-    21300048: hero_sprites_24
-    21300050: hero_sprites_25
-    21300052: hero_sprites_26
+    21300000: Head
+    21300002: Ear
+    21300004: Arm_Near
+    21300006: Arm_Far
+    21300008: Thigh_Near
+    21300010: Thigh_Far
+    21300012: Eye_Near
+    21300014: Eye_Far
+    21300016: Eye_Closed_Near
+    21300018: Eye_Closed_Far
+    21300020: Forearm_Near
+    21300022: Forearm_Far
+    21300024: Shin_Near
+    21300026: Shin_Far
+    21300028: Hair
+    21300030: Hand_Trigger
+    21300032: Hand_HoldBarrel
+    21300034: Foot_Near
+    21300036: Foot_Far
+    21300038: Body
+    21300040: Hand_Open_1
+    21300042: Hand_Open_2
+    21300044: Torso_Idle
+    21300046: Hand_Far
+    21300048: Hand_Near
+    21300050: Hips
+    21300052: Hips_Idle
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -76,17 +76,17 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: hero_sprites_0
+    - name: Head
       rect:
         serializedVersion: 2
         x: 64
         y: 732
         width: 184
         height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .435683459, y: .235842705}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_1
+    - name: Ear
       rect:
         serializedVersion: 2
         x: 283
@@ -94,49 +94,49 @@ TextureImporter:
         width: 53
         height: 67
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_2
+    - name: Arm_Near
       rect:
         serializedVersion: 2
         x: 452
         y: 820
         width: 85
         height: 168
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .519889534, y: .771704555}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_3
+    - name: Arm_Far
       rect:
         serializedVersion: 2
         x: 596
         y: 820
         width: 88
         height: 168
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .519211531, y: .81195724}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_4
+    - name: Thigh_Near
       rect:
         serializedVersion: 2
         x: 736
         y: 824
         width: 120
         height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .443646759, y: .838121414}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_5
+    - name: Thigh_Far
       rect:
         serializedVersion: 2
         x: 879
         y: 824
         width: 117
         height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .413302422, y: .848687351}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_6
+    - name: Eye_Near
       rect:
         serializedVersion: 2
         x: 276
@@ -144,9 +144,9 @@ TextureImporter:
         width: 69
         height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_7
+    - name: Eye_Far
       rect:
         serializedVersion: 2
         x: 361
@@ -154,9 +154,9 @@ TextureImporter:
         width: 27
         height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_8
+    - name: Eye_Closed_Near
       rect:
         serializedVersion: 2
         x: 276
@@ -164,9 +164,9 @@ TextureImporter:
         width: 69
         height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_9
+    - name: Eye_Closed_Far
       rect:
         serializedVersion: 2
         x: 361
@@ -174,49 +174,49 @@ TextureImporter:
         width: 27
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_10
+    - name: Forearm_Near
       rect:
         serializedVersion: 2
         x: 466
         y: 660
         width: 54
         height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .437384725, y: .815090179}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_11
+    - name: Forearm_Far
       rect:
         serializedVersion: 2
         x: 612
         y: 663
         width: 56
         height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .469810486, y: .772678494}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_12
+    - name: Shin_Near
       rect:
         serializedVersion: 2
         x: 755
         y: 667
         width: 61
         height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .5, y: .799946427}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_13
+    - name: Shin_Far
       rect:
         serializedVersion: 2
         x: 886
         y: 667
         width: 59
         height: 125
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .5, y: .784021974}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_14
+    - name: Hair
       rect:
         serializedVersion: 2
         x: 43
@@ -224,29 +224,29 @@ TextureImporter:
         width: 290
         height: 212
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_15
+    - name: Hand_Trigger
       rect:
         serializedVersion: 2
         x: 464
         y: 554
         width: 48
         height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_16
+    - name: Hand_HoldBarrel
       rect:
         serializedVersion: 2
         x: 620
         y: 551
         width: 37
         height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 4
+      pivot: {x: 0, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_17
+    - name: Foot_Near
       rect:
         serializedVersion: 2
         x: 762
@@ -254,9 +254,9 @@ TextureImporter:
         width: 62
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_18
+    - name: Foot_Far
       rect:
         serializedVersion: 2
         x: 891
@@ -264,87 +264,87 @@ TextureImporter:
         width: 62
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_19
+    - name: Body
       rect:
         serializedVersion: 2
         x: 82
         y: 235
         width: 238
         height: 217
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .308208555, y: .0715053603}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_20
+    - name: Hand_Open_1
       rect:
         serializedVersion: 2
         x: 460
         y: 438
         width: 68
         height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_21
+    - name: Hand_Open_2
       rect:
         serializedVersion: 2
         x: 604
         y: 436
         width: 67
         height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_22
+    - name: Torso_Idle
       rect:
         serializedVersion: 2
         x: 752
         y: 235
         width: 239
         height: 233
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .316084474, y: .093674168}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_23
+    - name: Hand_Far
       rect:
         serializedVersion: 2
         x: 464
         y: 348
         width: 52
         height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_24
+    - name: Hand_Near
       rect:
         serializedVersion: 2
         x: 608
         y: 349
         width: 52
         height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_25
+    - name: Hips
       rect:
         serializedVersion: 2
         x: 44
         y: 51
         width: 212
         height: 141
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .603669226, y: .595921099}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sprites_26
+    - name: Hips_Idle
       rect:
         serializedVersion: 2
         x: 717
         y: 51
         width: 211
         height: 139
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .604160666, y: .633789301}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
