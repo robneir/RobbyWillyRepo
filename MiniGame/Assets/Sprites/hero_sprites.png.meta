@@ -1,0 +1,352 @@
+fileFormatVersion: 2
+guid: 2500c6dcda434ab4aa618fb59ee249a5
+timeCreated: 1433903974
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: hero_sprites_0
+    21300002: hero_sprites_1
+    21300004: hero_sprites_2
+    21300006: hero_sprites_3
+    21300008: hero_sprites_4
+    21300010: hero_sprites_5
+    21300012: hero_sprites_6
+    21300014: hero_sprites_7
+    21300016: hero_sprites_8
+    21300018: hero_sprites_9
+    21300020: hero_sprites_10
+    21300022: hero_sprites_11
+    21300024: hero_sprites_12
+    21300026: hero_sprites_13
+    21300028: hero_sprites_14
+    21300030: hero_sprites_15
+    21300032: hero_sprites_16
+    21300034: hero_sprites_17
+    21300036: hero_sprites_18
+    21300038: hero_sprites_19
+    21300040: hero_sprites_20
+    21300042: hero_sprites_21
+    21300044: hero_sprites_22
+    21300046: hero_sprites_23
+    21300048: hero_sprites_24
+    21300050: hero_sprites_25
+    21300052: hero_sprites_26
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: hero_sprites_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 732
+        width: 184
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_1
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 932
+        width: 53
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_2
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 820
+        width: 85
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_3
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 820
+        width: 88
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_4
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 824
+        width: 120
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_5
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 824
+        width: 117
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_6
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 839
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_7
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 836
+        width: 27
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_8
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 782
+        width: 69
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_9
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 780
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_10
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 660
+        width: 54
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_11
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 663
+        width: 56
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_12
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 667
+        width: 61
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_13
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 667
+        width: 59
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_14
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 492
+        width: 290
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_15
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 554
+        width: 48
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_16
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 551
+        width: 37
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_17
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 592
+        width: 62
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_18
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 592
+        width: 62
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_19
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 235
+        width: 238
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_20
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 438
+        width: 68
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_21
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 436
+        width: 67
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_22
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 235
+        width: 239
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_23
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 348
+        width: 52
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_24
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 349
+        width: 52
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_25
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 51
+        width: 212
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sprites_26
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 51
+        width: 211
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
