@@ -2,10 +2,6 @@
 using System.Collections;
 
 public class NetworkManager : MonoBehaviour {
-	//Publics
-	public GameObject standbyCamera;
-	public GameObject playerCamera;
-
 	//Privates
 	private SpawnSpot[] spawnSpots;
 
@@ -67,9 +63,6 @@ public class NetworkManager : MonoBehaviour {
 		GameObject myPlayerGO= (GameObject) PhotonNetwork.Instantiate ("Player",grabbedSpawnSpot.transform.position, 
 		                           grabbedSpawnSpot.transform.rotation, 
 		                           grabbedSpawnSpot.teamId);
-		//Disable the standby camera from main menu
-		standbyCamera.SetActive(false);
-		playerCamera.SetActive(true);
 		//Enable and disable player components depending on if they should be seen locally or over network
 		//Disabled means seen over network and enabled means needed to be locally seen
 		myPlayerGO.GetComponent<PlayerMovement> ().enabled = true;
