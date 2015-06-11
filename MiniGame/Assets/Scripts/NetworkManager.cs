@@ -60,7 +60,7 @@ public class NetworkManager : MonoBehaviour {
 		/*This instantiates a player on the network so that everyone has the instantiation
 		 * but the prefab must be located in the resource folder
 		*/
-		GameObject myPlayerGO= (GameObject) PhotonNetwork.Instantiate ("Player",grabbedSpawnSpot.transform.position, 
+		GameObject myPlayerGO= (GameObject) PhotonNetwork.Instantiate ("Bandit",grabbedSpawnSpot.transform.position, 
 		                           grabbedSpawnSpot.transform.rotation, 
 		                           grabbedSpawnSpot.teamId);
 		//Enable and disable player components depending on if they should be seen locally or over network

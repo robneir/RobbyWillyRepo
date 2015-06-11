@@ -7,19 +7,16 @@ public class PlayerMovement : MonoBehaviour {
 	public bool yAxisEnabled=false;
 	public bool zAxisEnabled=false;
 
-	public bool gravityEnabled;
-	public float gravityStrength;
-
 	public float speed;
 	public float friction;
 	public float jumpPower;
 
-	private Rigidbody rigidBody;
+	private Rigidbody2D rigidBody2D;
 	private bool OnGround=true;
 
 	// Use this for initialization
 	void Start () {
-		rigidBody = this.GetComponent<Rigidbody> ();
+		rigidBody2D = this.GetComponent<Rigidbody2D> ();
 	}
 
 	void OnGUI()
@@ -38,28 +35,25 @@ public class PlayerMovement : MonoBehaviour {
 		if (yAxisEnabled) {
 			if(Input.GetButtonDown("Jump") && OnGround)
 			{
-				rigidBody.AddForce(0,this.jumpPower,0);
+				rigidBody2D.AddForce(new Vector2(0,this.jumpPower));
 				OnGround=false;
 			}
 		}
 		transform.position = new Vector3 (deltaX+transform.position.x,
 		                                  transform.position.y,
 		                                  deltaZ+transform.position.z); 
-		
-		/*
-		float xForce=0;
-		float zForce=0;
-		float yForce=0;
-		if(xAxisEnabled)
-			xForce=Input.GetAxis ("Horizontal") * speed;
-		if(zAxisEnabled)
-			zForce=Input.GetAxis ("Vertical") * speed;
-		Vector3 newForceVect = new Vector3 (xForce,yForce,zForce); 
-		rigidBody.AddForce(newForceVect);*/
-	}
 
+		//Changing directions
+		if ((Input.GetAxisRaw ("Horizontal")>0 && this.transform.localScale.x<0)||
+		    ((Input.GetAxisRaw ("Horizontal")<0 && this.transform.localScale.x>0))) 
+		{
+			this.transform.localScale=new Vector3(this.transform.localScale.x*-1,
+			                                      this.transform.localScale.y,
+			                                      this.transform.localScale.z);
+		}
+	}
 	
-	void OnCollisionEnter(Collision col)
+	void OnCollisionEnter2D(Collision2D col)
 	{
 		if(col.collider.tag=="Ground" && !OnGround)
 		{

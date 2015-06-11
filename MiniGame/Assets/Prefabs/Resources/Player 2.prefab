@@ -16,8 +16,8 @@ GameObject:
   - 114: {fileID: 11495726}
   - 114: {fileID: 11471316}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Player
+  m_Name: Player 2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,8 +203,6 @@ MonoBehaviour:
   xAxisEnabled: 1
   yAxisEnabled: 1
   zAxisEnabled: 1
-  gravityEnabled: 0
-  gravityStrength: 0
   speed: .100000001
   friction: 0
   jumpPower: 600
