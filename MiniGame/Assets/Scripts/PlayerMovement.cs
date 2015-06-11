@@ -12,11 +12,13 @@ public class PlayerMovement : MonoBehaviour {
 	public float jumpPower;
 
 	private Rigidbody2D rigidBody2D;
+	private Animator animator;
 	private bool OnGround=true;
 
 	// Use this for initialization
 	void Start () {
-		rigidBody2D = this.GetComponent<Rigidbody2D> ();
+		rigidBody2D = this.GetComponentInChildren<Rigidbody2D> ();
+		animator = this.GetComponentInChildren<Animator> ();
 	}
 
 	void OnGUI()
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 		float deltaZ=0;
 		if(xAxisEnabled)
 			deltaX=Input.GetAxis ("Horizontal") * speed;
+			animator.SetFloat ("Speed", Mathf.Abs(deltaX)); //Set float in animator to control run animation
 		if(zAxisEnabled)
 			deltaZ=Input.GetAxis ("Vertical") * speed;
 		if (yAxisEnabled) {

@@ -56,10 +56,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417660}
-  - 95: {fileID: 9517386}
-  - 50: {fileID: 5012756}
   - 114: {fileID: 11485596}
-  - 61: {fileID: 6173662}
   - 114: {fileID: 11400810}
   - 114: {fileID: 11473306}
   m_Layer: 0
@@ -286,6 +283,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 452066}
   - 95: {fileID: 9592206}
+  - 50: {fileID: 5047110}
+  - 61: {fileID: 6191888}
   m_Layer: 0
   m_Name: PlayerRig
   m_TagString: Untagged
@@ -369,7 +368,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .411518574, y: 3.53551269, z: 0}
+  m_LocalPosition: {x: 3.3900001, y: -.949999988, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452066}
@@ -555,51 +554,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400628}
   m_RootOrder: 3
---- !u!50 &5012756
+--- !u!50 &5047110
 Rigidbody2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127248}
+  m_GameObject: {fileID: 188150}
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 1
+  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6173662
+--- !u!61 &6191888
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127248}
+  m_GameObject: {fileID: 188150}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .185121536, y: .580049992}
+  m_Offset: {x: 2.99508429, y: 1.1519556}
   serializedVersion: 2
-  m_Size: {x: 2.80185604, y: 5.86254406}
---- !u!95 &9517386
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127248}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 023570a45f23ab345997e76f9bcf5234, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_Size: {x: 2.80124187, y: 5.56593132}
 --- !u!95 &9592206
 Animator:
   serializedVersion: 3
