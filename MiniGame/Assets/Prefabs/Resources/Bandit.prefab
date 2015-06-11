@@ -59,6 +59,7 @@ GameObject:
   - 114: {fileID: 11485596}
   - 114: {fileID: 11400810}
   - 114: {fileID: 11473306}
+  - 50: {fileID: 5054592}
   m_Layer: 0
   m_Name: Bandit
   m_TagString: Player
@@ -283,7 +284,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 452066}
   - 95: {fileID: 9592206}
-  - 50: {fileID: 5047110}
   - 61: {fileID: 6191888}
   m_Layer: 0
   m_Name: PlayerRig
@@ -368,7 +368,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3900001, y: -.949999988, z: 0}
+  m_LocalPosition: {x: 7.18827438, y: 3.57440877, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452066}
@@ -554,17 +554,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400628}
   m_RootOrder: 3
---- !u!50 &5047110
+--- !u!50 &5054592
 Rigidbody2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188150}
+  m_GameObject: {fileID: 127248}
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -594,7 +594,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 023570a45f23ab345997e76f9bcf5234, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1

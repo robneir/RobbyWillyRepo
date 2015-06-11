@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rigidBody2D = this.GetComponentInChildren<Rigidbody2D> ();
+		rigidBody2D = this.GetComponent<Rigidbody2D> ();
 		animator = this.GetComponentInChildren<Animator> ();
 	}
 
