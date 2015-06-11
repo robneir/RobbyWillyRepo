@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour {
 			if(Input.GetButtonDown("Jump") && OnGround)
 			{
 				rigidBody2D.AddForce(new Vector2(0,this.jumpPower));
+				animator.SetBool("Jump",true);
 				OnGround=false;
 			}
 		}
@@ -61,6 +62,7 @@ public class PlayerMovement : MonoBehaviour {
 		if(col.collider.tag=="Ground" && !OnGround)
 		{
 			OnGround=true;
+			animator.SetBool("Jump",false);
 		}
 	}
 }

@@ -34,7 +34,6 @@ public class NetworkCharacter : Photon.MonoBehaviour { //THIS IS monobehavior wi
 			//this is someone elses player. We need to recieve their position and update our version of that player
 			realPosition=(Vector3)stream.ReceiveNext();
 			realRotation= (Quaternion)stream.ReceiveNext();
-			stream.ReceiveNext(transform.localScale);
 		}
 	}
 }

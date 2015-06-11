@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 434008}
   - 212: {fileID: 21230226}
+  - 61: {fileID: 6135878}
   m_Layer: 0
   m_Name: GreenPlatform
   m_TagString: Ground
@@ -28,6 +29,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6135878
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103266}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: .639999986, y: .319999993}
 --- !u!212 &21230226
 SpriteRenderer:
   m_ObjectHideFlags: 1
