@@ -10,15 +10,19 @@ public class PlayerMovement : MonoBehaviour {
 	public float speed;
 	public float friction;
 	public float jumpPower;
+	public float climbSpeed;
 
 	private Rigidbody2D rigidBody2D;
 	private Animator animator;
 	private bool OnGround=true;
+	private bool isOnLadder = false;
+	private float gravityScale;
 
 	// Use this for initialization
 	void Start () {
 		rigidBody2D = this.GetComponent<Rigidbody2D> ();
 		animator = this.GetComponentInChildren<Animator> ();
+		gravityScale = rigidBody2D.gravityScale;
 	}
 
 	void OnGUI()
@@ -30,12 +34,19 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 		float deltaX=0;
 		float deltaZ=0;
+		float deltaY=0;
 		if(xAxisEnabled)
 			deltaX=Input.GetAxis ("Horizontal") * speed;
 			animator.SetFloat ("Speed", Mathf.Abs(deltaX)); //Set float in animator to control run animation
 		if(zAxisEnabled)
 			deltaZ=Input.GetAxis ("Vertical") * speed;
 		if (yAxisEnabled) {
+			if(IsOnLadder)
+			{
+				deltaY=Input.GetAxis ("Vertical") * climbSpeed;
+				rigidBody2D.gravityScale=0;
+			}else rigidBody2D.gravityScale=this.gravityScale;
+
 			if(Input.GetButtonDown("Jump") && OnGround)
 			{
 				rigidBody2D.AddForce(new Vector2(0,this.jumpPower));
@@ -44,7 +55,7 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		}
 		transform.position = new Vector3 (deltaX+transform.position.x,
-		                                  transform.position.y,
+		                                  deltaY+transform.position.y,
 		                                  deltaZ+transform.position.z); 
 
 		//Changing directions
@@ -64,5 +75,12 @@ public class PlayerMovement : MonoBehaviour {
 			OnGround=true;
 			animator.SetBool("Jump",false);
 		}
+	}
+
+	
+	public bool IsOnLadder 
+	{ 
+		get { return isOnLadder; } 
+		set {isOnLadder=value;}
 	}
 }
