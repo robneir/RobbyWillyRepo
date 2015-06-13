@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
 	public bool zAxisEnabled=false;
 
 	public float speed;
+    public float sprintSpeed;
 	public float friction;
 	public float jumpPower;
 	public float climbSpeed;
@@ -17,12 +18,14 @@ public class PlayerMovement : MonoBehaviour {
 	private bool OnGround=true;
 	private bool isOnLadder = false;
 	private float gravityScale;
+    private float currentRunSpeed;
 
 	// Use this for initialization
 	void Start () {
 		rigidBody2D = this.GetComponent<Rigidbody2D> ();
 		animator = this.GetComponentInChildren<Animator> ();
 		gravityScale = rigidBody2D.gravityScale;
+        currentRunSpeed = speed;
 	}
 
 	void OnGUI()
@@ -32,14 +35,16 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float deltaX=0;
+
+        #region Get Basic Movement input
+        float deltaX=0;
 		float deltaZ=0;
 		float deltaY=0;
 		if(xAxisEnabled)
-			deltaX=Input.GetAxis ("Horizontal") * speed;
+			deltaX=Input.GetAxis ("Horizontal") * currentRunSpeed;
 			animator.SetFloat ("Speed", Mathf.Abs(deltaX)); //Set float in animator to control run animation
 		if(zAxisEnabled)
-			deltaZ=Input.GetAxis ("Vertical") * speed;
+			deltaZ=Input.GetAxis ("Vertical") * currentRunSpeed;
 		if (yAxisEnabled) {
 			if(IsOnLadder)
 			{
@@ -56,17 +61,29 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		transform.position = new Vector3 (deltaX+transform.position.x,
 		                                  deltaY+transform.position.y,
-		                                  deltaZ+transform.position.z); 
+		                                  deltaZ+transform.position.z);
+        #endregion
 
-		//Changing directions
-		if ((Input.GetAxisRaw ("Horizontal")>0 && this.transform.localScale.x<0)||
+        #region Changing directions
+        if ((Input.GetAxisRaw ("Horizontal")>0 && this.transform.localScale.x<0)||
 		    ((Input.GetAxisRaw ("Horizontal")<0 && this.transform.localScale.x>0))) 
 		{
 			this.transform.localScale=new Vector3(this.transform.localScale.x*-1,
 			                                      this.transform.localScale.y,
 			                                      this.transform.localScale.z);
 		}
-	}
+        #endregion
+
+        //Change run speed if sprinting or not
+        if (Input.GetButton("Sprint"))
+        {
+            currentRunSpeed = sprintSpeed;
+        }
+        else
+        {
+            currentRunSpeed = speed;
+        }
+    }
 	
 	void OnCollisionEnter2D(Collision2D col)
 	{
