@@ -14,15 +14,16 @@ public class LadderZone : MonoBehaviour {
 	void Update () {
 	}
 
-	void OnTriggerEnter2D(Collider2D col)
+	void OnTriggerStay2D(Collider2D col)
 	{
 		GameObject go= col.gameObject;
 		if (go.tag == "Player") 
 		{
 			player=go.transform.parent.gameObject;//Get parent because that is when the player movement script is
-			if(!player.GetComponent<PlayerMovement>().IsOnLadder)
+			if(!player.GetComponent<PlayerMovement>().IsOnLadder && Input.GetAxis("Vertical")!=0)
 			{
 				player.GetComponent<PlayerMovement>().IsOnLadder=true;
+                player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
 			}
 		}
 	}
