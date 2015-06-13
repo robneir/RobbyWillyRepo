@@ -927,6 +927,7 @@ MonoBehaviour:
   Defense: 0
   Type: 2
   Offset: {x: 0, y: 0, z: 0}
+  FireTip: {fileID: 0}
 --- !u!50 &831656612
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1006,7 +1007,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1001 &902820811
 Prefab:
   m_ObjectHideFlags: 0
@@ -2123,6 +2124,7 @@ MonoBehaviour:
   Defense: 0
   Type: 0
   Offset: {x: 0, y: 0, z: 0}
+  FireTip: {fileID: 0}
 --- !u!50 &1916023060
 Rigidbody2D:
   m_ObjectHideFlags: 0

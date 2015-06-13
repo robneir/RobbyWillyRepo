@@ -17,7 +17,7 @@ public class PlayerItems : MonoBehaviour {
 		if(Current != null)
 		{
 			//you have a item
-			if(Input.GetButtonDown("UseWeapon"))
+			if(Input.GetButtonDown("UseWeapon") && Current.GetComponent<Item>().HasUser)
 			{
 				//play swing sword animation/fire or whatever
 				Current.GetComponent<Item>().UseFunc();

@@ -15,6 +15,8 @@ public class Item : MonoBehaviour
 	[HideInInspector]
 	public Vector3 Offset;
 
+	public Transform FireTip;
+
 	public enum ItemType
 	{
 		Sword,
@@ -29,8 +31,9 @@ public class Item : MonoBehaviour
 		switch(Type)
 		{
 			case ItemType.Gun:
-			Offset = new Vector3(-2.329968f,-0.8299061f,0);
-					break;
+				Offset = new Vector3(-2.329968f,-0.8299061f,0);
+				UseFunc = FireShotgun;
+				break;
 			case ItemType.Dagger:
 				Offset = new Vector3(10,10,0);
 				break;
@@ -55,9 +58,25 @@ public class Item : MonoBehaviour
 		}
 	}
 
-	void ShootRocket()
+	public void FireShotgun()
 	{
+		InstantiateHBullet ();
+	}
 
+	void InstantiateHBullet()
+	{
+		GameObject bull = (GameObject)PhotonNetwork.Instantiate("Bullet", GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity, 0);	
+		bull.GetComponent<Bullet> ().Damage = this.Damage;
+		Debug.Log (Name);
+
+		if(transform.localScale.x == -1)
+		{
+			bull.GetComponent<Rigidbody2D>().velocity = new Vector3(10,0,0);
+		}
+		else
+		{
+			bull.GetComponent<Rigidbody2D>().velocity = new Vector3(-10,0,0);
+		}
 	}
 
 	public delegate void UseItem();

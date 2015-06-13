@@ -24,6 +24,20 @@ public class PlayerHealth : MonoBehaviour {
                 this.transform.position.z));
         }
     }
+
+	public void Die()
+	{
+		PhotonNetwork.Destroy (this.gameObject);
+	}
+
+	public void TakeDamage(int d)
+	{
+		if(statusBar.GetComponent<StatusBar>().currentHealth <= 0)
+		{
+			//die
+			Die ();
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
