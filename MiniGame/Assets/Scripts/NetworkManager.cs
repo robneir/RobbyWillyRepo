@@ -66,6 +66,7 @@ public class NetworkManager : MonoBehaviour {
 		//Enable and disable player components depending on if they should be seen locally or over network
 		//Disabled means seen over network and enabled means needed to be locally seen
 		myPlayerGO.GetComponent<PlayerMovement> ().enabled = true;
+        myPlayerGO.GetComponent<PlayerHealth>().InstantiateHealthBar();
 		//If camera is attached to palyer then: myPlayerGo.transform.FindChild("string of camera").gameobject.setactive(true);
 	}
 }
