@@ -708,9 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b7aaf018fc3a41a99f89fb94d257a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  offSet: {x: 0, y: 4}
-  statusBar: {fileID: 11422204, guid: 87eeb1787ef309349aa5618c16caa7ce, type: 2}
+  offSet: {x: 1, y: 4.5}
 --- !u!114 &11473306
 MonoBehaviour:
   m_ObjectHideFlags: 1

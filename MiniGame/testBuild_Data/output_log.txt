@@ -16,16 +16,16 @@ Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\test
 Loading C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\testBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\testBuild_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\testBuild_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.145 seconds
-desktop: 1920x1080 60Hz; virtual: 4320x1500 at -2400,-139
+- Completed reload, in  0.341 seconds
+desktop: 1920x1080 60Hz; virtual: 4800x1500 at 0,-150
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
 Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\testBuild_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\testBuild_Data\Managed\System.dll (this message is harmless)
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 104 -> priority: 1 
-  Thread -> id: 2250 -> priority: 1 
+  Thread -> id: 4298 -> priority: 1 
+  Thread -> id: 3428 -> priority: 1 
 Joined lobby
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -37,21 +37,4 @@ Joined lobby failed
 Joined room
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Failed to Instantiate prefab: Player. Verify the Prefab is in a Resources folder (and not in a subfolder)
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at NetworkManager.SpawnMyPlayer () [0x00000] in <filename unknown>:0 
-  at NetworkManager.OnJoinedRoom () [0x00000] in <filename unknown>:0 
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[])
-NetworkingPeer:OnEvent(EventData)
-ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
-ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
-ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
-PhotonHandler:Update()
- 
-(Filename:  Line: -1)
 
