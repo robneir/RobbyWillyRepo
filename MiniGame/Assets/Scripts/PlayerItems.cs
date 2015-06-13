@@ -17,15 +17,22 @@ public class PlayerItems : MonoBehaviour {
 		if(Current != null)
 		{
 			//you have a item
-			if(Input.GetButtonDown("Fire1"))
+			if(Input.GetButtonDown("UseWeapon"))
 			{
 				//play swing sword animation/fire or whatever
+				Current.GetComponent<Item>().UseFunc();
 			}
 
 			if(Input.GetKeyDown(KeyCode.Q))
 			{
 				//throw item
 				if(transform.localScale.x == -1)
+				{
+					Current.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 3);
+					Current.GetComponent<Item>().HasUser = false;
+					Current.GetComponent<SpriteRenderer>().enabled = false;
+				}
+				else
 				{
 					Current.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 3);
 					Current.GetComponent<Item>().HasUser = false;
@@ -45,7 +52,16 @@ public class PlayerItems : MonoBehaviour {
 					//Current.GetComponent<SpriteRenderer>().enabled = false;
 			Current.GetComponent<SpriteRenderer>().sprite = c.gameObject.GetComponent<SpriteRenderer>().sprite;
 			Current.GetComponent<SpriteRenderer>().enabled = true;
+
+			//deep copy of item components
+			Item i = c.gameObject.GetComponent<Item>();
 			Current.GetComponent<Item>().HasUser = true;
+			Current.GetComponent<Item>().Damage = i.Damage;
+			Current.GetComponent<Item>().Defense = i.Defense;
+			Current.GetComponent<Item>().UseFunc = i.UseFunc;
+			Current.GetComponent<Item>().SetTran = i.SetTran;
+			Current.GetComponent<Item>().Offset = i.Offset;
+			Current.GetComponent<Item>().Name = i.Name;
 			GameObject.Destroy(c.gameObject);
 		}
 	}
