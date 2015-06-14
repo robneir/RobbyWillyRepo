@@ -390,7 +390,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.490612, y: .127496243, z: 0}
+  m_LocalPosition: {x: -3.5196507, y: -.678097785, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452066}
@@ -698,11 +698,12 @@ MonoBehaviour:
   HasUser: 1
   SetTran: {fileID: 441656}
   Name: 
-  Damage: 0
+  Damage: 20
   Defense: 0
   Type: 0
   Offset: {x: 0, y: 0, z: 0}
   FireTip: {fileID: 0}
+  isBeingUsed: 0
 --- !u!114 &11461266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -755,6 +756,7 @@ MonoBehaviour:
   yAxisEnabled: 1
   zAxisEnabled: 0
   speed: .300000012
+  sprintSpeedMultiplier: 0
   friction: 0
   jumpPower: 5000
   climbSpeed: .150000006
@@ -1145,7 +1147,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1692392237
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300046, guid: 2500c6dcda434ab4aa618fb59ee249a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21285202

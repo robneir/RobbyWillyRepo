@@ -64,5 +64,13 @@ public class PlayerItems : MonoBehaviour {
 			Current.GetComponent<Item>().Name = i.Name;
 			GameObject.Destroy(c.gameObject);
 		}
+        else if(c.gameObject.tag.Equals("Item") && c.gameObject.GetComponent<Item>().HasUser)
+        {
+            Item item = c.gameObject.GetComponent<Item>();
+            if(item.isBeingUsed)
+            {
+                GetComponent<PlayerHealth>().TakeDamage(item.Damage);
+            }
+        }
 	}
 }

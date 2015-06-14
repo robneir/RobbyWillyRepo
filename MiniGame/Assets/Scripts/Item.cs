@@ -16,6 +16,7 @@ public class Item : MonoBehaviour
 	public Vector3 Offset;
 
 	public Transform FireTip;
+    public bool isBeingUsed;
 
 	public enum ItemType
 	{
@@ -39,6 +40,7 @@ public class Item : MonoBehaviour
 				break;
 			case ItemType.Sword:
 				Offset = new Vector3(2.329968f,-0.9299061f,0);
+                UseFunc = SwingSword;
 				break;
 		}
 	}
@@ -58,10 +60,15 @@ public class Item : MonoBehaviour
 		}
 	}
 
-	public void FireShotgun()
+	private void FireShotgun()
 	{
 		InstantiateHBullet ();
 	}
+
+    private void SwingSword()
+    {
+        isBeingUsed = true;
+    }
 
 	void InstantiateHBullet()
 	{

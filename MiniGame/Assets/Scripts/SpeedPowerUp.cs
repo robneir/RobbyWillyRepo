@@ -30,7 +30,6 @@ public class SpeedPowerUp : MonoBehaviour {
 		if (player != null) {
 			isInitiated=true;
 			player.GetComponent<PlayerMovement> ().speed *= speedMultiplier;
-            player.GetComponent<PlayerMovement>().sprintSpeed *= speedMultiplier;
             player.GetComponentInChildren<Animator>().speed*=speedMultiplier;
 			startTime = Time.time;
 		}
@@ -41,7 +40,6 @@ public class SpeedPowerUp : MonoBehaviour {
 		if (player != null)
 		{
 			player.GetComponent<PlayerMovement> ().speed /= speedMultiplier;
-            player.GetComponent<PlayerMovement>().sprintSpeed /= speedMultiplier;
             player.GetComponentInChildren<Animator>().speed/=speedMultiplier;
 		}
 		GameObject.Destroy (this);

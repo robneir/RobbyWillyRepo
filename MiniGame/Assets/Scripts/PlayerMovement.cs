@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour {
 	public bool zAxisEnabled=false;
 
 	public float speed;
-    public float sprintSpeed;
+    public float sprintSpeedMultiplier;
 	public float friction;
 	public float jumpPower;
 	public float climbSpeed;
@@ -42,8 +42,8 @@ public class PlayerMovement : MonoBehaviour {
 		float deltaY=0;
 		if(xAxisEnabled)
 			deltaX=Input.GetAxis ("Horizontal") * currentRunSpeed;
-			animator.SetFloat ("Speed", Mathf.Abs(deltaX)); //Set float in animator to control run animation
-		if(zAxisEnabled)
+			animator.SetFloat ("Speed", Mathf.Abs(Input.GetAxis("Horizontal"))); //Set float in animator to control run animation blend tree //Mathf.Abs(deltaX)
+        if (zAxisEnabled)
 			deltaZ=Input.GetAxis ("Vertical") * currentRunSpeed;
 		if (yAxisEnabled) {
 			if(IsOnLadder)
@@ -75,13 +75,21 @@ public class PlayerMovement : MonoBehaviour {
         #endregion
 
         //Change run speed if sprinting or not
-        if (Input.GetButton("Sprint"))
+        if (Input.GetButtonDown("Sprint"))
         {
-            currentRunSpeed = sprintSpeed;
+            currentRunSpeed *= 2;
         }
-        else
+        else if(Input.GetButtonUp("Sprint"))
         {
-            currentRunSpeed = speed;
+            currentRunSpeed /=2;
+        }
+        //Change speed of animation based on speed
+        animator.speed = currentRunSpeed / speed;
+        
+        if(Input.GetButtonDown("Fire1") && !animator.GetBool("Swing"))
+        {
+            animator.SetTrigger("Swing");
+            rigidBody2D.AddForce(new Vector2(transform.localScale.x * 1000,0));
         }
     }
 	
