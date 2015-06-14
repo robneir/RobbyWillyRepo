@@ -14,6 +14,12 @@ public class PlayerMovement : MonoBehaviour {
 	public float climbSpeed;
     public float currentRunSpeed;
 
+	//hidden
+	[HideInInspector]
+	public Vector3 deltaPos;
+	[HideInInspector]
+	public PlayerAnimationState aniState = PlayerAnimationState.Idle;
+
     private Rigidbody2D rigidBody2D;
 	private Animator animator;
 	private bool OnGround=true;
@@ -37,18 +43,31 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 
         #region Get Basic Movement input
-        float deltaX=0;
-		float deltaZ=0;
-		float deltaY=0;
 		if(xAxisEnabled)
-			deltaX=Input.GetAxis ("Horizontal") * currentRunSpeed;
+		{
+			deltaPos.x =Input.GetAxis ("Horizontal") * currentRunSpeed;
 			animator.SetFloat ("Speed", Mathf.Abs(Input.GetAxis("Horizontal"))); //Set float in animator to control run animation blend tree //Mathf.Abs(deltaX)
+
+			/*
+			if(deltaX == 0)
+			{
+				aniState = PlayerAnimationState.Idle;
+			}
+			else if(deltaX <= .5f)
+			{
+				aniState = PlayerAnimationState.Walking;
+			}
+			else
+			{
+				aniState = PlayerAnimationState.Running;
+			}*/
+		}
         if (zAxisEnabled)
-			deltaZ=Input.GetAxis ("Vertical") * currentRunSpeed;
+			deltaPos.z=Input.GetAxis ("Vertical") * currentRunSpeed;
 		if (yAxisEnabled) {
 			if(IsOnLadder)
 			{
-				deltaY=Input.GetAxis ("Vertical") * climbSpeed;
+				deltaPos.y=Input.GetAxis ("Vertical") * climbSpeed;
 				rigidBody2D.gravityScale=0;
 			}else rigidBody2D.gravityScale=this.gravityScale;
 
@@ -59,9 +78,7 @@ public class PlayerMovement : MonoBehaviour {
 				OnGround=false;
 			}
 		}
-		transform.position = new Vector3 (deltaX+transform.position.x,
-		                                  deltaY+transform.position.y,
-		                                  deltaZ+transform.position.z);
+		transform.position = deltaPos + transform.position;
         #endregion
 
         #region Changing directions
