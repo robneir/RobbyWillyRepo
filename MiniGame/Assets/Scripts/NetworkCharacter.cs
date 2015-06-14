@@ -5,6 +5,7 @@ public class NetworkCharacter : Photon.MonoBehaviour { //THIS IS monobehavior wi
 
 	Vector3 realPosition;
 	Quaternion realRotation;
+    Vector3 localScale;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class NetworkCharacter : Photon.MonoBehaviour { //THIS IS monobehavior wi
 			transform.position = Vector3.Lerp (transform.position, realPosition, .1f); /*go 10% closer each time. Could also 
 			predict where the player will be by adding velocity of player*/
 			transform.rotation = Quaternion.Lerp (transform.rotation, realRotation, .1f);
+            transform.localScale = localScale;
 		}
 	}
 
@@ -34,6 +36,7 @@ public class NetworkCharacter : Photon.MonoBehaviour { //THIS IS monobehavior wi
 			//this is someone elses player. We need to recieve their position and update our version of that player
 			realPosition=(Vector3)stream.ReceiveNext();
 			realRotation= (Quaternion)stream.ReceiveNext();
+            localScale = (Vector3)stream.ReceiveNext();
 		}
 	}
 }
