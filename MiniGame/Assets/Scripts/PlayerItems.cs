@@ -62,7 +62,7 @@ public class PlayerItems : MonoBehaviour {
 			Current.GetComponent<Item>().SetTran = i.SetTran;
 			Current.GetComponent<Item>().Offset = i.Offset;
 			Current.GetComponent<Item>().Name = i.Name;
-			GameObject.Destroy(c.gameObject);
+			c.gameObject.active = false;
 		}
         else if(c.gameObject.tag.Equals("Item") && c.gameObject.GetComponent<Item>().HasUser)
         {

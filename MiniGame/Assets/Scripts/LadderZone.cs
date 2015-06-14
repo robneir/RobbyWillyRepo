@@ -30,7 +30,7 @@ public class LadderZone : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D col)
 	{
-		if (col.gameObject.tag == player.tag) {
+		if (col.gameObject.tag == "Player") {
 			player.GetComponent<PlayerMovement>().IsOnLadder=false;
 		}
 	}
