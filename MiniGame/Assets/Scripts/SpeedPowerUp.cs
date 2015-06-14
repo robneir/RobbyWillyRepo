@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class SpeedPowerUp : MonoBehaviour {
-
-	public float speedMultiplier=2;
+    
 	public float duration=6;
 	private GameObject player;
 	private bool isInitiated=false;
@@ -29,9 +28,8 @@ public class SpeedPowerUp : MonoBehaviour {
 	{
 		if (player != null) {
 			isInitiated=true;
-			player.GetComponent<PlayerMovement> ().speed *= speedMultiplier;
-            player.GetComponentInChildren<Animator>().speed*=speedMultiplier;
-			startTime = Time.time;
+            player.GetComponent<PlayerMovement>().currentRunSpeed = player.GetComponent<PlayerMovement>().sprintSpeed;
+            startTime = Time.time;
 		}
 	}
 
@@ -39,8 +37,7 @@ public class SpeedPowerUp : MonoBehaviour {
 	{
 		if (player != null)
 		{
-			player.GetComponent<PlayerMovement> ().speed /= speedMultiplier;
-            player.GetComponentInChildren<Animator>().speed/=speedMultiplier;
+            player.GetComponent<PlayerMovement>().currentRunSpeed = player.GetComponent<PlayerMovement>().regSpeed;
 		}
 		GameObject.Destroy (this);
 	}

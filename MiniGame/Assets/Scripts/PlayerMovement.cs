@@ -7,25 +7,25 @@ public class PlayerMovement : MonoBehaviour {
 	public bool yAxisEnabled=false;
 	public bool zAxisEnabled=false;
 
-	public float speed;
-    public float sprintSpeedMultiplier;
+	public float regSpeed;
+    public float sprintSpeed;
 	public float friction;
 	public float jumpPower;
 	public float climbSpeed;
+    public float currentRunSpeed;
 
-	private Rigidbody2D rigidBody2D;
+    private Rigidbody2D rigidBody2D;
 	private Animator animator;
 	private bool OnGround=true;
 	private bool isOnLadder = false;
 	private float gravityScale;
-    private float currentRunSpeed;
 
 	// Use this for initialization
 	void Start () {
 		rigidBody2D = this.GetComponent<Rigidbody2D> ();
 		animator = this.GetComponentInChildren<Animator> ();
 		gravityScale = rigidBody2D.gravityScale;
-        currentRunSpeed = speed;
+        currentRunSpeed = regSpeed;
 	}
 
 	void OnGUI()
@@ -75,16 +75,16 @@ public class PlayerMovement : MonoBehaviour {
         #endregion
 
         //Change run speed if sprinting or not
-        if (Input.GetButtonDown("Sprint"))
+        if (Input.GetButton("Sprint") && !animator.GetBool("Jump"))
         {
-            currentRunSpeed *= 2;
+            currentRunSpeed = sprintSpeed;
         }
         else if(Input.GetButtonUp("Sprint"))
         {
-            currentRunSpeed /=2;
+            currentRunSpeed = regSpeed;
         }
         //Change speed of animation based on speed
-        animator.speed = currentRunSpeed / speed;
+        animator.speed = currentRunSpeed / regSpeed;
         
         if(Input.GetButtonDown("Fire1") && !animator.GetBool("Swing"))
         {
