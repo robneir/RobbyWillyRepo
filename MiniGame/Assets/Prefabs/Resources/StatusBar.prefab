@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11435182}
   - 114: {fileID: 11462812}
   - 114: {fileID: 11435760}
+  - 114: {fileID: 11429622}
   m_Layer: 5
   m_Name: StatusBar
   m_TagString: Untagged
@@ -129,6 +130,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11429622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bea838be957297488460b939ba850d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11435182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,12 +177,12 @@ MonoBehaviour:
   group: 0
   prefixBackup: -1
   observed: {fileID: 0}
-  synchronization: 0
+  synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 11429622}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -189,6 +201,7 @@ MonoBehaviour:
   healthFullImage: {fileID: 11466660}
   maxHealth: 100
   currentHealth: 0
+  targetHealth: 0
 --- !u!114 &11466660
 MonoBehaviour:
   m_ObjectHideFlags: 1

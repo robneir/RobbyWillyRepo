@@ -105,17 +105,17 @@ public class PlayerMovement : Photon.MonoBehaviour {
         
         if(Input.GetButtonDown("Fire1") && !animator.GetBool("Swing"))
         {
-            animator.SetTrigger("Swing");
-            this.photonView.RPC("SetTrigger", PhotonTargets.Others, "Swing");
-            rigidBody2D.AddForce(new Vector2(transform.localScale.x * 1000,0));
+            //animator.SetTrigger("Swing");
+            //this.photonView.RPC("SetTrigger", PhotonTargets.Others, "Swing");
+            //rigidBody2D.AddForce(new Vector2(transform.localScale.x * 1000,0));
         }
     }
 
-    [RPC]
+    /*[RPC]
     public void SetTrigger(string name)
     {
         animator.SetTrigger(name);
-    }
+    }*/
 
     void OnCollisionEnter2D(Collision2D col)
 	{

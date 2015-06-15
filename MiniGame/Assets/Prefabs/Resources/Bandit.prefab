@@ -596,8 +596,8 @@ Rigidbody2D:
   m_GameObject: {fileID: 127248}
   m_Mass: 4
   m_LinearDrag: 0
-  m_AngularDrag: 3
-  m_GravityScale: 4
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -761,6 +761,8 @@ MonoBehaviour:
   jumpPower: 5000
   climbSpeed: .150000006
   currentRunSpeed: 0
+  deltaPos: {x: 0, y: 0, z: 0}
+  aniState: 0
 --- !u!212 &21204062
 SpriteRenderer:
   m_ObjectHideFlags: 1

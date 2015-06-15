@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerItems : MonoBehaviour {
+public class PlayerItems : Photon.MonoBehaviour {
 
 	public GameObject Current = null;
+
+	[RPC]
+	void SyncTrigger(string trigName)
+	{
+		this.GetComponentInChildren<Animator> ().SetTrigger (trigName);
+	}
 
 	// Use this for initialization
 	void Start () 
@@ -19,8 +25,19 @@ public class PlayerItems : MonoBehaviour {
 			//you have a item
 			if(Input.GetButtonDown("UseWeapon") && Current.GetComponent<Item>().HasUser)
 			{
+				Item i = Current.GetComponent<Item>();
 				//play swing sword animation/fire or whatever
-				Current.GetComponent<Item>().UseFunc();
+				i.UseFunc();
+
+				if(photonView.isMine)
+				{
+					switch(i.Type)
+					{
+						case Item.ItemType.Sword:
+							photonView.RPC("SyncTrigger", PhotonTargets.All, "Swing");
+							break;
+					}
+				}
 			}
 
 			if(Input.GetKeyDown(KeyCode.Q))
