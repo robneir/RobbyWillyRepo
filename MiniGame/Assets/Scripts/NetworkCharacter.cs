@@ -6,7 +6,6 @@ public class NetworkCharacter : Photon.MonoBehaviour { //THIS IS monobehavior wi
 	Vector3 realPosition;
 	Quaternion realRotation;
     Vector3 localScale;
-
 	private Animator animator;
 
 	// Use this for initialization
@@ -38,8 +37,8 @@ public class NetworkCharacter : Photon.MonoBehaviour { //THIS IS monobehavior wi
 			stream.SendNext(transform.position);
 			stream.SendNext(transform.rotation);
 			stream.SendNext(transform.localScale);
-			stream.SendNext(animator.GetBool("Jumping"));
 			stream.SendNext(animator.GetFloat("Speed"));
+			stream.SendNext(animator.GetBool("Jump"));
 		} 
         else 
         {
@@ -47,8 +46,9 @@ public class NetworkCharacter : Photon.MonoBehaviour { //THIS IS monobehavior wi
 			realPosition=(Vector3)stream.ReceiveNext();
 			realRotation= (Quaternion)stream.ReceiveNext();
             localScale = (Vector3)stream.ReceiveNext();
-			animator.SetBool("Jumping", (bool)stream.ReceiveNext());
 			animator.SetFloat("Speed", (float)stream.ReceiveNext());
+			animator.SetBool("Jump", (bool)stream.ReceiveNext());
+			//animator.SetBool("Jumping", (bool)stream.ReceiveNext());
 		}
 	}
 }
