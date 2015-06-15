@@ -39,7 +39,7 @@ public class NetworkCharacter : Photon.MonoBehaviour { //THIS IS monobehavior wi
 			stream.SendNext(transform.localScale);
 			stream.SendNext(animator.GetFloat("Speed"));
 			stream.SendNext(animator.GetBool("Jump"));
-            stream.SendNext(animator.GetBool("Swing"));
+            stream.SendNext(animator.speed);
         } 
         else 
         {
@@ -49,7 +49,7 @@ public class NetworkCharacter : Photon.MonoBehaviour { //THIS IS monobehavior wi
             localScale = (Vector3)stream.ReceiveNext();
 			animator.SetFloat("Speed", (float)stream.ReceiveNext());
 			animator.SetBool("Jump", (bool)stream.ReceiveNext());
-			animator.SetBool("Swing", (bool)stream.ReceiveNext());
+            animator.speed = (float)stream.ReceiveNext();
 		}
 	}
 }

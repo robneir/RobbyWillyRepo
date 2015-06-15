@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : Photon.MonoBehaviour {
 
 	public bool xAxisEnabled=false;
 	public bool yAxisEnabled=false;
@@ -106,11 +106,18 @@ public class PlayerMovement : MonoBehaviour {
         if(Input.GetButtonDown("Fire1") && !animator.GetBool("Swing"))
         {
             animator.SetTrigger("Swing");
+            this.photonView.RPC("SetTrigger", PhotonTargets.Others, "Swing");
             rigidBody2D.AddForce(new Vector2(transform.localScale.x * 1000,0));
         }
     }
-	
-	void OnCollisionEnter2D(Collision2D col)
+
+    [RPC]
+    public void SetTrigger(string name)
+    {
+        animator.SetTrigger(name);
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
 	{
 		if(col.collider.tag=="Ground" && !OnGround)
 		{
