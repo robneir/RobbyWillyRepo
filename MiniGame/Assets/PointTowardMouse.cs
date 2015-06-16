@@ -3,15 +3,20 @@ using System.Collections;
 
 public class PointTowardMouse : MonoBehaviour {
 
+    public float zOffSet;
+
 	// Use this for initialization
 	void Start () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        Vector3 mouseDiff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
+	void LateUpdate () {
+        //Called in late update to override the animation
+        Vector3 mouseDiff = Input.mousePosition - Camera.main.WorldToScreenPoint(new Vector3(this.transform.position.x, this.transform.position.y,0));
+        mouseDiff.Normalize();
         float rotation = Mathf.Atan2(mouseDiff.y, mouseDiff.x) * Mathf.Rad2Deg;
-        this.transform.rotation = Quaternion.Euler(transform.rotation.x,transform.rotation.y,rotation);
+        Mathf.Clamp(rotation, 0, 90);
+        this.transform.localRotation = Quaternion.Euler(0,0,rotation+zOffSet);
 	}
 }
