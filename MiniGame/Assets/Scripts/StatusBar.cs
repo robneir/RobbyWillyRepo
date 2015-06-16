@@ -16,7 +16,7 @@ public class StatusBar : MonoBehaviour {
         currentHealth = 0;
 		healthFullImage.fillAmount = .5f;
 		targetHealth = maxHealth;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () 

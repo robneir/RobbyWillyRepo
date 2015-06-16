@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour {
 
     //Privates
     private GameObject statusBar;
+    private GameObject UICanvas;
 
     void FixedUpdate()
     {
@@ -25,6 +26,16 @@ public class PlayerHealth : MonoBehaviour {
             Debug.Log("TAKE 30 damage");
             GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, 30);
         }
+
+        //Check to see if dead
+        if(statusBar!=null)
+        {
+            if (statusBar.GetComponent<StatusBar>().currentHealth <= 0 && statusBar.GetComponent<StatusBar>().targetHealth <= 0)
+            {
+                //die
+                Die();
+            }
+        }
     }
 
 	public void Die()
@@ -36,11 +47,6 @@ public class PlayerHealth : MonoBehaviour {
 	public void TakeDamage(int d)
 	{
         statusBar.GetComponent<StatusBar>().targetHealth -= d;
-        if (statusBar.GetComponent<StatusBar>().currentHealth <= 0)
-		{
-			//die
-			Die ();
-		}
 	}
 
     public void InstantiateHealthBar()
