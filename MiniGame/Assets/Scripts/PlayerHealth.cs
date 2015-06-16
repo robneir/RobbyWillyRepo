@@ -20,34 +20,58 @@ public class PlayerHealth : MonoBehaviour {
                 this.transform.position.y + barOffSet.y,
                 this.transform.position.z));
         }
-        //TESTING FOR DAMAGE
+    }
+
+    void Update()
+    {
+        //JUST FOR TESTING HEALTH AND MANA
         if(Input.GetKeyDown(KeyCode.H))
         {
-            Debug.Log("TAKE 30 damage");
-            GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, 30);
+            TakeDamage(30);
         }
-
-        //Check to see if dead
-        if(statusBar!=null)
+        if(Input.GetKeyDown(KeyCode.M))
         {
-            if (statusBar.GetComponent<StatusBar>().currentHealth <= 0 && statusBar.GetComponent<StatusBar>().targetHealth <= 0)
-            {
-                //die
-                Die();
-            }
+            UseEnergy(30);
         }
     }
 
 	public void Die()
 	{
+        PhotonNetwork.Destroy(statusBar);
 		PhotonNetwork.Destroy (this.gameObject);
 	}
-
-    [RPC]
+    
 	public void TakeDamage(int d)
 	{
-        statusBar.GetComponent<StatusBar>().targetHealth -= d;
-	}
+        //Subtract Health and check to see if dead
+        if (statusBar != null)
+        {
+            statusBar.GetComponent<StatusBar>().targetHealth -= d;
+            statusBar.GetComponent<StatusBar>().currentHealth -= d;
+            if (statusBar.GetComponent<StatusBar>().currentHealth <= 0)
+            {
+                //Die
+                Die();
+            }
+        }
+        else
+        {
+            Debug.LogError("StatusBar is null therefore cannot subtract health from it");
+        }
+    }
+
+    public void UseEnergy(int mana)
+    {
+        if (statusBar != null)
+        {
+            statusBar.GetComponent<StatusBar>().targetMana -= mana;
+            statusBar.GetComponent<StatusBar>().currentMana -= mana;
+        }
+        else
+        {
+            Debug.LogError("StatusBar is null therefore cannot subtract mana from it");
+        }
+    }
 
     public void InstantiateHealthBar()
     {
