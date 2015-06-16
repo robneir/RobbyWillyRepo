@@ -32,4 +32,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - SetTrigger
   - SyncTrigger
+  - TakeDamage
   DisableAutoOpenWizard: 1

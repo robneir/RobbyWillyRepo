@@ -86,7 +86,8 @@ public class PlayerItems : Photon.MonoBehaviour {
             Item item = c.gameObject.GetComponent<Item>();
             if(item.isBeingUsed)
             {
-                GetComponent<PlayerHealth>().TakeDamage(item.Damage);
+                GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.All, item.Damage);
+                //GetComponent<PlayerHealth>().TakeDamage(item.Damage);
             }
         }
 	}

@@ -22,6 +22,9 @@ public class StatusBar : MonoBehaviour {
 	void Update () 
 	{
         healthFullImage.fillAmount = currentHealth / maxHealth;
-		currentHealth = Mathf.Lerp (currentHealth, targetHealth, .05f);
+        if(currentHealth!=targetHealth)
+        {
+            currentHealth = Mathf.Lerp(currentHealth, targetHealth, .08f);
+        }
 	}
 }
