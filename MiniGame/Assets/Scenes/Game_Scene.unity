@@ -850,6 +850,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &741524936
 MonoBehaviour:
@@ -931,6 +932,7 @@ MonoBehaviour:
   isBeingUsed: 0
 --- !u!50 &831656612
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -939,11 +941,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 2
-  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!212 &831656613
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1776,6 +1778,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!4 &1523349512
 Transform:
   m_ObjectHideFlags: 0
@@ -2040,6 +2043,7 @@ MonoBehaviour:
   isBeingUsed: 0
 --- !u!50 &1916023060
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5087390, guid: 68797a563c45e954eaef0596132a72c9,
     type: 2}
@@ -2049,11 +2053,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 2
-  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!212 &1916023061
 SpriteRenderer:
   m_ObjectHideFlags: 0

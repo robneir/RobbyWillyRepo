@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 492738}
   - 212: {fileID: 21287756}
-  - 114: {fileID: 11422496}
   m_Layer: 0
   m_Name: Arm_Near
   m_TagString: Untagged
@@ -391,7 +390,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.56720686, y: 1.99027193, z: 0}
+  m_LocalPosition: {x: -30.1243515, y: 16.9932232, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452066}
@@ -591,6 +590,7 @@ Transform:
   m_RootOrder: 3
 --- !u!50 &5054592
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -599,13 +599,14 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!50 &5087390
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -614,11 +615,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6171198
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -685,18 +686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc37b241043e51c4688a6974ec3c8920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11422496
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eff952bdf2cd8e48afb8ea5189f9a9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zOffSet: 0
 --- !u!114 &11454078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -776,6 +765,7 @@ MonoBehaviour:
   currentRunSpeed: 0
   deltaPos: {x: 0, y: 0, z: 0}
   aniState: 0
+  isOnLadder: 0
 --- !u!212 &21204062
 SpriteRenderer:
   m_ObjectHideFlags: 1

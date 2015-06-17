@@ -23,7 +23,8 @@ public class PlayerMovement : Photon.MonoBehaviour {
     private Rigidbody2D rigidBody2D;
 	private Animator animator;
 	private bool OnGround=true;
-	private bool isOnLadder = false;
+	[HideInInspector]
+	public bool isOnLadder = false;
 	private float gravityScale;
 
 	// Use this for initialization
@@ -47,25 +48,11 @@ public class PlayerMovement : Photon.MonoBehaviour {
 		{
 			deltaPos.x =Input.GetAxis ("Horizontal") * currentRunSpeed;
 			animator.SetFloat ("Speed", Mathf.Abs(Input.GetAxis("Horizontal"))); //Set float in animator to control run animation blend tree //Mathf.Abs(deltaX)
-
-			/*
-			if(deltaX == 0)
-			{
-				aniState = PlayerAnimationState.Idle;
-			}
-			else if(deltaX <= .5f)
-			{
-				aniState = PlayerAnimationState.Walking;
-			}
-			else
-			{
-				aniState = PlayerAnimationState.Running;
-			}*/
 		}
         if (zAxisEnabled)
 			deltaPos.z=Input.GetAxis ("Vertical") * currentRunSpeed;
 		if (yAxisEnabled) {
-			if(IsOnLadder)
+			if(isOnLadder)
 			{
 				deltaPos.y=Input.GetAxis ("Vertical") * climbSpeed;
 				rigidBody2D.gravityScale=0;
@@ -102,20 +89,7 @@ public class PlayerMovement : Photon.MonoBehaviour {
         }
         //Change speed of animation based on speed
         animator.speed = currentRunSpeed / regSpeed;
-        
-        if(Input.GetButtonDown("Fire1") && !animator.GetBool("Swing"))
-        {
-            //animator.SetTrigger("Swing");
-            //this.photonView.RPC("SetTrigger", PhotonTargets.Others, "Swing");
-            //rigidBody2D.AddForce(new Vector2(transform.localScale.x * 1000,0));
-        }
     }
-
-    /*[RPC]
-    public void SetTrigger(string name)
-    {
-        animator.SetTrigger(name);
-    }*/
 
     void OnCollisionEnter2D(Collision2D col)
 	{
@@ -124,12 +98,5 @@ public class PlayerMovement : Photon.MonoBehaviour {
 			OnGround=true;
 			animator.SetBool("Jump",false);
 		}
-	}
-
-	
-	public bool IsOnLadder 
-	{ 
-		get { return isOnLadder; } 
-		set {isOnLadder=value;}
 	}
 }

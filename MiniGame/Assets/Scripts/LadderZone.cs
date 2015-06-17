@@ -20,9 +20,9 @@ public class LadderZone : MonoBehaviour {
 		if (go.tag == "Player") 
 		{
 			player=go.transform.parent.gameObject;//Get parent because that is when the player movement script is
-			if(!player.GetComponent<PlayerMovement>().IsOnLadder && Input.GetAxis("Vertical")!=0)
+			if(!player.GetComponent<PlayerMovement>().isOnLadder && Input.GetAxis("Vertical")!=0)
 			{
-				player.GetComponent<PlayerMovement>().IsOnLadder=true;
+				player.GetComponent<PlayerMovement>().isOnLadder=true;
                 player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
 			}
 		}
@@ -31,7 +31,7 @@ public class LadderZone : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D col)
 	{
 		if (col.gameObject.tag == "Player") {
-			player.GetComponent<PlayerMovement>().IsOnLadder=false;
+			player.GetComponent<PlayerMovement>().isOnLadder=false;
 		}
 	}
 }
