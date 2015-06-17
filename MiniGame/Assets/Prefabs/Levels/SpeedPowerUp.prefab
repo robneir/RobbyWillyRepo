@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 407112}
   - 212: {fileID: 21202286}
   - 114: {fileID: 11465780}
-  - 61: {fileID: 6163990}
+  - 61: {fileID: 6150272}
   m_Layer: 0
   m_Name: SpeedPowerUp
   m_TagString: PowerUp
@@ -25,12 +25,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.0900002, y: .620000005, z: 0}
-  m_LocalScale: {x: 14.9133005, y: 14.9133024, z: 14.9133024}
+  m_LocalPosition: {x: -46.2999992, y: 3.20000005, z: 0}
+  m_LocalScale: {x: .712121785, y: .712121785, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6163990
+--- !u!61 &6150272
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -42,7 +42,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .159999982, y: .159999982}
+  m_Size: {x: 5.11999989, y: 5.11999989}
 --- !u!114 &11465780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,7 +54,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389433b479de3924a89de475148051e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 2
   duration: 8
 --- !u!212 &21202286
 SpriteRenderer:
@@ -80,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1692392237
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 183b94c1c9be6e144b4d40d935f57478, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
