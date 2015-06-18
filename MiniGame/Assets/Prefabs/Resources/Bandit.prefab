@@ -755,11 +755,11 @@ MonoBehaviour:
   xAxisEnabled: 1
   yAxisEnabled: 1
   zAxisEnabled: 0
-  regSpeed: .300000012
-  sprintSpeed: .449999988
+  regSpeed: 15
+  sprintSpeed: 25
   friction: 0
   jumpPower: 5000
-  climbSpeed: .150000006
+  climbSpeed: 15
   currentRunSpeed: 0
   deltaPos: {x: 0, y: 0, z: 0}
   aniState: 0
