@@ -25,6 +25,7 @@ GameObject:
   - 4: {fileID: 438690}
   - 114: {fileID: 11465740}
   - 114: {fileID: 11413078}
+  - 61: {fileID: 6120982}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -94,7 +95,7 @@ GameObject:
   - 60: {fileID: 6028576}
   m_Layer: 0
   m_Name: Green_Tank
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,7 +151,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.9760323, y: 13.9882774, z: 0}
+  m_LocalPosition: {x: -68.4599991, y: 21.5499992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 470652}
@@ -215,7 +216,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.6239662, y: 6.91172218, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.78838158, y: 3.7883811, z: 3.7883811}
   m_Children:
   - {fileID: 453890}
@@ -309,6 +310,19 @@ PolygonCollider2D:
       - {x: -1.27499998, y: -1.21000004}
       - {x: -1.20500004, y: -1.23000002}
       - {x: 1.59500003, y: -1.23000002}
+--- !u!61 &6120982
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110330}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 1.11283875, y: 1.01840019}
+  serializedVersion: 2
+  m_Size: {x: 14.3429718, y: 11.6459694}
 --- !u!95 &9583530
 Animator:
   serializedVersion: 3
@@ -349,8 +363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2042e031c4ee6224d91b285c4e5b3c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shellspawn: {fileID: 443810}
+  shellSpawn: {fileID: 443810}
   shellPrefab: {fileID: 142710, guid: ccba236876eb4054bbfe6c3b8dacb587, type: 2}
+  shellSpeed: 3000
+  shootExplosion: {fileID: 0}
+  mainCannon: {fileID: 132848}
 --- !u!114 &11465740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -364,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xAxisEnabled: 1
   yAxisEnabled: 0
-  zAxisEnabled: 1
+  zAxisEnabled: 0
   speed: .200000003
 --- !u!212 &21248176
 SpriteRenderer:
@@ -389,7 +406,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1692392237
-  m_SortingOrder: -1
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300004, guid: 71ea9f141ed95be45bb051fba1bd36e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21248892
@@ -415,7 +432,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1692392237
-  m_SortingOrder: 0
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300002, guid: 71ea9f141ed95be45bb051fba1bd36e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21253370
@@ -441,7 +458,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1692392237
-  m_SortingOrder: -1
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300006, guid: 71ea9f141ed95be45bb051fba1bd36e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21261860
@@ -467,7 +484,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1692392237
-  m_SortingOrder: -2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 71ea9f141ed95be45bb051fba1bd36e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21285596
@@ -493,7 +510,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1692392237
-  m_SortingOrder: 1
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 57572cdc4619fec4990ecd98d88bbde2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000

@@ -25,7 +25,6 @@ public class CameraLerp : MonoBehaviour {
 			float z = this.transform.position.z;
 			this.transform.position = Vector3.Lerp(this.transform.position, Player.transform.position, Smooth);
 			this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, z);
-			Debug.Log("Camera Tracking Player");
 		}
 		else
 		{

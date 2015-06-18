@@ -4,6 +4,7 @@ using System.Collections;
 public class Bullet : MonoBehaviour {
 
 	public int Damage = 0;
+    public ParticleSystem hitExplosion;
 
 	// Use this for initialization
 	void Start () 
@@ -23,7 +24,9 @@ public class Bullet : MonoBehaviour {
 		{
 			PlayerHealth sb = c.gameObject.GetComponent<PlayerHealth>();
 			sb.TakeDamage(Damage);
-			PhotonNetwork.Destroy(this.gameObject);
-		}
-	}
+        }
+        ParticleSystem hitExplo = (ParticleSystem)Instantiate(hitExplosion, this.transform.position, this.transform.rotation);
+        hitExplo.Play();
+        PhotonNetwork.Destroy(this.gameObject);
+    }
 }
