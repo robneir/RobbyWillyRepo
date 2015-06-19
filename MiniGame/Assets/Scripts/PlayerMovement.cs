@@ -49,16 +49,16 @@ public class PlayerMovement : Photon.MonoBehaviour {
             #region Get Basic Movement input
             if (xAxisEnabled)
             {
-                deltaPos.x = Input.GetAxis("Horizontal") * currentRunSpeed;
+                deltaPos.x = Input.GetAxis("Horizontal") * currentRunSpeed * Time.deltaTime;
                 animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal"))); //Set float in animator to control run animation blend tree //Mathf.Abs(deltaX)
             }
             if (zAxisEnabled)
-                deltaPos.z = Input.GetAxis("Vertical") * currentRunSpeed;
+				deltaPos.z = Input.GetAxis("Vertical") * currentRunSpeed * Time.deltaTime;
             if (yAxisEnabled)
             {
                 if (isOnLadder)
                 {
-                    deltaPos.y = Input.GetAxis("Vertical") * climbSpeed;
+					deltaPos.y = Input.GetAxis("Vertical") * climbSpeed * Time.deltaTime;
                     rigidBody2D.gravityScale = 0;
                 }
                 else rigidBody2D.gravityScale = this.gravityScale;
