@@ -34,9 +34,16 @@ public class PlayerItems : Photon.MonoBehaviour {
 				{
 					switch(i.Type)
 					{
-						case Item.ItemType.Sword:
-							photonView.RPC("SyncTrigger", PhotonTargets.All, "Swing");
+						//melee weapons
+						case Item.ItemType.Melee:
+							switch(i.Name)
+							{
+								case "Katana":
+								photonView.RPC("SyncTrigger", PhotonTargets.All, "Swing");
+								break;
+							}
 							break;
+						//end melee
 					}
 				}
 			}
@@ -44,6 +51,11 @@ public class PlayerItems : Photon.MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.Q))
 			{
 				ThrowItem(Current);
+			}
+
+			if(Current.GetComponent<Item>().Type == Item.ItemType.Ammo)
+			{
+
 			}
 		}
 	}

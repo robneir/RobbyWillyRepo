@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 492738}
   - 212: {fileID: 21287756}
+  - 114: {fileID: 11476570}
   m_Layer: 0
   m_Name: Arm_Near
   m_TagString: Untagged
@@ -126,6 +127,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 459502}
   - 212: {fileID: 21207886}
+  - 114: {fileID: 11435396}
   m_Layer: 0
   m_Name: Arm_Far
   m_TagString: Untagged
@@ -370,7 +372,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77.2782898, y: 24.8039169, z: 0}
+  m_LocalPosition: {x: -85.7417679, y: 20.6316032, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452066}
@@ -625,6 +627,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc37b241043e51c4688a6974ec3c8920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11435396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eff952bdf2cd8e48afb8ea5189f9a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zOffSet: 0
 --- !u!114 &11461266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -662,6 +676,18 @@ MonoBehaviour:
   viewIdField: 0
   instantiationId: -1
   isRuntimeInstantiated: 0
+--- !u!114 &11476570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eff952bdf2cd8e48afb8ea5189f9a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zOffSet: 0
 --- !u!114 &11485596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -683,8 +709,7 @@ MonoBehaviour:
   climbSpeed: 15
   currentRunSpeed: 0
   deltaPos: {x: 0, y: 0, z: 0}
-  aniState: 0
-  isOnLadder: 0
+  currPlayerState: 0
 --- !u!212 &21204062
 SpriteRenderer:
   m_ObjectHideFlags: 1

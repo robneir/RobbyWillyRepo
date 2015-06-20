@@ -15,8 +15,18 @@ public class PointTowardMouse : MonoBehaviour {
         //Called in late update to override the animation
 		Vector3 mouseDiff = Input.mousePosition - Camera.main.WorldToScreenPoint(new Vector3(this.transform.position.x, this.transform.position.y,0));
         mouseDiff.Normalize();
-        float rotation = Mathf.Atan2(mouseDiff.y, mouseDiff.x) * Mathf.Rad2Deg;
-        Mathf.Clamp(rotation, 0, 90);
-        this.transform.localRotation = Quaternion.Euler(0,0,rotation+zOffSet);
+
+		if(transform.root.localScale.x > 0)
+		{
+	        float rotation = Mathf.Atan2(mouseDiff.y, mouseDiff.x) * Mathf.Rad2Deg;
+	        Mathf.Clamp(rotation, 0, 90);
+	        this.transform.localRotation = Quaternion.Euler(0,0,rotation+zOffSet);
+		}
+		else
+		{
+			float rotation = Mathf.Atan2(-mouseDiff.y, -mouseDiff.x) * -Mathf.Rad2Deg;
+			Mathf.Clamp(rotation, -90, 0);
+			this.transform.localRotation = Quaternion.Euler(0,0,rotation+zOffSet);
+		}
 	}
 }

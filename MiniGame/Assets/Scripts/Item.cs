@@ -23,10 +23,10 @@ public class Item : MonoBehaviour
 
 	public enum ItemType
 	{
-		Sword,
-		Dagger,
-		Gun,
-		BLANK
+		Melee,
+		Ammo,
+		OneShot,
+		Special
 	}
 
 	// Use this for initialization
@@ -36,14 +36,16 @@ public class Item : MonoBehaviour
 
 		switch(Type)
 		{
-			case ItemType.Gun:
-				Offset = new Vector3(-2.329968f,-0.8299061f,0);
-				UseFunc = FireShotgun;
+			case ItemType.Ammo:
+				switch(Name)
+				{
+					case "Shotgun":
+						Offset = new Vector3(-2.329968f,-0.8299061f,0);
+						UseFunc = FireShotgun;
+						break;
+				}
 				break;
-			case ItemType.Dagger:
-				Offset = new Vector3(10,10,0);
-				break;
-			case ItemType.Sword:
+			case ItemType.Melee:
 				Offset = new Vector3(2.329968f,-0.9299061f,0);
                 UseFunc = SwingSword;
 				break;
