@@ -1545,6 +1545,7 @@ Prefab:
       propertyPath: m_LocalPosition.x
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: -64
       objectReference: {fileID: 0}
     - target: {fileID: 438690, guid: 2c69bf73b8ceb654e97230bad9c205d0, type: 2}
@@ -1557,6 +1558,13 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 16.2000008
 >>>>>>> origin/master
+=======
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 438690, guid: 2c69bf73b8ceb654e97230bad9c205d0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.79999995
+>>>>>>> parent of 640085a... tank working
 =======
       value: 19
       objectReference: {fileID: 0}
@@ -1588,11 +1596,19 @@ Prefab:
     - target: {fileID: 438690, guid: 2c69bf73b8ceb654e97230bad9c205d0, type: 2}
       propertyPath: m_RootOrder
       value: 12
+<<<<<<< HEAD
       objectReference: {fileID: 0}
     - target: {fileID: 110330, guid: 2c69bf73b8ceb654e97230bad9c205d0, type: 2}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+=======
+      objectReference: {fileID: 0}
+    - target: {fileID: 110330, guid: 2c69bf73b8ceb654e97230bad9c205d0, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+>>>>>>> parent of 640085a... tank working
     - target: {fileID: 11413078, guid: 2c69bf73b8ceb654e97230bad9c205d0, type: 2}
       propertyPath: shootExplosion
       value: 
