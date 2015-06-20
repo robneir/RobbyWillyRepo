@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerItems : Photon.MonoBehaviour {
 
 	public GameObject Current = null;
-	public GameObject ArmTransform;
 
 	[RPC]
 	void SyncTrigger(string trigName)
@@ -43,43 +42,21 @@ public class PlayerItems : Photon.MonoBehaviour {
 
 			if(Input.GetKeyDown(KeyCode.Q))
 			{
-				ThrowItem(Current);
+				//throw item
+				if(transform.localScale.x == -1)
+				{
+					Current.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 3);
+					Current.GetComponent<Item>().HasUser = false;
+					Current.GetComponent<SpriteRenderer>().enabled = false;
+				}
+				else
+				{
+					Current.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 3);
+					Current.GetComponent<Item>().HasUser = false;
+					Current.GetComponent<SpriteRenderer>().enabled = false;
+				}
 			}
 		}
-	}
-
-	void ThrowItem(GameObject item)
-	{
-		//throw item
-		if(transform.localScale.x == -1)
-		{
-			item.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 3 + Vector3.right * 3);
-		}
-		else
-		{
-			item.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 3 + Vector3.right * -3);
-		}
-		
-		item.GetComponent<Rigidbody2D>().isKinematic = false;
-		item.GetComponent<Collider2D>().isTrigger = false;
-		item.GetComponent<Item>().HasUser = false;
-		item.GetComponent<Rigidbody2D>().fixedAngle = false;
-		item.transform.SetParent(null);
-		item.transform.localScale = item.GetComponent<Item> ().OriginalScale;
-		item = null;
-	}
-
-	void AssignItem(GameObject item)
-	{
-		Current = item;
-		Current.transform.SetParent(ArmTransform.transform);
-		Current.transform.localScale = Current.GetComponent<Item> ().OriginalScale;
-		Current.GetComponent<Rigidbody2D>().isKinematic = true;
-		Current.GetComponent<Collider2D>().isTrigger = true;
-		Current.GetComponent<Item>().HasUser = true;
-		Current.GetComponent<Rigidbody2D>().fixedAngle = true;
-		Current.GetComponent<Transform>().rotation = Current.GetComponent<Item>().SetTran.rotation;
-		Current.transform.localPosition = Current.GetComponent<Item>().Offset;
 	}
 
 	void OnCollisionEnter2D(Collision2D c)
@@ -87,15 +64,26 @@ public class PlayerItems : Photon.MonoBehaviour {
 		//if youre colliding with an item with no user
 		if(c.gameObject.tag.Equals("Item") && !c.gameObject.GetComponent<Item>().HasUser)
 		{
-			if(Current != null)
-				ThrowItem(Current);
+			//assign item to user
+					//Current = c.gameObject;
+					//Current.GetComponent<SpriteRenderer>().enabled = false;
+			Current.GetComponent<SpriteRenderer>().sprite = c.gameObject.GetComponent<SpriteRenderer>().sprite;
+			Current.GetComponent<SpriteRenderer>().enabled = true;
 
-			AssignItem(c.gameObject);
+			//deep copy of item components
+			Item i = c.gameObject.GetComponent<Item>();
+			Current.GetComponent<Item>().HasUser = true;
+			Current.GetComponent<Item>().Damage = i.Damage;
+			Current.GetComponent<Item>().Defense = i.Defense;
+			Current.GetComponent<Item>().UseFunc = i.UseFunc;
+			Current.GetComponent<Item>().SetTran = i.SetTran;
+			Current.GetComponent<Item>().Offset = i.Offset;
+			Current.GetComponent<Item>().Name = i.Name;
+			c.gameObject.active = false;
 		}
         else if(c.gameObject.tag.Equals("Item") && c.gameObject.GetComponent<Item>().HasUser)
         {
             Item item = c.gameObject.GetComponent<Item>();
-
             if(item.isBeingUsed)
             {
                 //Do Damage

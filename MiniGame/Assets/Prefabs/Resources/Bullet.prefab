@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 11453220}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
-  hitExplosion: {fileID: 116008, guid: 2c8d99aee37069b409056798a040860e, type: 2}
 --- !u!114 &11439920
 MonoBehaviour:
   m_ObjectHideFlags: 1
