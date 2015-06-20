@@ -7,16 +7,13 @@ public class TankMovement : MonoBehaviour {
     public bool yAxisEnabled = false;
     public bool zAxisEnabled = false;
     public float speed;
-    public Vector3 playerInTankOffset= Vector3.zero;
-
-    [HideInInspector]
-    public bool tankIsManned;
 
     private Rigidbody2D rigidBody2D;
     private Animator animator;
     private TankShoot tankShootScript;
     private Vector3 deltaPos;
     private bool characterCanManTank;
+    private bool tankIsManned;
 
     // Use this for initialization
     void Start () {
@@ -41,8 +38,7 @@ public class TankMovement : MonoBehaviour {
             }
             animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
             this.transform.position += deltaPos;
-        }
-        else
+        }else
         {
             animator.enabled = false;
             tankShootScript.enabled = false;
@@ -53,7 +49,7 @@ public class TankMovement : MonoBehaviour {
     void NewDriver(GameObject player)
     {
         tankIsManned = true;
-        player.GetComponentInParent<PlayerMovement>().PlayerInVehicle(transform.GetChild(0).gameObject);
+        player.GetComponentInParent<PlayerMovement>().PlayerInVehicle(this.gameObject,true);
     }
 
     void OnGUI()
@@ -70,12 +66,9 @@ public class TankMovement : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (col.gameObject.GetComponentInParent<PlayerMovement>().currPlayerState != PlayerState.InTank)
-                {
-                    NewDriver(col.gameObject);
-                }
+                NewDriver(col.gameObject);
             }
         }
     }
