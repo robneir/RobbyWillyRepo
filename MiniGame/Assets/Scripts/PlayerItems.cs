@@ -5,6 +5,8 @@ public class PlayerItems : Photon.MonoBehaviour {
 
 	public GameObject Current = null;
 	public GameObject ArmTransform;
+	public GameObject ArmNear;
+	public GameObject ArmFar;
 
 	[RPC]
 	void SyncTrigger(string trigName)
@@ -52,11 +54,6 @@ public class PlayerItems : Photon.MonoBehaviour {
 			{
 				ThrowItem(Current);
 			}
-
-			if(Current.GetComponent<Item>().Type == Item.ItemType.Ammo)
-			{
-
-			}
 		}
 	}
 
@@ -90,7 +87,7 @@ public class PlayerItems : Photon.MonoBehaviour {
 		Current.GetComponent<Collider2D>().isTrigger = true;
 		Current.GetComponent<Item>().HasUser = true;
 		Current.GetComponent<Rigidbody2D>().fixedAngle = true;
-		Current.GetComponent<Transform>().rotation = Current.GetComponent<Item>().SetTran.rotation;
+		Current.GetComponent<Transform>().rotation = /*Current.GetComponent<Item>().SetTran.rotation +*/ ArmNear.transform.rotation;
 		Current.transform.localPosition = Current.GetComponent<Item>().Offset;
 	}
 

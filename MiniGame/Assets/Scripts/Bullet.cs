@@ -27,8 +27,21 @@ public class Bullet : MonoBehaviour {
         }
 		if(!c.gameObject.tag.Equals("Bullet"))
 		{
-	        GameObject.Destroy((GameObject)Instantiate(hitExplosion, this.transform.position, this.transform.rotation), 5f);
+			if(hitExplosion != null)
+			{
+	        	GameObject.Destroy((GameObject)Instantiate(hitExplosion, this.transform.position, this.transform.rotation), 5f);
+			}
+			else Debug.Log("Var HitExplosion is null.");
 	        PhotonNetwork.Destroy(this.gameObject);
 		}
     }
+
+	void OnTriggerExit2D(Collider2D c)
+	{
+		if(c.gameObject.tag == "LEVEL_BOUNDS")
+		{
+			Debug.Log("Bulet Deleved");
+			PhotonNetwork.Destroy(this.gameObject);
+		}
+	}
 }

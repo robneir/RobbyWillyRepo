@@ -615,7 +615,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Current: {fileID: 0}
-  ArmTransform: {fileID: 104132}
+  ArmTransform: {fileID: 125256}
+  ArmNear: {fileID: 125256}
+  ArmFar: {fileID: 147008}
 --- !u!114 &11400810
 MonoBehaviour:
   m_ObjectHideFlags: 1
