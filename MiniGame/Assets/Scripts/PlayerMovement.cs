@@ -122,9 +122,13 @@ public class PlayerMovement : Photon.MonoBehaviour {
         currVehicle = vehicle;
         rigidBody2D.gravityScale = 0;
         rigidBody2D.isKinematic = true;
+        this.transform.localScale = new Vector3(1, 1, 1);
         this.GetComponentInChildren<BoxCollider2D>().enabled = false;
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        this.GetComponent<PlayerItems>().Current.GetComponent<SpriteRenderer>().enabled = false;
+        if(this.GetComponent<PlayerItems>().Current!=null)
+        {
+            this.GetComponent<PlayerItems>().Current.SetActive(false);
+        }
         transform.SetParent(vehicle.transform);
         transform.localPosition = vehicle.GetComponentInParent<TankMovement>().playerInTankOffset;
     }
@@ -138,7 +142,11 @@ public class PlayerMovement : Photon.MonoBehaviour {
         rigidBody2D.isKinematic = false;
         this.GetComponentInChildren<BoxCollider2D>().enabled = true;
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        this.GetComponent<PlayerItems>().Current.GetComponent<SpriteRenderer>().enabled = true;
+        this.transform.rotation=Quaternion.Euler(0,0,0);
+        if (this.GetComponent<PlayerItems>().Current != null)
+        {
+            this.GetComponent<PlayerItems>().Current.SetActive(true);
+        }
         transform.SetParent(null);
         currVehicle = null;
     }

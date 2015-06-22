@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.1698685, y: 22.993557, z: 0}
+  m_LocalPosition: {x: -26.400425, y: 22.7181511, z: 0}
   m_LocalScale: {x: 6.68327808, y: 6.68327761, z: 6.68327761}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 6
   m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -118,6 +118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   hitExplosion: {fileID: 19828790, guid: 5c805ee27dc48284bba14fc33d8281ec, type: 2}
+  rotateEffectOn: 1
+  rotateSpeed: -6
 --- !u!212 &21209338
 SpriteRenderer:
   m_ObjectHideFlags: 1

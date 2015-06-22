@@ -8,9 +8,10 @@ public class TankShoot : MonoBehaviour {
     public float shellSpeed;
     public ParticleSystem shootExplosion;
     public GameObject mainCannon;//need this so you can turn on the mouse follow script
+    public GameObject smallCannon;//need this so you can turn on the mouse follow script
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
 	}
 	

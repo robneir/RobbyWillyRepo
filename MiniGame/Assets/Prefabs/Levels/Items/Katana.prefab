@@ -25,9 +25,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130680}
-  m_LocalRotation: {x: 0, y: 0, z: .462646306, w: .886543036}
-  m_LocalPosition: {x: 13.3100004, y: .400000006, z: 0}
-  m_LocalScale: {x: 2.50479031, y: 2.50479054, z: 2.50478983}
+  m_LocalRotation: {x: -0, y: 0, z: .778845727, w: -.627215624}
+  m_LocalPosition: {x: 2.28999996, y: -.99000001, z: 0}
+  m_LocalScale: {x: 2.50479102, y: 2.50479102, z: 2.50478983}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,16 +71,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HasUser: 0
-  SetTran: {fileID: 0}
   Name: Katana
   Damage: 5
   Defense: 0
   Type: 0
+  FireTip: {fileID: 0}
+  MuzzleFlash: {fileID: 0}
+  FireSpeed: 50
   Offset: {x: 0, y: 0, z: 0}
   OriginalScale: {x: 0, y: 0, z: 0}
-  FireTip: {fileID: 0}
   isBeingUsed: 0
-  MuzzleFlash: {fileID: 0}
 --- !u!212 &21233120
 SpriteRenderer:
   m_ObjectHideFlags: 1

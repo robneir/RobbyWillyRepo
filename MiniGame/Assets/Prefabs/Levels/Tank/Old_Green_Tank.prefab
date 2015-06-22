@@ -27,7 +27,7 @@ GameObject:
   - 114: {fileID: 11413078}
   - 61: {fileID: 6120982}
   m_Layer: 0
-  m_Name: Tank
+  m_Name: Old_Green_Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 463964}
   - 212: {fileID: 21253370}
+  - 114: {fileID: 11465972}
   m_Layer: 0
   m_Name: Tank_SmallTurret
   m_TagString: Untagged
@@ -320,9 +321,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 1.11283875, y: 1.01840019}
+  m_Offset: {x: .180461884, y: 1.74358368}
   serializedVersion: 2
-  m_Size: {x: 14.3429718, y: 11.6459694}
+  m_Size: {x: 16.2077255, y: 13.7179184}
 --- !u!95 &9583530
 Animator:
   serializedVersion: 3
@@ -368,6 +369,7 @@ MonoBehaviour:
   shellSpeed: 3000
   shootExplosion: {fileID: 19866708, guid: 8a22e2822962bd3438d41e6157290e1e, type: 2}
   mainCannon: {fileID: 132848}
+  smallCannon: {fileID: 116388}
 --- !u!114 &11465740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -384,6 +386,19 @@ MonoBehaviour:
   zAxisEnabled: 0
   speed: .200000003
   playerInTankOffset: {x: 1.12, y: .580000103, z: 0}
+  tankIsManned: 0
+--- !u!114 &11465972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eff952bdf2cd8e48afb8ea5189f9a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zOffSet: 0
 --- !u!212 &21248176
 SpriteRenderer:
   m_ObjectHideFlags: 1

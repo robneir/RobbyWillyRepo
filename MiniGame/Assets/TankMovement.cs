@@ -20,8 +20,8 @@ public class TankMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        rigidBody2D = GetComponentInChildren<Rigidbody2D>();
-        animator = GetComponentInChildren<Animator>();
+        rigidBody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         tankShootScript = GetComponent<TankShoot>();
 	}
 	
@@ -34,6 +34,7 @@ public class TankMovement : MonoBehaviour {
             animator.enabled = true;
             tankShootScript.enabled = true;
             tankShootScript.mainCannon.GetComponent<PointTowardMouse>().enabled = true;
+            tankShootScript.smallCannon.GetComponent<PointTowardMouse>().enabled = true;
             if (xAxisEnabled)
             {
                 deltaPos.x = Input.GetAxis("Horizontal") * speed;
@@ -47,6 +48,7 @@ public class TankMovement : MonoBehaviour {
             animator.enabled = false;
             tankShootScript.enabled = false;
             tankShootScript.mainCannon.GetComponent<PointTowardMouse>().enabled = false;
+            tankShootScript.smallCannon.GetComponent<PointTowardMouse>().enabled = false;
         }
     }
 

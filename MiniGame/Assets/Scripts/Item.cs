@@ -77,7 +77,7 @@ public class Item : MonoBehaviour
 				}
 				break;
 			case ItemType.Melee:
-				Offset = new Vector3(2.329968f,-0.9299061f,0);
+				Offset = new Vector3(1.44f, 0.58f, 0);
                 UseFunc = SwingSword;
 				break;
 		}

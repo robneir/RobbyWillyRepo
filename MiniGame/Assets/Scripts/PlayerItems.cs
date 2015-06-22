@@ -26,7 +26,7 @@ public class PlayerItems : Photon.MonoBehaviour {
 		if(Current != null)
 		{
 			//you have a item
-			if(Input.GetButtonDown("UseWeapon") && Current.GetComponent<Item>().HasUser)
+			if(Input.GetButtonDown("UseWeapon") && Current.GetComponent<Item>().HasUser && Current.active==true) //active is set to false when in a vehicle so check to see if in vehicle before shooting
 			{
 				Item i = Current.GetComponent<Item>();
 				//play swing sword animation/fire or whatever

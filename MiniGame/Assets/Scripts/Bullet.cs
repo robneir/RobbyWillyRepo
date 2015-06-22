@@ -6,17 +6,24 @@ public class Bullet : MonoBehaviour {
 	public int Damage = 0;
     public GameObject hitExplosion;
 
-	// Use this for initialization
-	void Start () 
+    private Rigidbody2D rigidBody2D;
+    
+    public bool rotateEffectOn;
+    public float rotateSpeed;
+
+    // Use this for initialization
+    void Start () 
 	{
-	
+        rigidBody2D=this.GetComponent<Rigidbody2D>();
 	}
 	
-	// Update is called once per frame
-	void Update () 
-	{
-	
-	}
+	void Update ()
+    {
+        if (rotateEffectOn)
+        {
+            transform.Rotate(0, 0, rotateSpeed);
+        }
+    }
 
 	void OnCollisionEnter2D(Collision2D  c)
 	{
@@ -25,11 +32,11 @@ public class Bullet : MonoBehaviour {
 			PlayerHealth sb = c.gameObject.GetComponent<PlayerHealth>();
 			sb.TakeDamage(Damage);
         }
-		if(!c.gameObject.tag.Equals("Bullet"))
+		if(c.gameObject.tag!="Bullet")
 		{
 			if(hitExplosion != null)
 			{
-	        	GameObject.Destroy((GameObject)Instantiate(hitExplosion, this.transform.position, this.transform.rotation), 5f);
+                Instantiate(hitExplosion, this.transform.position, this.transform.rotation);
 			}
 			else Debug.Log("Var HitExplosion is null.");
 	        PhotonNetwork.Destroy(this.gameObject);
@@ -40,6 +47,7 @@ public class Bullet : MonoBehaviour {
 	{
 		if(c.gameObject.tag == "LEVEL_BOUNDS")
 		{
+            Debug.Log("HIT");
 			PhotonNetwork.Destroy(this.gameObject);
 		}
 	}
