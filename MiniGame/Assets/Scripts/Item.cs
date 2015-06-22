@@ -105,7 +105,7 @@ public class Item : MonoBehaviour
 
 	private void FireShotgun()
 	{
-		InstantiateBullets ();
+		InstantiateBullet ();
 	}
 
     private void SwingSword()
@@ -113,7 +113,7 @@ public class Item : MonoBehaviour
         isBeingUsed = true;
     }
 
-	void InstantiateBullets()
+	void InstantiateBullet()
 	{
 		GameObject.Destroy((GameObject)GameObject.Instantiate(MuzzleFlash, this.FireTip.position, Quaternion.identity), 1f);	
 
@@ -121,6 +121,15 @@ public class Item : MonoBehaviour
 		bull.GetComponent<Bullet> ().Damage = this.Damage;
 		bull.GetComponent<Rigidbody2D>().velocity = new Vector3(FireTip.right.x * this.transform.root.localScale.x, FireTip.right.y, FireTip.right.z);
 		bull.GetComponent<Rigidbody2D>().velocity *= FireSpeed;
+		Debug.Log ("World: " + FireTip.rotation.ToString () + "\nLocal: " + FireTip.localRotation.ToString ());
+
+		if(this.transform.root.localScale.x < 0)
+		{
+			//change rotation. switch Quaternion's z and w values.
+			float z = bull.transform.rotation.z;
+			float w = bull.transform.rotation.w;
+			bull.transform.rotation = new Quaternion(0,0,w,z);
+		}
 	}
 
 	public delegate void UseItem();

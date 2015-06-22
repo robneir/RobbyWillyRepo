@@ -40,7 +40,6 @@ public class Bullet : MonoBehaviour {
 	{
 		if(c.gameObject.tag == "LEVEL_BOUNDS")
 		{
-			Debug.Log("Bulet Deleved");
 			PhotonNetwork.Destroy(this.gameObject);
 		}
 	}

@@ -27,7 +27,6 @@ GameObject:
   - 50: {fileID: 5009572}
   - 114: {fileID: 11442452}
   - 60: {fileID: 6035612}
-  - 114: {fileID: 11482414}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Item
@@ -55,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.24000001, y: .0199999996, z: 0}
+  m_LocalPosition: {x: 1.23099995, y: .208000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 401380}
@@ -129,28 +128,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HasUser: 0
-  SetTran: {fileID: 0}
   Name: Shotgun
   Damage: 20
   Defense: 0
   Type: 1
+  FireTip: {fileID: 441356}
+  MuzzleFlash: {fileID: 177958, guid: c34102df06809f146b1bd352121aedd2, type: 2}
+  FireSpeed: 50
   Offset: {x: 0, y: 0, z: 0}
   OriginalScale: {x: 0, y: 0, z: 0}
-  FireTip: {fileID: 441356}
   isBeingUsed: 0
-  MuzzleFlash: {fileID: 177958, guid: c34102df06809f146b1bd352121aedd2, type: 2}
---- !u!114 &11482414
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eff952bdf2cd8e48afb8ea5189f9a9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zOffSet: 0
 --- !u!212 &21291256
 SpriteRenderer:
   m_ObjectHideFlags: 1
