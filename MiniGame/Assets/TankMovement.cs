@@ -8,6 +8,7 @@ public class TankMovement : MonoBehaviour {
     public bool zAxisEnabled = false;
     public float speed;
     public Vector3 playerInTankOffset= Vector3.zero;
+    public bool onGround;
 
     [HideInInspector]
     public bool tankIsManned;
@@ -35,7 +36,7 @@ public class TankMovement : MonoBehaviour {
             tankShootScript.enabled = true;
             tankShootScript.mainCannon.GetComponent<PointTowardMouse>().enabled = true;
             tankShootScript.smallCannon.GetComponent<PointTowardMouse>().enabled = true;
-            if (xAxisEnabled)
+            if (xAxisEnabled && onGround)
             {
                 deltaPos.x = Input.GetAxis("Horizontal") * speed;
                 rigidBody2D.AddForce(new Vector3(Input.GetAxis("Horizontal") * speed, 0, 0));

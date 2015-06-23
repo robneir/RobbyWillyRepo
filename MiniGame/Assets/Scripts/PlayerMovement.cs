@@ -45,63 +45,32 @@ public class PlayerMovement : Photon.MonoBehaviour {
         switch(currPlayerState)
         {
             case PlayerState.OnFoot:
+
                 #region OnFoot
-                #region Get Basic Movement input
-                if (xAxisEnabled)
-                {
-                    deltaPos.x = Input.GetAxis("Horizontal") * currentRunSpeed * Time.deltaTime;
-                    animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal"))); //Set float in animator to control run animation blend tree //Mathf.Abs(deltaX)
-                }
-                if (zAxisEnabled)
-                    deltaPos.z = Input.GetAxis("Vertical") * currentRunSpeed * Time.deltaTime;
-                if (yAxisEnabled)
-                {
-                    if (currPlayerState == PlayerState.OnLadder)
-                    {
-                        deltaPos.y = Input.GetAxis("Vertical") * climbSpeed * Time.deltaTime;
-                        rigidBody2D.gravityScale = 0;
-                    }
-                    else rigidBody2D.gravityScale = this.gravityScale;
 
-                    if (Input.GetButtonDown("Jump") && OnGround)
-                    {
-                        rigidBody2D.AddForce(new Vector2(0, this.jumpPower));
-                        animator.SetBool("Jump", true);
-                        OnGround = false;
-                    }
-                }
-                transform.position = deltaPos + transform.position;
-                #endregion
-
-                #region Changing directions
-                if ((Input.GetAxisRaw("Horizontal") > 0 && this.transform.localScale.x < 0) ||
-                    ((Input.GetAxisRaw("Horizontal") < 0 && this.transform.localScale.x > 0)))
-                {
-                    this.transform.localScale = new Vector3(this.transform.localScale.x * -1,
-                                                          this.transform.localScale.y,
-                                                          this.transform.localScale.z);
-                }
-                #endregion
+                UpdateBasicMovementInput();
 
                 //Change run speed if sprinting or not
                 if (Input.GetButton("Sprint") && !animator.GetBool("Jump"))
                 {
                     currentRunSpeed = sprintSpeed;
                 }
-                else if (Input.GetButtonUp("Sprint"))
+                else if (!animator.GetBool("Jump"))
                 {
                     currentRunSpeed = regSpeed;
                 }
-                //Change speed of animation based on speed
-                animator.speed = currentRunSpeed / regSpeed;
 
                 #endregion
+
                 break;
             case PlayerState.InTank:
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     PlayerOutVehicle();
                 }
+                break;
+            case PlayerState.OnLadder:
+                UpdateBasicMovementInput();
                 break;
         }
     }
@@ -111,9 +80,59 @@ public class PlayerMovement : Photon.MonoBehaviour {
 		if(col.collider.tag=="Ground" && !OnGround)
 		{
 			OnGround=true;
-			animator.SetBool("Jump",false);
 		}
 	}
+
+    void UpdateBasicMovementInput()
+    {
+        #region Get Basic Movement input
+        if (xAxisEnabled)
+        {
+            deltaPos.x = Input.GetAxis("Horizontal") * currentRunSpeed * Time.deltaTime;
+            animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal"))); //Set float in animator to control run animation blend tree //Mathf.Abs(deltaX)
+        }
+        if (zAxisEnabled)
+            deltaPos.z = Input.GetAxis("Vertical") * currentRunSpeed * Time.deltaTime;
+        if (yAxisEnabled)
+        {
+            if (currPlayerState == PlayerState.OnLadder)
+            {
+                deltaPos.y = Input.GetAxis("Vertical") * climbSpeed * Time.deltaTime;
+                rigidBody2D.gravityScale = 0;
+            }
+            else rigidBody2D.gravityScale = this.gravityScale;
+
+            if (Input.GetButtonDown("Jump") && OnGround)
+            {
+                rigidBody2D.AddForce(new Vector2(0, this.jumpPower));
+                OnGround = false;
+            }
+
+            if (!OnGround)
+            {
+                animator.SetBool("Jump", true);
+            }
+            else
+            {
+                animator.SetBool("Jump", false);
+            }
+        }
+        transform.position = deltaPos + transform.position;
+        #endregion
+
+        #region Changing directions
+        if ((Input.GetAxisRaw("Horizontal") > 0 && this.transform.localScale.x < 0) ||
+            ((Input.GetAxisRaw("Horizontal") < 0 && this.transform.localScale.x > 0)))
+        {
+            this.transform.localScale = new Vector3(this.transform.localScale.x * -1,
+                                                  this.transform.localScale.y,
+                                                  this.transform.localScale.z);
+        }
+        #endregion
+
+        //Change speed of animation based on speed
+        animator.speed = currentRunSpeed / regSpeed;
+    }
 
     public void PlayerInVehicle(GameObject vehicle)
     {
@@ -131,6 +150,7 @@ public class PlayerMovement : Photon.MonoBehaviour {
         }
         transform.SetParent(vehicle.transform);
         transform.localPosition = vehicle.GetComponentInParent<TankMovement>().playerInTankOffset;
+        transform.rotation = vehicle.transform.rotation; 
     }
 
     public void PlayerOutVehicle()//GameObject vehicle

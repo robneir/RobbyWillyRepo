@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
-  hitExplosion: {fileID: 19828790, guid: 5c805ee27dc48284bba14fc33d8281ec, type: 2}
+  hitExplosion: {fileID: 159918, guid: a0040bf7072bc2f4e82d887d50a9c5e2, type: 2}
   rotateEffectOn: 1
   rotateSpeed: -6
 --- !u!212 &21209338
