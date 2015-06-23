@@ -35,4 +35,6 @@ MonoBehaviour:
   - TakeDamage
   - FireBullet
   - InstantiateHealthBar
+  - DestroyHealthBar
+  - DestroyStatusBar
   DisableAutoOpenWizard: 1

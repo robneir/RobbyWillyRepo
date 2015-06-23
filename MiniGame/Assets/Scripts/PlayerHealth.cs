@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	public void Die()
 	{
-        Destroy(statusBar);
+        this.GetComponent<PhotonView>().RPC("DestroyStatusBar", PhotonTargets.AllBuffered);
 		PhotonNetwork.Destroy (this.gameObject);
 	}
     
@@ -106,5 +106,11 @@ public class PlayerHealth : MonoBehaviour {
 			statusBar.GetComponent<StatusBar>().targetHealth = (float)startHealth;
 			statusBar.GetComponent<StatusBar>().currentHealth = (float)startHealth;
 		}
+    }
+
+    [RPC]
+    void DestroyStatusBar()
+    {
+        GameObject.Destroy(statusBar);
     }
 }
