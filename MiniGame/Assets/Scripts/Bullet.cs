@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour {
 		{
 			if(hitExplosion != null)
 			{
-                Instantiate(hitExplosion, this.transform.position, this.transform.rotation);
+                Instantiate(hitExplosion, new Vector3(transform.position.x,transform.position.y,transform.position.z), this.transform.rotation);
 			}
 			else Debug.Log("Var HitExplosion is null.");
 
@@ -49,9 +49,13 @@ public class Bullet : MonoBehaviour {
 	{
 		if(c.gameObject.tag == "LEVEL_BOUNDS")
 		{
+<<<<<<< HEAD
             Debug.Log("HIT");
 			Destroy(this.gameObject);
 			//PhotonNetwork.Destroy(this.gameObject);
+=======
+			PhotonNetwork.Destroy(this.gameObject);
+>>>>>>> origin/master
 		}
 	}
 }
