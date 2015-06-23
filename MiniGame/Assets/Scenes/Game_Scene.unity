@@ -2009,6 +2009,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 573677395}
   - 114: {fileID: 573677396}
+  - 114: {fileID: 573677397}
   m_Layer: 0
   m_Name: _SCRIPTS
   m_TagString: Untagged
@@ -2037,6 +2038,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 813ffb936cad0864d8feae1c52664de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &573677397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573677394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efbc1875f0630784995e0f1f5c8ec8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &577606982 stripped
@@ -2372,6 +2384,19 @@ MonoBehaviour:
   viewIdField: 1
   instantiationId: 1
   isRuntimeInstantiated: 0
+--- !u!114 &659787219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 659787209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3da169e0876264599304021fcb1329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OccupiedPlayer: {fileID: 0}
+  ScannedForActivePlayer: 0
 --- !u!1 &678662449
 GameObject:
   m_ObjectHideFlags: 0
@@ -5195,6 +5220,10 @@ Prefab:
     - target: {fileID: 497584, guid: db3ca9c07e91c44418bb2b5063e87efa, type: 2}
       propertyPath: m_LocalPosition.x
       value: .270000011
+      objectReference: {fileID: 0}
+    - target: {fileID: 187368, guid: db3ca9c07e91c44418bb2b5063e87efa, type: 2}
+      propertyPath: m_Name
+      value: Tank
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db3ca9c07e91c44418bb2b5063e87efa, type: 2}

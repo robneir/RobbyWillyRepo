@@ -5,6 +5,7 @@ public class PointTowardMouse : MonoBehaviour {
 
     public float zOffSet;
 	bool IsMine;
+	IsVehicle IV = null;
 
 	// Use this for initialization
 	void Start ()
@@ -13,7 +14,13 @@ public class PointTowardMouse : MonoBehaviour {
 		{
 			IsMine = true;
 		}
-		else
+		else if(transform.root.GetComponent<IsVehicle>() != null)
+		{
+			IsMine = true;
+			IV = transform.root.GetComponent<IsVehicle>();
+			IV.ScannedForActivePlayer = false;
+		}
+		else 
 		{
 			IsMine = false;
 		}
@@ -24,6 +31,18 @@ public class PointTowardMouse : MonoBehaviour {
 	{
 		if(IsMine)
 		{
+			if(IV != null && IV.OccupiedPlayer != null)
+			{
+				if(IV.OccupiedPlayer.GetComponent<PhotonView>().isMine)
+				{
+					IV.ScannedForActivePlayer = true;
+				}
+				else
+				{
+					IsMine = false;
+					IV.ScannedForActivePlayer = true;
+				}
+			}
 	        //Called in late update to override the animation
 			Vector3 mouseDiff = Input.mousePosition - Camera.main.WorldToScreenPoint(new Vector3(this.transform.position.x, this.transform.position.y,0));
 	        mouseDiff.Normalize();
