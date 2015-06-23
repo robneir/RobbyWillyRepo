@@ -71,14 +71,19 @@ public class Item : MonoBehaviour
 				switch(Name)
 				{
 					case "Shotgun":
-						Offset = new Vector3(3.469929f,-1.510031f,0);
+						Offset = new Vector3(-0.5599827f,-2.499903f,0);
 						UseFunc = FireShotgun;
 						break;
 				}
 				break;
 			case ItemType.Melee:
-				Offset = new Vector3(1.44f, 0.58f, 0);
-                UseFunc = SwingSword;
+				switch(Name)
+				{
+					case "Katana":
+						Offset = new Vector3(2.83f, -0.3200116f, 0);
+		                UseFunc = SwingSword;
+						break;
+				}
 				break;
 		}
 	}
@@ -117,18 +122,12 @@ public class Item : MonoBehaviour
 	{
 		GameObject.Destroy((GameObject)GameObject.Instantiate(MuzzleFlash, this.FireTip.position, Quaternion.identity), 1f);	
 
-		GameObject bull = (GameObject)PhotonNetwork.Instantiate("Bullet", this.FireTip.position, FireTip.rotation, 0);	
-		bull.GetComponent<Bullet> ().Damage = this.Damage;
-		bull.GetComponent<Rigidbody2D>().velocity = new Vector3(FireTip.right.x * this.transform.root.localScale.x, FireTip.right.y, FireTip.right.z);
-		bull.GetComponent<Rigidbody2D>().velocity *= FireSpeed;
-		Debug.Log ("World: " + FireTip.rotation.ToString () + "\nLocal: " + FireTip.localRotation.ToString ());
-
-		if(this.transform.root.localScale.x < 0)
+		PhotonView pv = this.transform.root.gameObject.GetComponent<PhotonView>();
+		if(pv.isMine)
 		{
-			//change rotation. switch Quaternion's z and w values.
-			float z = bull.transform.rotation.z;
-			float w = bull.transform.rotation.w;
-			bull.transform.rotation = new Quaternion(0,0,w,z);
+			Vector3 sendV = new Vector3 (FireTip.right.x * this.transform.root.localScale.x, FireTip.right.y, FireTip.right.z) * FireSpeed;
+			float lScale = this.transform.root.localScale.x;
+			pv.RPC ("FireBullet", PhotonTargets.All, PhotonNetwork.player.ID, FireTip.position, FireTip.rotation, sendV, this.Damage, lScale);
 		}
 	}
 

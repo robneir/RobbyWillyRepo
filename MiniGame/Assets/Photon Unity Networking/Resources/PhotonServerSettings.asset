@@ -33,4 +33,6 @@ MonoBehaviour:
   - SetTrigger
   - SyncTrigger
   - TakeDamage
+  - FireBullet
+  - InstantiateHealthBar
   DisableAutoOpenWizard: 1

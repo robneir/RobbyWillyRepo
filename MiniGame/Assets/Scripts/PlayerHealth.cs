@@ -5,6 +5,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	//Publics
     public Vector2 barOffSet = Vector2.zero;
+	public GameObject StatusBar;
 
     //Privates
     private GameObject statusBar;
@@ -16,32 +17,49 @@ public class PlayerHealth : MonoBehaviour {
         {
             //Update position of bar
             statusBar.transform.position = Camera.main.WorldToScreenPoint(
-                new Vector3(this.transform.position.x + barOffSet.x,
-                this.transform.position.y + barOffSet.y,
-                this.transform.position.z));
+            	new Vector3(this.transform.position.x + barOffSet.x,
+            	this.transform.position.y + barOffSet.y,
+            	this.transform.position.z));
         }
+		else
+		{
+
+		}
     }
 
     void Update()
     {
-        //JUST FOR TESTING HEALTH AND MANA
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            TakeDamage(30);
-        }
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            UseEnergy(30);
-        }
+
     }
 
 	public void Die()
 	{
-        PhotonNetwork.Destroy(statusBar);
+        Destroy(statusBar);
 		PhotonNetwork.Destroy (this.gameObject);
 	}
     
-	public void TakeDamage(int d)
+	[RPC]
+	void TakeDamage(int d)
+	{
+        //Subtract Health and check to see if dead
+        if (statusBar != null)
+        {
+            statusBar.GetComponent<StatusBar>().targetHealth -= d;
+            statusBar.GetComponent<StatusBar>().currentHealth -= d;
+
+            if (statusBar.GetComponent<StatusBar>().currentHealth <= 0)
+            {
+                //Die
+                Die();
+            }
+        }
+        else
+        {
+            Debug.LogError("StatusBar is null therefore cannot subtract health from it");
+        }
+    }
+
+	/*void TakeDamage(int d)
 	{
         //Subtract Health and check to see if dead
         if (statusBar != null)
@@ -58,7 +76,7 @@ public class PlayerHealth : MonoBehaviour {
         {
             Debug.LogError("StatusBar is null therefore cannot subtract health from it");
         }
-    }
+    }*/
 
     public void UseEnergy(int mana)
     {
@@ -73,9 +91,20 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
 
-    public void InstantiateHealthBar()
+	[RPC]
+    void InstantiateHealthBar(float startHealth)
     {
-        statusBar = (GameObject)PhotonNetwork.Instantiate("StatusBar", Camera.main.WorldToScreenPoint(this.transform.position), Quaternion.identity, 0);
-        statusBar.transform.SetParent(FindObjectOfType<Canvas>().transform);
+		if(startHealth == null)
+		{
+			statusBar = (GameObject)Instantiate(StatusBar, Camera.main.WorldToScreenPoint(this.transform.position), Quaternion.identity);
+			statusBar.transform.SetParent(FindObjectOfType<Canvas>().transform);
+		}
+		else
+		{
+			statusBar = (GameObject)Instantiate(StatusBar, Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(100,100, 0)), Quaternion.identity);
+			statusBar.transform.SetParent(FindObjectOfType<Canvas>().transform);
+			statusBar.GetComponent<StatusBar>().targetHealth = (float)startHealth;
+			statusBar.GetComponent<StatusBar>().currentHealth = (float)startHealth;
+		}
     }
 }

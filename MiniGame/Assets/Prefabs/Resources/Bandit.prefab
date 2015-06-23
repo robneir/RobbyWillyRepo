@@ -372,7 +372,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -85.7417679, y: 20.6316032, z: 0}
+  m_LocalPosition: {x: -83.5743408, y: 35.1596642, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452066}
@@ -615,9 +615,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Current: {fileID: 0}
-  ArmTransform: {fileID: 125256}
+  ArmTransform: {fileID: 104132}
   ArmNear: {fileID: 125256}
   ArmFar: {fileID: 147008}
+  bulletPrefab: {fileID: 106422, guid: 87a067b87bf245f44918b05cb77ffac0, type: 2}
 --- !u!114 &11400810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -653,6 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barOffSet: {x: 1, y: 4}
+  StatusBar: {fileID: 106704, guid: 87eeb1787ef309349aa5618c16caa7ce, type: 2}
 --- !u!114 &11473306
 MonoBehaviour:
   m_ObjectHideFlags: 1

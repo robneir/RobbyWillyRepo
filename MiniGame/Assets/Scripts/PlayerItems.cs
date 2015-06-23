@@ -8,10 +8,29 @@ public class PlayerItems : Photon.MonoBehaviour {
 	public GameObject ArmNear;
 	public GameObject ArmFar;
 
+	public GameObject bulletPrefab;
+
 	[RPC]
 	void SyncTrigger(string trigName)
 	{
 		this.GetComponentInChildren<Animator> ().SetTrigger (trigName);
+	}
+
+	[RPC]
+	void FireBullet(int playerID, Vector3 position, Quaternion rotation, Vector3 velocity, int damage, float scale)
+	{
+		GameObject bull = (GameObject)Instantiate (bulletPrefab, position, rotation);	
+		bull.GetComponent<Bullet> ().Damage = damage;
+		bull.GetComponent<Rigidbody2D> ().velocity = velocity;
+			
+		if (scale < 0) 
+		{
+			//change rotation. switch Quaternion's z and w values.
+			float z = rotation.z;
+			float w = rotation.w;
+			bull.transform.rotation = new Quaternion (0, 0, w, z);
+		}
+
 	}
 
 	// Use this for initialization
@@ -108,6 +127,7 @@ public class PlayerItems : Photon.MonoBehaviour {
             if(item.isBeingUsed)
             {
                 //Do Damage
+				this.photonView.RPC("TakeDamage", PhotonTargets.AllBuffered, item.Damage);
             }
         }
 	}

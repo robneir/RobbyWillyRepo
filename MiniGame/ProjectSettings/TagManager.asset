@@ -9,6 +9,7 @@ TagManager:
   - PowerUp
   - Bullet
   - LEVEL_BOUNDS
+  - Sign
   layers:
   - Default
   - TransparentFX

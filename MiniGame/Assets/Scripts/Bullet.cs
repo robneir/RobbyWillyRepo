@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour {
 		if(c.gameObject.tag.Equals("Player"))
 		{
 			PlayerHealth sb = c.gameObject.GetComponent<PlayerHealth>();
-			sb.TakeDamage(Damage);
+			c.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBuffered, Damage);
         }
 		if(c.gameObject.tag!="Bullet")
 		{
@@ -39,7 +39,9 @@ public class Bullet : MonoBehaviour {
                 Instantiate(hitExplosion, this.transform.position, this.transform.rotation);
 			}
 			else Debug.Log("Var HitExplosion is null.");
-	        PhotonNetwork.Destroy(this.gameObject);
+
+			Destroy(this.gameObject);
+	        //PhotonNetwork.Destroy(this.gameObject);
 		}
     }
 
@@ -48,7 +50,8 @@ public class Bullet : MonoBehaviour {
 		if(c.gameObject.tag == "LEVEL_BOUNDS")
 		{
             Debug.Log("HIT");
-			PhotonNetwork.Destroy(this.gameObject);
+			Destroy(this.gameObject);
+			//PhotonNetwork.Destroy(this.gameObject);
 		}
 	}
 }

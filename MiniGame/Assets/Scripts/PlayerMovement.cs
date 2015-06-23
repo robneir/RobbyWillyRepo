@@ -115,6 +115,14 @@ public class PlayerMovement : Photon.MonoBehaviour {
 		}
 	}
 
+	void OnTriggerStay2D(Collider2D c)
+	{
+		if(c.gameObject.tag == "Sign")
+		{
+
+		}
+	}
+
     public void PlayerInVehicle(GameObject vehicle)
     {
         //tell player he is in tank and set things on and off depending on what needs to be
