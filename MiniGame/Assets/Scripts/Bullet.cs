@@ -49,13 +49,8 @@ public class Bullet : MonoBehaviour {
 	{
 		if(c.gameObject.tag == "LEVEL_BOUNDS")
 		{
-<<<<<<< HEAD
             Debug.Log("HIT");
 			Destroy(this.gameObject);
-			//PhotonNetwork.Destroy(this.gameObject);
-=======
-			PhotonNetwork.Destroy(this.gameObject);
->>>>>>> origin/master
 		}
 	}
 }

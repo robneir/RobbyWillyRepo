@@ -83,7 +83,6 @@ public class PlayerMovement : Photon.MonoBehaviour {
 		}
 	}
 
-<<<<<<< HEAD
 	void OnTriggerStay2D(Collider2D c)
 	{
 		if(c.gameObject.tag == "Sign")
@@ -91,7 +90,6 @@ public class PlayerMovement : Photon.MonoBehaviour {
 
 		}
 	}
-=======
     void UpdateBasicMovementInput()
     {
         #region Get Basic Movement input
@@ -142,7 +140,6 @@ public class PlayerMovement : Photon.MonoBehaviour {
         //Change speed of animation based on speed
         animator.speed = currentRunSpeed / regSpeed;
     }
->>>>>>> origin/master
 
     public void PlayerInVehicle(GameObject vehicle)
     {
