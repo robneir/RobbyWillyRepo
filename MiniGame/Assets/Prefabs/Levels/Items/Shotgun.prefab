@@ -27,6 +27,7 @@ GameObject:
   - 50: {fileID: 5009572}
   - 114: {fileID: 11442452}
   - 60: {fileID: 6035612}
+  - 114: {fileID: 11452026}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Item
@@ -40,9 +41,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143000}
-  m_LocalRotation: {x: 0, y: 0, z: .344628364, w: .93873924}
-  m_LocalPosition: {x: -73.5999985, y: 21.2999992, z: 0}
-  m_LocalScale: {x: 3.4946456, y: 3.49464369, z: 3.49464369}
+  m_LocalRotation: {x: 0, y: 0, z: -.00956299901, w: .999954343}
+  m_LocalPosition: {x: -74.9899979, y: 21.9400005, z: 0}
+  m_LocalScale: {x: 3.49464655, y: 3.49464464, z: 3.49464369}
   m_Children:
   - {fileID: 441356}
   m_Father: {fileID: 0}
@@ -134,10 +135,35 @@ MonoBehaviour:
   Type: 1
   FireTip: {fileID: 441356}
   MuzzleFlash: {fileID: 177958, guid: c34102df06809f146b1bd352121aedd2, type: 2}
-  FireSpeed: 50
-  Offset: {x: 0, y: 0, z: 0}
+  FireSpeed: 200
+  posOffset: {x: 0, y: 0, z: 0}
   OriginalScale: {x: 0, y: 0, z: 0}
   isBeingUsed: 0
+--- !u!114 &11452026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2d0990d98e78e4cb892fe8c8893d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 401380}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  isRuntimeInstantiated: 0
 --- !u!212 &21291256
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -161,7 +187,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1692392237
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: e096d99f93965d8478ac858badf9f41d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000

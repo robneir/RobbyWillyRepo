@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PointTowardMouse : MonoBehaviour {
 
+    public float zRotMin;
+    public float zRotMax;
     public float zOffSet;
 	bool IsMine;
 	IsVehicle IV = null;
@@ -10,6 +12,9 @@ public class PointTowardMouse : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+        //Convert Z Rot Min to be a positive integer for an angle because that is what unity likes.
+        zRotMin = 360 - zRotMin;
+
 		if(transform.root.GetComponent<PhotonView>().isMine)
 		{
 			IsMine = true;
@@ -25,6 +30,11 @@ public class PointTowardMouse : MonoBehaviour {
 			IsMine = false;
 		}
 	}
+
+    void Update()
+    {
+       
+    }
 	
 	// Update is called once per frame
 	void LateUpdate () 
