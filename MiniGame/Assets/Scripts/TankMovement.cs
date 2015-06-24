@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TankMovement : MonoBehaviour {
+public class TankMovement : Photon.MonoBehaviour {
 
     public bool xAxisEnabled = false;
     public bool yAxisEnabled = false;
@@ -53,10 +53,12 @@ public class TankMovement : MonoBehaviour {
         }
     }
 
-    void NewDriver(GameObject player)
+    [RPC]
+    void NewDriver(string player)
     {
         tankIsManned = true;
-        player.GetComponentInParent<PlayerMovement>().PlayerInVehicle(transform.GetChild(0).gameObject);
+        GameObject newDriver = GameObject.Find(player);
+        newDriver.GetComponentInParent<PlayerMovement>().PlayerInVehicle(transform.GetChild(0).gameObject);
     }
 
     void OnGUI()
@@ -77,7 +79,8 @@ public class TankMovement : MonoBehaviour {
             {
                 if (col.gameObject.GetComponentInParent<PlayerMovement>().currPlayerState != PlayerState.InTank)
                 {
-                    NewDriver(col.gameObject);
+                    NewDriver(col.gameObject.name);
+                    //photonView.RPC("NewDriver", PhotonTargets.All, col.gameObject.name);      
                 }
             }
         }

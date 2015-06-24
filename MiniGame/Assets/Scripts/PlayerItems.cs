@@ -107,8 +107,9 @@ public class PlayerItems : Photon.MonoBehaviour {
 		Current.GetComponent<Item>().HasUser = true;
 		Current.GetComponent<Rigidbody2D>().fixedAngle = true;
 		Current.GetComponent<Transform>().rotation = /*Current.GetComponent<Item>().SetTran.rotation +*/ ArmNear.transform.rotation;
-		Current.transform.localPosition = Current.GetComponent<Item>().Offset;
-	}
+		Current.transform.localPosition = Current.GetComponent<Item>().posOffset;
+        Current.transform.rotation = Current.GetComponent<Item>().rotOffset;
+    }
 
 	void OnCollisionEnter2D(Collision2D c)
 	{

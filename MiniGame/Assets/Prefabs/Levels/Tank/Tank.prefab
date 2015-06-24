@@ -51,6 +51,7 @@ GameObject:
   - 61: {fileID: 6170952}
   - 114: {fileID: 11481608}
   - 114: {fileID: 11442536}
+  - 114: {fileID: 11483510}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Ground
@@ -386,6 +387,7 @@ MonoBehaviour:
   shellSpawn: {fileID: 485448}
   shellSpeed: 3000
   shootExplosion: {fileID: 19866708, guid: 8a22e2822962bd3438d41e6157290e1e, type: 2}
+  tankShell: {fileID: 142710, guid: ccba236876eb4054bbfe6c3b8dacb587, type: 2}
   mainCannon: {fileID: 114954}
   smallCannon: {fileID: 185744}
   turretSpawn: {fileID: 460736}
@@ -435,11 +437,24 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 457134}
+  - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
   isRuntimeInstantiated: 0
+--- !u!114 &11483510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061519c9f18c2b846b9ab81a6f65b72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainTurret: {fileID: 405502}
+  smallTurret: {fileID: 413786}
 --- !u!114 &11492090
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -16,7 +16,7 @@ Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Buil
 Loading C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Builds\alpha_1.0.2_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Builds\alpha_1.0.2_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Builds\alpha_1.0.2_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.126 seconds
+- Completed reload, in  0.138 seconds
 desktop: 1920x1080 60Hz; virtual: 4800x1350 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -24,19 +24,23 @@ desktop: 1920x1080 60Hz; virtual: 4800x1350 at 0,0
 Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Builds\alpha_1.0.2_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Builds\alpha_1.0.2_Data\Managed\System.dll (this message is harmless)
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.795574 ms
+UnloadTime: 3.272148 ms
 HDR and MultisampleAntiAliasing (in Forward Rendering Path) is not supported. This camera will render without HDR buffers. Disable Antialiasing in the Quality settings if you want to use HDR.
  
 (Filename:  Line: 2630)
 
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 953.
-Total: 0.583173 ms (FindLiveObjects: 0.104098 ms CreateObjectMapping: 0.052049 ms MarkObjects: 0.413829 ms  DeleteObjects: 0.012462 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 971.
+Total: 0.402100 ms (FindLiveObjects: 0.087604 ms CreateObjectMapping: 0.029690 ms MarkObjects: 0.274542 ms  DeleteObjects: 0.009530 ms)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 7388 -> priority: 1 
-  Thread -> id: 7884 -> priority: 1 
+  Thread -> id: 88f0 -> priority: 1 
+  Thread -> id: 8830 -> priority: 1 
 Joined lobby
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Joined lobby failed
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -44,35 +48,29 @@ Joined room
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Failed to send data
+ArgumentOutOfRangeException: Argument is out of range.
+Parameter name: index
+  at System.Collections.Generic.List`1[System.Object].get_Item (Int32 index) [0x00000] in <filename unknown>:0 
+  at PhotonStream.ReceiveNext () [0x00000] in <filename unknown>:0 
+  at NetworkCharacter.OnPhotonSerializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, .PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (ExitGames.Client.Photon.Hashtable data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.EnetPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+(Filename:  Line: -1)
 
-HIT
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-HIT
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-HIT
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-HIT
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-HIT
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-HIT
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-HIT
+Failed to 'network-remove' GameObject. Client is neither owner nor masterClient taking over for owner who left: View (0)2001 on Bandit(Clone) 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 

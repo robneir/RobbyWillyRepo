@@ -37,4 +37,8 @@ MonoBehaviour:
   - InstantiateHealthBar
   - DestroyHealthBar
   - DestroyStatusBar
+  - InstantiateShell
+  - ShootShell
+  - NewDriver
+  - PlayerInVehicle
   DisableAutoOpenWizard: 1

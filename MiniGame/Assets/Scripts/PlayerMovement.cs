@@ -140,7 +140,7 @@ public class PlayerMovement : Photon.MonoBehaviour {
         //Change speed of animation based on speed
         animator.speed = currentRunSpeed / regSpeed;
     }
-
+    
     public void PlayerInVehicle(GameObject vehicle)
     {
         //tell player he is in tank and set things on and off depending on what needs to be
@@ -159,7 +159,7 @@ public class PlayerMovement : Photon.MonoBehaviour {
         transform.localPosition = vehicle.GetComponentInParent<TankMovement>().playerInTankOffset;
         transform.rotation = vehicle.transform.rotation; 
     }
-
+    
     public void PlayerOutVehicle()//GameObject vehicle
     {
         //tell player he is out of tank and set things on and off depending on what needs to be

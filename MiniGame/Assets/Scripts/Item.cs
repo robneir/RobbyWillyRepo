@@ -44,8 +44,10 @@ public class Item : MonoBehaviour
 	[HideInInspector]
 	public UseItem UseFunc;
 	[HideInInspector]
-	public Vector3 Offset;
-	[HideInInspector]
+	public Vector3 posOffset;
+    [HideInInspector]
+    public Quaternion rotOffset;
+    [HideInInspector]
 	public Vector3 OriginalScale;
 	[HideInInspector]
     public bool isBeingUsed;
@@ -71,7 +73,8 @@ public class Item : MonoBehaviour
 				switch(Name)
 				{
 					case "Shotgun":
-						Offset = new Vector3(-0.5599827f,-2.499903f,0);
+						posOffset = new Vector3(-0.5599827f,-1.499903f,0);
+                        rotOffset = Quaternion.Euler(0, 0, 0);
 						UseFunc = FireShotgun;
 						break;
 				}
@@ -80,7 +83,8 @@ public class Item : MonoBehaviour
 				switch(Name)
 				{
 					case "Katana":
-						Offset = new Vector3(2.83f, -0.3200116f, 0);
+                        posOffset = new Vector3(2.83f, -0.3200116f, 0);
+                        rotOffset = Quaternion.Euler(0, 0, 0);
 		                UseFunc = SwingSword;
 						break;
 				}
