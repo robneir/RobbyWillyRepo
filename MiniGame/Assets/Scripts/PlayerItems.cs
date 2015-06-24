@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerItems : Photon.MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class PlayerItems : Photon.MonoBehaviour {
 	public GameObject ArmNear;
 	public GameObject ArmFar;
 
+	public Text pickupUI;
 	public GameObject bulletPrefab;
 
 	[RPC]
@@ -36,7 +38,8 @@ public class PlayerItems : Photon.MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-
+		if (pickupUI == null)
+			pickupUI = GameObject.FindGameObjectWithTag ("TextUI").GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame
@@ -108,20 +111,16 @@ public class PlayerItems : Photon.MonoBehaviour {
 		Current.GetComponent<Rigidbody2D>().fixedAngle = true;
 		Current.GetComponent<Transform>().rotation = /*Current.GetComponent<Item>().SetTran.rotation +*/ ArmNear.transform.rotation;
 		Current.transform.localPosition = Current.GetComponent<Item>().posOffset;
-        Current.transform.rotation = Current.GetComponent<Item>().rotOffset;
+
+
+		//i think this is now fixed
+		Current.transform.rotation = ArmTransform.transform.rotation;
+		Current.transform.localRotation = Quaternion.Euler(Current.GetComponent<Item> ().rotOffset);
     }
 
 	void OnCollisionEnter2D(Collision2D c)
 	{
-		//if youre colliding with an item with no user
-		if(c.gameObject.tag.Equals("Item") && !c.gameObject.GetComponent<Item>().HasUser)
-		{
-			if(Current != null)
-				ThrowItem(Current);
-
-			AssignItem(c.gameObject);
-		}
-        else if(c.gameObject.tag.Equals("Item") && c.gameObject.GetComponent<Item>().HasUser)
+        if(c.gameObject.tag.Equals("Item") && c.gameObject.GetComponent<Item>().HasUser)
         {
             Item item = c.gameObject.GetComponent<Item>();
 
@@ -131,5 +130,29 @@ public class PlayerItems : Photon.MonoBehaviour {
 				this.photonView.RPC("TakeDamage", PhotonTargets.AllBuffered, item.Damage);
             }
         }
+	}
+
+	void OnCollisionStay2D(Collision2D c)
+	{
+		//if youre colliding with an item with no user
+		if(c.gameObject.tag.Equals("Item") && !c.gameObject.GetComponent<Item>().HasUser)
+		{
+			if(Input.GetButton("Swap"))
+			{
+				if(Current != null)
+					ThrowItem(Current);
+				
+				AssignItem(c.gameObject);
+			}
+			if(Current != null)
+			{
+				pickupUI.text = "Press E to swap for " + c.gameObject.GetComponent<Item>().Name + ".";
+			}
+			else
+			{
+				pickupUI.text = "Press E to pickup " + c.gameObject.GetComponent<Item>().Name + ".";
+			}
+		}
+		else if(pickupUI != null) pickupUI.text = "";
 	}
 }

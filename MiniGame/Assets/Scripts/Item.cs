@@ -45,8 +45,10 @@ public class Item : MonoBehaviour
 	public UseItem UseFunc;
 	[HideInInspector]
 	public Vector3 posOffset;
+
+	//to be put into a Quaternion later, using Quaternion.Euler(Vector3 rotationVector) (we can rotation take values from inspector this way.)
     [HideInInspector]
-    public Quaternion rotOffset;
+    public Vector3 rotOffset;
     [HideInInspector]
 	public Vector3 OriginalScale;
 	[HideInInspector]
@@ -73,18 +75,24 @@ public class Item : MonoBehaviour
 				switch(Name)
 				{
 					case "Shotgun":
-						posOffset = new Vector3(-0.5599827f,-1.499903f,0);
-                        rotOffset = Quaternion.Euler(0, 0, 0);
-						UseFunc = FireShotgun;
+						posOffset = new Vector3(0.07998937f,0-1.710141f,0);
+						rotOffset = new Vector3(0,0,276.1943f);
+				        UseFunc = FireSemiAuto;
 						break;
-				}
+					case "Colt45":
+						posOffset = new Vector3(0.6901398f,-2.161226f,0);
+						rotOffset = new Vector3(0,0, 267.1234f);
+						UseFunc = FireSemiAuto;
+						break;
 				break;
+			}
+			break;
 			case ItemType.Melee:
 				switch(Name)
 				{
 					case "Katana":
                         posOffset = new Vector3(2.83f, -0.3200116f, 0);
-                        rotOffset = Quaternion.Euler(0, 0, 0);
+                        //rotOffset = Quaternion.Euler(0, 0, 0);
 		                UseFunc = SwingSword;
 						break;
 				}
@@ -112,9 +120,16 @@ public class Item : MonoBehaviour
 	//EG---> SwingSword() may be applicable to both a baseball bat and a katana
 	//EG---> FireRocket() will probably be different than FireHandgun()
 
-	private void FireShotgun()
+	private void FireSemiAuto()
 	{
 		InstantiateBullet ();
+		DoRecoil ();
+	}
+
+	void DoRecoil ()
+	{
+		GameObject rotateArm = this.transform.parent.parent.parent.gameObject;
+		rotateArm.transform.GetComponent<PointTowardMouse> ().recoilOffset += 5f;
 	}
 
     private void SwingSword()
@@ -124,7 +139,8 @@ public class Item : MonoBehaviour
 
 	void InstantiateBullet()
 	{
-		GameObject.Destroy((GameObject)GameObject.Instantiate(MuzzleFlash, this.FireTip.position, Quaternion.identity), 1f);	
+		GameObject muz = (GameObject)GameObject.Instantiate (MuzzleFlash, this.FireTip.position, Quaternion.identity);
+		GameObject.Destroy(muz, 1f);
 
 		PhotonView pv = this.transform.root.gameObject.GetComponent<PhotonView>();
 		if(pv.isMine)

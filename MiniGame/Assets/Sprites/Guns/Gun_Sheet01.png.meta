@@ -1,0 +1,275 @@
+fileFormatVersion: 2
+guid: e5ce033cf639c94438fc04db48bfd51b
+timeCreated: 1435144552
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Gun_Sheet01_0
+    21300002: Gun_Sheet01_1
+    21300004: Gun_Sheet01_2
+    21300006: Gun_Sheet01_3
+    21300008: Gun_Sheet01_4
+    21300010: Gun_Sheet01_5
+    21300012: Gun_Sheet01_6
+    21300014: Gun_Sheet01_7
+    21300016: Gun_Sheet01_8
+    21300018: Gun_Sheet01_9
+    21300020: Gun_Sheet01_10
+    21300022: Gun_Sheet01_11
+    21300024: Gun_Sheet01_12
+    21300026: Gun_Sheet01_13
+    21300028: Gun_Sheet01_14
+    21300030: Gun_Sheet01_15
+    21300032: Gun_Sheet01_16
+    21300034: Gun_Sheet01_17
+    21300036: Gun_Sheet01_18
+    21300038: Gun_Sheet01_19
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Gun_Sheet01_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 1246
+        width: 146
+        height: 82
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1136
+        width: 156
+        height: 88
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_2
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1021
+        width: 138
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_3
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 937
+        width: 135
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_4
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 802
+        width: 177
+        height: 82
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_5
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 671
+        width: 216
+        height: 123
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_6
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 805
+        width: 120
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_7
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 924
+        width: 169
+        height: 118
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_8
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1122
+        width: 149
+        height: 105
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_9
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 207
+        width: 454
+        height: 154
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_10
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 12
+        width: 372
+        height: 112
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_11
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 19
+        width: 301
+        height: 126
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_12
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 201
+        width: 447
+        height: 155
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_13
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 380
+        width: 428
+        height: 107
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_14
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 504
+        width: 427
+        height: 124
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_15
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 649
+        width: 364
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_16
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 811
+        width: 379
+        height: 132
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_17
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 991
+        width: 207
+        height: 129
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_18
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 1131
+        width: 232
+        height: 91
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Sheet01_19
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1239
+        width: 208
+        height: 99
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PointTowardMouse : MonoBehaviour {
 
-    public float zOffSet;
+    public float recoilOffset;
 	bool IsMine;
 	IsVehicle IV = null;
 
@@ -51,14 +51,16 @@ public class PointTowardMouse : MonoBehaviour {
 			{
 		        float rotation = Mathf.Atan2(mouseDiff.y, mouseDiff.x) * Mathf.Rad2Deg;
 		        Mathf.Clamp(rotation, 0, 90);
-		        this.transform.localRotation = Quaternion.Euler(0,0,rotation+zOffSet);
+				this.transform.rotation = Quaternion.Euler(0,0,rotation+recoilOffset);
 			}
 			else
 			{
 				float rotation = Mathf.Atan2(-mouseDiff.y, -mouseDiff.x) * -Mathf.Rad2Deg;
 				Mathf.Clamp(rotation, -90, 0);
-				this.transform.localRotation = Quaternion.Euler(0,0,rotation+zOffSet);
+				this.transform.rotation = Quaternion.Euler(0,0,rotation+recoilOffset);
 			}
+
+			recoilOffset = Mathf.Lerp(recoilOffset, 0, .1f);
 		}
 	}
 }
