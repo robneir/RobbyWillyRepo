@@ -32,21 +32,43 @@ public class Item : MonoBehaviour
 	/// The muzzle flash (usually particle system) to use on an ammo based weapon. Fired out of the FireTip.
 	/// </summary>
 	public GameObject MuzzleFlash;
-	/// <summary>
-	/// The fire speed, if any, of a projectile out of this item.
-	/// </summary>
-	public float FireSpeed = 50;
+    /// <summary>
+    /// The sound that is made when you use the item (audioclip)
+    /// </summary>
+    public AudioClip useItemSoundClip;
+    /// <summary>
+    /// The fire speed, if any, of a projectile out of this item.
+    /// </summary>
+    public float FireSpeed = 50;
+    /// <summary>
+    /// bullet casing prefab to be instantiate once bullets are shot
+    /// </summary>
+    public GameObject bulletCasingPrefab;
+    /// <summary>
+    /// This is where the bullet casing will instantiate once shot
+    /// </summary>
+    public Transform ejectTip;
+    /// <summary>
+    /// The ejection force of the bullet casing
+    /// </summary>
+    public float ejectForce;
 
-	#endregion
+    #endregion
 
-	#region Hidden From Inspector Variables
+    #region Hidden From Inspector Variables
 
-	[HideInInspector]
+    [HideInInspector]
 	public UseItem UseFunc;
 	[HideInInspector]
 	public Vector3 posOffset;
+    [HideInInspector]
+    public bool isAutomatic;
+    [HideInInspector]
+    public float lastShotTime;
+    [HideInInspector]
+    public float timeBetweenShots;
 
-	//to be put into a Quaternion later, using Quaternion.Euler(Vector3 rotationVector) (we can rotation take values from inspector this way.)
+    //to be put into a Quaternion later, using Quaternion.Euler(Vector3 rotationVector) (we can rotation take values from inspector this way.)
     [HideInInspector]
     public Vector3 rotOffset;
     [HideInInspector]
@@ -78,14 +100,28 @@ public class Item : MonoBehaviour
 						posOffset = new Vector3(0.07998937f,0-1.710141f,0);
 						rotOffset = new Vector3(0,0,276.1943f);
 				        UseFunc = FireSemiAuto;
+                        isAutomatic = false;
 						break;
 					case "Colt45":
 						posOffset = new Vector3(0.6901398f,-2.161226f,0);
 						rotOffset = new Vector3(0,0, 267.1234f);
 						UseFunc = FireSemiAuto;
+                        isAutomatic = false;
 						break;
-				break;
-			}
+                    case "AR-15":
+                        posOffset = new Vector3(1.48f, -1.5f, 0);
+                        rotOffset = new Vector3(0, 0, 276.1943f);
+                        UseFunc = FireSemiAuto;
+                        isAutomatic = false;
+                        break;
+                    case "SMG":
+                        posOffset = new Vector3(1.48f, -1.5f, 0);
+                        rotOffset = new Vector3(0, 0, 276.1943f);
+                        UseFunc = FireSemiAuto;
+                        isAutomatic = true;
+                        timeBetweenShots = .1f;
+                        break;
+                }
 			break;
 			case ItemType.Melee:
 				switch(Name)
@@ -124,6 +160,9 @@ public class Item : MonoBehaviour
 	{
 		InstantiateBullet ();
 		DoRecoil ();
+        this.GetComponent<AudioSource>().clip = useItemSoundClip;
+        this.GetComponent<AudioSource>().Play();
+        InstantiateBulletCasing();
 	}
 
 	void DoRecoil ()
@@ -151,7 +190,15 @@ public class Item : MonoBehaviour
 		}
 	}
 
-	public delegate void UseItem();
+    void InstantiateBulletCasing()
+    {
+        GameObject bulletCasing = (GameObject)Instantiate(bulletCasingPrefab, ejectTip.position, ejectTip.rotation);
+        //Add force somwhat randomly to the bullet casings
+        bulletCasing.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-10,10)*.1f,1)* ejectForce);
+        bulletCasing.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-10, 10)*ejectForce, ForceMode2D.Impulse);
+    }
+
+    public delegate void UseItem();
 
 	#endregion
 }

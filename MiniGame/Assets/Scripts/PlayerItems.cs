@@ -46,31 +46,48 @@ public class PlayerItems : Photon.MonoBehaviour {
 	void Update () 
 	{
 		if(Current != null)
-		{
-			//you have a item
-			if(Input.GetButtonDown("UseWeapon") && Current.GetComponent<Item>().HasUser && Current.active==true) //active is set to false when in a vehicle so check to see if in vehicle before shooting
-			{
-				Item i = Current.GetComponent<Item>();
-				//play swing sword animation/fire or whatever
-				i.UseFunc();
+        {
+            //you have a item now check what kind of item it is an execute functions base on that
+            if (Current.GetComponent<Item>().HasUser && Current.active == true)
+            {
+                Item i = Current.GetComponent<Item>();
+                if (!Current.GetComponent<Item>().isAutomatic &&
+                    Input.GetButtonDown("UseWeapon")) //active is set to false when in a vehicle so check to see if in vehicle before shooting
+                {
+                    #region IF SEMI-AUTO/SWORD
+                    //play swing sword animation/fire or whatever
+                    i.UseFunc();
 
-				if(photonView.isMine)
-				{
-					switch(i.Type)
-					{
-						//melee weapons
-						case Item.ItemType.Melee:
-							switch(i.Name)
-							{
-								case "Katana":
-								photonView.RPC("SyncTrigger", PhotonTargets.All, "Swing");
-								break;
-							}
-							break;
-						//end melee
-					}
-				}
-			}
+                    if (photonView.isMine)
+                    {
+                        switch (i.Type)
+                        {
+                            //melee weapons
+                            case Item.ItemType.Melee:
+                                switch (i.Name)
+                                {
+                                    case "Katana":
+                                        photonView.RPC("SyncTrigger", PhotonTargets.All, "Swing");
+                                        break;
+                                }
+                                break;
+                                //end melee
+                        }
+                    }
+                    #endregion
+                }
+                else if(i.isAutomatic && Input.GetButton("UseWeapon"))
+                {
+                    #region IF AUTOMATIC
+                    if(Time.time- i.lastShotTime>i.timeBetweenShots)
+                    {
+                        i.lastShotTime = Time.time;
+                        i.UseFunc();
+                    }
+                    #endregion
+                }
+            }
+			
 
 			if(Input.GetKeyDown(KeyCode.Q))
 			{
@@ -137,7 +154,7 @@ public class PlayerItems : Photon.MonoBehaviour {
 		//if youre colliding with an item with no user
 		if(c.gameObject.tag.Equals("Item") && !c.gameObject.GetComponent<Item>().HasUser)
 		{
-			if(Input.GetButton("Swap"))
+			if(Input.GetButtonDown("Swap"))
 			{
 				if(Current != null)
 					ThrowItem(Current);

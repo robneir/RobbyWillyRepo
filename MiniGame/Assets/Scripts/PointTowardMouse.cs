@@ -3,18 +3,13 @@ using System.Collections;
 
 public class PointTowardMouse : MonoBehaviour {
 
-    public float zRotMin;
-    public float zRotMax;
-    public float zOffSet;
+    public float recoilOffset;
 	bool IsMine;
 	IsVehicle IV = null;
 
 	// Use this for initialization
 	void Start ()
 	{
-        //Convert Z Rot Min to be a positive integer for an angle because that is what unity likes.
-        zRotMin = 360 - zRotMin;
-
 		if(transform.root.GetComponent<PhotonView>().isMine)
 		{
 			IsMine = true;
@@ -30,11 +25,6 @@ public class PointTowardMouse : MonoBehaviour {
 			IsMine = false;
 		}
 	}
-
-    void Update()
-    {
-       
-    }
 	
 	// Update is called once per frame
 	void LateUpdate () 
@@ -61,14 +51,16 @@ public class PointTowardMouse : MonoBehaviour {
 			{
 		        float rotation = Mathf.Atan2(mouseDiff.y, mouseDiff.x) * Mathf.Rad2Deg;
 		        Mathf.Clamp(rotation, 0, 90);
-		        this.transform.localRotation = Quaternion.Euler(0,0,rotation+zOffSet);
+				this.transform.rotation = Quaternion.Euler(0,0,rotation+recoilOffset);
 			}
 			else
 			{
 				float rotation = Mathf.Atan2(-mouseDiff.y, -mouseDiff.x) * -Mathf.Rad2Deg;
 				Mathf.Clamp(rotation, -90, 0);
-				this.transform.localRotation = Quaternion.Euler(0,0,rotation+zOffSet);
+				this.transform.rotation = Quaternion.Euler(0,0,rotation+recoilOffset);
 			}
+
+			recoilOffset = Mathf.Lerp(recoilOffset, 0, .1f);
 		}
 	}
 }
