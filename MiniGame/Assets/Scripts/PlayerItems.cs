@@ -39,7 +39,7 @@ public class PlayerItems : Photon.MonoBehaviour {
 	void Start () 
 	{
 		if (pickupUI == null)
-			pickupUI =(Text) GameObject.Find ("Interaction Text").GetComponent<Text> ();
+			pickupUI =(Text) GameObject.FindGameObjectWithTag("TextUI").GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame

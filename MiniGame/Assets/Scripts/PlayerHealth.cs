@@ -16,10 +16,10 @@ public class PlayerHealth : MonoBehaviour {
         if(statusBar!=null)
         {
             //Update position of bar
-            statusBar.transform.position = Camera.main.WorldToScreenPoint(
+            statusBar.transform.position =
             	new Vector3(this.transform.position.x + barOffSet.x,
             	this.transform.position.y + barOffSet.y,
-            	this.transform.position.z));
+            	this.transform.position.z);
         }
 		else
 		{
@@ -101,7 +101,7 @@ public class PlayerHealth : MonoBehaviour {
 		}
 		else
 		{
-			statusBar = (GameObject)Instantiate(StatusBar, Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(100,100, 0)), Quaternion.identity);
+			statusBar = (GameObject)Instantiate(StatusBar,this.transform.position, Quaternion.identity);
 			statusBar.transform.SetParent(FindObjectOfType<Canvas>().transform);
 			statusBar.GetComponent<StatusBar>().targetHealth = (float)startHealth;
 			statusBar.GetComponent<StatusBar>().currentHealth = (float)startHealth;

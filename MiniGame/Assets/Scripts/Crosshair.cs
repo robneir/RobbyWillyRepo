@@ -11,7 +11,7 @@ public class Crosshair : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update ()
-    {
-        this.transform.position = new Vector3 (Input.mousePosition.x, Input.mousePosition.y,0);
+    { 
+        this.transform.position = new Vector3 (Input.mousePosition.x, Input.mousePosition.y,0)+Camera.main.transform.position;
 	}
 }
