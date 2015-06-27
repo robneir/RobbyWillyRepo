@@ -11,6 +11,7 @@ TagManager:
   - LEVEL_BOUNDS
   - Sign
   - TextUI
+  - New Tag
   layers:
   - Default
   - TransparentFX
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1692392237
+    locked: 0
+  - name: UI
+    uniqueID: 3721965847
     locked: 0

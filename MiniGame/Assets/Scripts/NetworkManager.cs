@@ -4,6 +4,8 @@ using System.Collections;
 public class NetworkManager : MonoBehaviour {
 	//Privates
 	private SpawnSpot[] spawnSpots;
+    //Player
+    private GameObject myPlayerGO;
 
 	// Use this for initialization
 	void Start () {
@@ -51,6 +53,16 @@ public class NetworkManager : MonoBehaviour {
 		SpawnMyPlayer ();
 	}
 
+    void OnLeftRoom()
+    {
+        Debug.Log("Left room");
+        PhotonView pv = myPlayerGO.GetComponent<PhotonView>();
+        if(pv.isMine)
+        {
+            pv.RPC("DestroyStatusBar", PhotonTargets.AllBuffered,100f);
+        }
+    }
+
 	void SpawnMyPlayer()
 	{
 		if (spawnSpots == null) {
@@ -62,7 +74,7 @@ public class NetworkManager : MonoBehaviour {
 		/*This instantiates a player on the network so that everyone has the instantiation
 		 * but the prefab must be located in the resource folder
 		*/
-		GameObject myPlayerGO= (GameObject) PhotonNetwork.Instantiate ("Bandit",grabbedSpawnSpot.transform.position, 
+		myPlayerGO= (GameObject) PhotonNetwork.Instantiate ("Bandit",grabbedSpawnSpot.transform.position, 
 		                           grabbedSpawnSpot.transform.rotation, 
 		                           grabbedSpawnSpot.teamId);
 		//Enable and disable player components depending on if they should be seen locally or over network

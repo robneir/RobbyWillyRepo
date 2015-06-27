@@ -39,7 +39,7 @@ public class PlayerItems : Photon.MonoBehaviour {
 	void Start () 
 	{
 		if (pickupUI == null)
-			pickupUI = GameObject.FindGameObjectWithTag ("TextUI").GetComponent<Text> ();
+			pickupUI =(Text) GameObject.Find ("Interaction Text").GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame
@@ -165,10 +165,14 @@ public class PlayerItems : Photon.MonoBehaviour {
 			{
 				pickupUI.text = "Press E to swap for " + c.gameObject.GetComponent<Item>().Name + ".";
 			}
-			else
+			else if(pickupUI!=null)
 			{
 				pickupUI.text = "Press E to pickup " + c.gameObject.GetComponent<Item>().Name + ".";
 			}
+            else
+            {
+                pickupUI = GameObject.FindGameObjectWithTag("TextUI").GetComponent<Text>();
+            }
 		}
 		else if(pickupUI != null) pickupUI.text = "";
 	}
