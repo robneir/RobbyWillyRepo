@@ -12,6 +12,7 @@ TagManager:
   - Sign
   - TextUI
   - New Tag
+  - Platform
   layers:
   - Default
   - TransparentFX
