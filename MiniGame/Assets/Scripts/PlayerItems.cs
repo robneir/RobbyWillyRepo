@@ -8,6 +8,7 @@ public class PlayerItems : Photon.MonoBehaviour {
 	public GameObject ArmTransform;
 	public GameObject ArmNear;
 	public GameObject ArmFar;
+	private GameObject fakeItem = null;
 
 	public Text pickupUI;
 	public GameObject bulletPrefab;
@@ -16,6 +17,25 @@ public class PlayerItems : Photon.MonoBehaviour {
 	void SyncTrigger(string trigName)
 	{
 		this.GetComponentInChildren<Animator> ().SetTrigger (trigName);
+	}
+
+	[RPC]
+	void PickedUpItem(string itemName, Vector3 pos, Vector3 rot, Vector3 scale)
+	{
+		Debug.Log (itemName + "_picture");
+		fakeItem = GameObject.Instantiate((GameObject)Resources.Load (itemName + "_picture")); 	
+		fakeItem.transform.SetParent(ArmTransform.transform);
+		fakeItem.transform.localScale = scale;
+		//fakeItem.GetComponent<Rigidbody2D>().isKinematic = true;
+		//fakeItem.GetComponent<Collider2D>().isTrigger = true;
+		//fakeItem.GetComponent<Item>().HasUser = true;
+		//fakeItem.GetComponent<Rigidbody2D>().fixedAngle = true;
+		fakeItem.transform.rotation = ArmNear.transform.rotation;
+		fakeItem.transform.localPosition = pos;
+		
+		//i think this is now fixed
+		fakeItem.transform.rotation = ArmTransform.transform.rotation;
+		fakeItem.transform.localRotation = Quaternion.Euler(rot);
 	}
 
 	[RPC]
@@ -32,7 +52,6 @@ public class PlayerItems : Photon.MonoBehaviour {
 			float w = rotation.w;
 			bull.transform.rotation = new Quaternion (0, 0, w, z);
 		}
-
 	}
 
 	// Use this for initialization
@@ -98,22 +117,23 @@ public class PlayerItems : Photon.MonoBehaviour {
 
 	void ThrowItem(GameObject item)
 	{
-		//throw item
-		if(transform.localScale.x == -1)
-		{
-			item.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 3 + Vector3.right * 3);
-		}
-		else
-		{
-			item.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 3 + Vector3.right * -3);
-		}
-		
 		item.GetComponent<Rigidbody2D>().isKinematic = false;
 		item.GetComponent<Collider2D>().isTrigger = false;
 		item.GetComponent<Item>().HasUser = false;
 		item.GetComponent<Rigidbody2D>().fixedAngle = false;
 		item.transform.SetParent(null);
 		item.transform.localScale = item.GetComponent<Item> ().OriginalScale;
+
+		//throw item
+		if(transform.localScale.x > 0)
+		{
+			item.GetComponent<Rigidbody2D>().velocity = (Vector3.up * 15 + Vector3.right * 15);
+		}
+		else
+		{
+			item.GetComponent<Rigidbody2D>().velocity = (Vector3.up * 15 + Vector3.right * -15);
+		}	
+
 		item = null;
 	}
 
@@ -157,9 +177,19 @@ public class PlayerItems : Photon.MonoBehaviour {
 			if(Input.GetButtonDown("Swap"))
 			{
 				if(Current != null)
+				{
+					Current.GetComponent<PhotonView>().enabled = true;
 					ThrowItem(Current);
+				}
 				
 				AssignItem(c.gameObject);
+				if(photonView.isMine)
+				{
+					Item i = Current.GetComponent<Item>();
+					//tell everyone else we picked it up. also turn photonview off
+					Current.GetComponent<PhotonView>().enabled = false;
+					this.photonView.RPC("PickedUpItem", PhotonTargets.Others, i.Name, i.posOffset, i.rotOffset, i.OriginalScale);
+				}
 			}
 			if(Current != null)
 			{

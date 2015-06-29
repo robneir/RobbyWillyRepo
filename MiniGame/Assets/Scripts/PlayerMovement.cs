@@ -27,11 +27,18 @@ public class PlayerMovement : Photon.MonoBehaviour {
     private GameObject currVehicle;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		rigidBody2D = this.GetComponent<Rigidbody2D> ();
 		animator = this.GetComponentInChildren<Animator> ();
 		gravityScale = rigidBody2D.gravityScale;
         currentRunSpeed = regSpeed;
+	}
+
+	[RPC]
+	void ChangeState(PlayerState toChange)
+	{
+		currPlayerState = toChange;
 	}
 
 	void OnGUI()
@@ -77,9 +84,16 @@ public class PlayerMovement : Photon.MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.collider.tag=="Ground" && !OnGround)
+		if(!OnGround)
 		{
-			OnGround=true;
+			if(col.collider.tag == "Ground" || col.collider.tag == "Player")
+			{
+				OnGround=true;
+			}
+			else if(col.collider.tag == "Platform" && this.GetComponent<Rigidbody2D>().velocity.y <= 0)
+			{
+				OnGround = true;
+			}
 		}
 	}
 
@@ -143,15 +157,19 @@ public class PlayerMovement : Photon.MonoBehaviour {
     
     public void PlayerInVehicle(GameObject vehicle)
     {
+		if (photonView.isMine) 
+		{
+			photonView.RPC ("ChangeState", PhotonTargets.Others, PlayerState.InTank);
+		}
         //tell player he is in tank and set things on and off depending on what needs to be
         currPlayerState = PlayerState.InTank;
         currVehicle = vehicle;
         rigidBody2D.gravityScale = 0;
         rigidBody2D.isKinematic = true;
-        this.transform.localScale = new Vector3(1, 1, 1);
+		this.transform.localScale = new Vector3 (Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         this.GetComponentInChildren<BoxCollider2D>().enabled = false;
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        if(this.GetComponent<PlayerItems>().Current!=null)
+        if(this.GetComponent<PlayerItems>().Current != null)
         {
             this.GetComponent<PlayerItems>().Current.SetActive(false);
         }
@@ -162,6 +180,10 @@ public class PlayerMovement : Photon.MonoBehaviour {
     
     public void PlayerOutVehicle()//GameObject vehicle
     {
+		if (photonView.isMine) 
+		{
+			photonView.RPC ("ChangeState", PhotonTargets.Others, PlayerState.OnFoot);
+		}
         //tell player he is out of tank and set things on and off depending on what needs to be
         currPlayerState = PlayerState.OnFoot;
         currVehicle.GetComponentInParent<TankMovement>().tankIsManned = false;

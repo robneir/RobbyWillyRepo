@@ -127,8 +127,8 @@ public class Item : MonoBehaviour
 				switch(Name)
 				{
 					case "Katana":
-                        posOffset = new Vector3(2.83f, -0.3200116f, 0);
-                        //rotOffset = Quaternion.Euler(0, 0, 0);
+                        posOffset = new Vector3(1.83f, -2.46f, 0);
+						rotOffset = new Vector3(0, 0, 217.8387f);
 		                UseFunc = SwingSword;
 						break;
 				}
