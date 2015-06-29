@@ -53,13 +53,13 @@ public class NetworkManager : MonoBehaviour {
 		SpawnMyPlayer ();
 	}
 
-    void OnLeftRoom()
+    void OnPhotonPlayerDisconnected()
     {
         Debug.Log("Left room");
         PhotonView pv = myPlayerGO.GetComponent<PhotonView>();
         if(pv.isMine)
         {
-            pv.RPC("DestroyStatusBar", PhotonTargets.AllBuffered,100f);
+            pv.RPC("DestroyStatusBar", PhotonTargets.AllBuffered);
         }
     }
 
