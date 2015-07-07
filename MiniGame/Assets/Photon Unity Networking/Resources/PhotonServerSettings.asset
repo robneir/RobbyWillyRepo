@@ -43,4 +43,6 @@ MonoBehaviour:
   - PlayerInVehicle
   - PickedUpItem
   - ChangeState
+  - PlayerKilled
+  - RespawnMe
   DisableAutoOpenWizard: 1

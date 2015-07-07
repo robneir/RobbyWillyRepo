@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿	using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -22,14 +22,9 @@ public class PlayerItems : Photon.MonoBehaviour {
 	[RPC]
 	void PickedUpItem(string itemName, Vector3 pos, Vector3 rot, Vector3 scale)
 	{
-		Debug.Log (itemName + "_picture");
 		fakeItem = GameObject.Instantiate((GameObject)Resources.Load (itemName + "_picture")); 	
 		fakeItem.transform.SetParent(ArmTransform.transform);
 		fakeItem.transform.localScale = scale;
-		//fakeItem.GetComponent<Rigidbody2D>().isKinematic = true;
-		//fakeItem.GetComponent<Collider2D>().isTrigger = true;
-		//fakeItem.GetComponent<Item>().HasUser = true;
-		//fakeItem.GetComponent<Rigidbody2D>().fixedAngle = true;
 		fakeItem.transform.rotation = ArmNear.transform.rotation;
 		fakeItem.transform.localPosition = pos;
 		
@@ -43,9 +38,10 @@ public class PlayerItems : Photon.MonoBehaviour {
 	{
 		GameObject bull = (GameObject)Instantiate (bulletPrefab, position, rotation);	
 		bull.GetComponent<Bullet> ().Damage = damage;
+		bull.GetComponent<Bullet> ().ID = playerID;
 		bull.GetComponent<Rigidbody2D> ().velocity = velocity;
 			
-		if (scale < 0) 
+		if (scale < 0)
 		{
 			//change rotation. switch Quaternion's z and w values.
 			float z = rotation.z;

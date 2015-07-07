@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using ExitGames.Client.Photon;
+using PhotonHashTable = ExitGames.Client.Photon.Hashtable;
 
 public class PlayerHealth : MonoBehaviour {
 
@@ -10,6 +12,8 @@ public class PlayerHealth : MonoBehaviour {
     //Privates
     private GameObject statusBar;
     private GameObject UICanvas;
+
+	public bool dead = false;
 
     void FixedUpdate()
     {
@@ -27,6 +31,15 @@ public class PlayerHealth : MonoBehaviour {
 		}
     }
 
+	[RPC]
+	void RespawnMe(Vector3 pos, Quaternion rot)
+	{
+		dead = false;
+		this.gameObject.active = true;
+		this.transform.position = pos;
+		this.transform.rotation = rot;	
+	}
+
     void Update()
     {
 
@@ -35,12 +48,14 @@ public class PlayerHealth : MonoBehaviour {
 	public void Die()
 	{
         this.GetComponent<PhotonView>().RPC("DestroyStatusBar", PhotonTargets.AllBuffered);
-		PhotonNetwork.Destroy (this.gameObject);
+		dead = true;
+		this.gameObject.active = false;
 	}
     
 	[RPC]
-	void TakeDamage(int d)
+	void TakeDamage(int d, int dealerID, int deathID)
 	{
+		Debug.Log (dealerID + " just injured " + deathID);
         //Subtract Health and check to see if dead
         if (statusBar != null)
         {
@@ -50,6 +65,27 @@ public class PlayerHealth : MonoBehaviour {
             if (statusBar.GetComponent<StatusBar>().currentHealth <= 0)
             {
                 //Die
+				//this.GetComponent<Scorecard>().PlayerKilled(dealerID, this.GetComponent<PhotonView>().ownerId);
+				//this.GetComponent<PhotonView>().RPC ("PlayerKilled", PhotonTargets.All, dealerID, this.GetComponent<PhotonView>().ownerId);
+
+				if(PhotonNetwork.player.ID == dealerID)
+				{
+					//you are dope you killed him
+					//PhotonHashTable pht = new PhotonHashTable();
+					PhotonNetwork.player.customProperties["Kills"] = (int)PhotonNetwork.player.customProperties["Kills"] + 1;
+					PhotonNetwork.player.customProperties["Deaths"] = (int)PhotonNetwork.player.customProperties["Deaths"];
+					PhotonNetwork.player.customProperties["Assists"] = (int)PhotonNetwork.player.customProperties["Assists"];
+					PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
+				}
+				else if(PhotonNetwork.player.ID == deathID)
+				{
+					//you suck you are dead
+					//PhotonHashTable pht = new PhotonHashTable();
+					PhotonNetwork.player.customProperties["Kills"] = (int)PhotonNetwork.player.customProperties["Kills"];
+					PhotonNetwork.player.customProperties["Deaths"] = (int)PhotonNetwork.player.customProperties["Deaths"] + 1;
+					PhotonNetwork.player.customProperties["Assists"] = (int)PhotonNetwork.player.customProperties["Assists"];
+					PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
+				}
                 Die();
             }
         }

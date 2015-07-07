@@ -289,7 +289,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 452066}
   - 95: {fileID: 9592206}
-  - 61: {fileID: 6191888}
+  - 61: {fileID: 6167612}
   m_Layer: 8
   m_Name: PlayerRig
   m_TagString: Player
@@ -373,7 +373,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -43.1532784, y: -10.6291313, z: -79.9590302}
+  m_LocalPosition: {x: -88.7007828, y: 86.9484558, z: -79.9590302}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452066}
@@ -574,7 +574,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
---- !u!61 &6191888
+--- !u!61 &6167612
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -584,9 +584,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 2.99508429, y: 1.1519556}
+  m_Offset: {x: 3.07590866, y: 1.19539523}
   serializedVersion: 2
-  m_Size: {x: 2.80124187, y: 5.56593132}
+  m_Size: {x: 2.83728409, y: 5.87886906}
 --- !u!81 &8113746
 AudioListener:
   m_ObjectHideFlags: 1
@@ -666,6 +666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barOffSet: {x: 1, y: 4}
   StatusBar: {fileID: 106704, guid: 87eeb1787ef309349aa5618c16caa7ce, type: 2}
+  dead: 0
 --- !u!114 &11473306
 MonoBehaviour:
   m_ObjectHideFlags: 1

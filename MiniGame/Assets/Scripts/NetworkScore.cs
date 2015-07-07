@@ -27,7 +27,16 @@ public class NetworkScore : Photon.MonoBehaviour {
 
 		for(int i = 1; i <= PhotonNetwork.playerList.Length; ++i)
 		{
-			GUI.Label (new Rect (0, Screen.height - (20 *  i), 100, 50), PhotonNetwork.playerList[i-1].name.ToString() + ": ID: " + PhotonNetwork.playerList[i-1].ID.ToString());
+			try
+			{
+				GUI.Label (new Rect (0, Screen.height - (20 *  i), 100, 50), PhotonNetwork.playerList[i-1].name.ToString() + ": K: " + PhotonNetwork.playerList[i-1].customProperties["Kills"].ToString()
+				          + ": D: " + PhotonNetwork.playerList[i-1].customProperties["Deaths"].ToString() + ": ID: " + PhotonNetwork.playerList[i-1].ID.ToString());
+				// + ": D: " + PhotonNetwork.playerList[i-1].customProperties["Deaths"].ToString() + ": ID: " + PhotonNetwork.playerList[i-1].ID.ToString());
+			}
+			catch
+			{
+				GUI.Label (new Rect (0, Screen.height - (20 *  i), 100, 50), "EMPTY");
+			}
 		}
 	}
 }
