@@ -43,5 +43,10 @@ MonoBehaviour:
   - PlayerInVehicle
   - PickedUpItem
   - ChangeState
+<<<<<<< HEAD
   - FireBullet2
+=======
+  - PlayerKilled
+  - RespawnMe
+>>>>>>> origin/master
   DisableAutoOpenWizard: 1

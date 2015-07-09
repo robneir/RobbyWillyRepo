@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
+	public int ID = -1;
 	public int Damage = 0;
     public ParticleSystem hitExplosion;
 
@@ -29,10 +30,14 @@ public class Bullet : MonoBehaviour {
 	{
 		if(c.gameObject.tag.Equals("Player"))
 		{
-			PlayerHealth sb = c.gameObject.GetComponent<PlayerHealth>();
-			c.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBuffered, Damage);
+			//only send the takeDamage to eveeryone on one client
+			if(c.gameObject.GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID)
+			{
+				PlayerHealth sb = c.gameObject.GetComponent<PlayerHealth>();
+				c.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBuffered, Damage, ID, c.gameObject.GetComponent<PhotonView>().ownerId);
+			}
         }
-		if(c.gameObject.tag!="Bullet")
+		if(c.gameObject.tag != "Bullet")
 		{
 			if(hitExplosion != null)
 			{
