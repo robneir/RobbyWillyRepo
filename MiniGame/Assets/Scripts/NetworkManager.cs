@@ -27,7 +27,6 @@ public class NetworkManager : MonoBehaviour {
 		//turn off physics for collisions between player and item
 		//Physics2D.IgnoreLayerCollision (8, 9, true);
 		GetPrefabList ();
-		Connect ();
 		spawnTimerReset = spawnTimer;
 	}
 
@@ -117,7 +116,6 @@ public class NetworkManager : MonoBehaviour {
     {
         Debug.Log("Created Room");
         //PhotonNetwork.isMessageQueueRunning = true;
-        SpawnMyPlayer();
     }
 
 	void OnJoinedRoom()

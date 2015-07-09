@@ -15,38 +15,28 @@ MonoBehaviour:
   Protocol: 0
   ServerAddress: 
   ServerPort: 5055
-  AppID: debb9f43-93aa-43b8-ac5c-478b7083d309
-  PreferredRegion: 1
+  AppID: 3e68c7a4-5e48-458d-933e-7d38b4f993f0
+  PreferredRegion: 0
   EnabledRegions: 0
   RpcList:
+  - ChangeState
   - Chat
-  - ColorRpc
   - DestroyRpc
-  - DoJump
+  - DestroyStatusBar
+  - FireBullet
+  - FireBullet2
+  - InstantiateHealthBar
   - InstantiateRpc
+  - NewDriver
   - OnAwakeRPC
+  - PickedUpItem
   - PickupItemInit
   - PunPickup
   - PunPickupSimple
   - PunRespawn
   - RequestForPickupTimes
-  - SetTrigger
+  - RespawnMe
+  - ShootShell
   - SyncTrigger
   - TakeDamage
-  - FireBullet
-  - InstantiateHealthBar
-  - DestroyHealthBar
-  - DestroyStatusBar
-  - InstantiateShell
-  - ShootShell
-  - NewDriver
-  - PlayerInVehicle
-  - PickedUpItem
-  - ChangeState
-<<<<<<< HEAD
-  - FireBullet2
-=======
-  - PlayerKilled
-  - RespawnMe
->>>>>>> origin/master
   DisableAutoOpenWizard: 1
