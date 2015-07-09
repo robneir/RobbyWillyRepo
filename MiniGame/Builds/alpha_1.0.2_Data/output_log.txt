@@ -20,27 +20,18 @@ Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Buil
 Loading C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Builds\alpha_1.0.2_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
 Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Builds\alpha_1.0.2_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Builds\alpha_1.0.2_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.149 seconds
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+- Completed reload, in  0.122 seconds
+desktop: 1920x1080 60Hz; virtual: 4800x1500 at 0,-150
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
 Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Builds\alpha_1.0.2_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Thomas\Documents\GitHub\RobbyWillyRepo\MiniGame\Builds\alpha_1.0.2_Data\Managed\System.dll (this message is harmless)
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 7.417388 ms
-HDR and MultisampleAntiAliasing (in Forward Rendering Path) is not supported. This camera will render without HDR buffers. Disable Antialiasing in the Quality settings if you want to use HDR.
+On joined lobby
  
-(Filename:  Line: 2716)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
 
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1232.
-Total: 0.754714 ms (FindLiveObjects: 0.089803 ms CreateObjectMapping: 0.040686 ms MarkObjects: 0.517926 ms  DeleteObjects: 0.105198 ms)
-
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 308c -> priority: 1 
-  Thread -> id: 1e50 -> priority: 1 
-Joined lobby
+0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
 
@@ -48,7 +39,20 @@ Joined room
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
 
-Failed to send data
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.682901 ms
+HDR and MultisampleAntiAliasing (in Forward Rendering Path) is not supported. This camera will render without HDR buffers. Disable Antialiasing in the Quality settings if you want to use HDR.
+ 
+(Filename:  Line: 2716)
+
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 1781.
+Total: 0.498500 ms (FindLiveObjects: 0.049116 ms CreateObjectMapping: 0.028590 ms MarkObjects: 0.332822 ms  DeleteObjects: 0.087604 ms)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 19f0 -> priority: 1 
+  Thread -> id: 99c -> priority: 1 
+Left room
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
 

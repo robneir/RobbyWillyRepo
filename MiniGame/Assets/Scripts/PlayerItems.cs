@@ -37,8 +37,16 @@ public class PlayerItems : Photon.MonoBehaviour {
 		fakeItem.transform.rotation = ArmTransform.transform.rotation;
 		fakeItem.transform.localRotation = Quaternion.Euler(rot);
 	}
+    
+    [RPC]
+    void FireBullet2(int playerID, Vector3 position, Quaternion rotation, Vector3 direction, int damage, float speed)
+    {
+        GameObject bull = (GameObject)Instantiate(bulletPrefab, position, rotation);
+        bull.GetComponent<Bullet>().Damage = damage;
+        bull.GetComponent<Rigidbody2D>().AddForce(speed*direction);
+    }
 
-	[RPC]
+    [RPC]
 	void FireBullet(int playerID, Vector3 position, Quaternion rotation, Vector3 velocity, int damage, float scale)
 	{
 		GameObject bull = (GameObject)Instantiate (bulletPrefab, position, rotation);	
@@ -54,8 +62,8 @@ public class PlayerItems : Photon.MonoBehaviour {
 		}
 	}
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
 	{
 		if (pickupUI == null)
 			pickupUI =(Text) GameObject.FindGameObjectWithTag("TextUI").GetComponent<Text> ();

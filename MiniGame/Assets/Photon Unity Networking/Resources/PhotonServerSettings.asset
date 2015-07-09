@@ -43,4 +43,5 @@ MonoBehaviour:
   - PlayerInVehicle
   - PickedUpItem
   - ChangeState
+  - FireBullet2
   DisableAutoOpenWizard: 1

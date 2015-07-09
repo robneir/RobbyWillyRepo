@@ -11,15 +11,19 @@ public class NetworkManager : MonoBehaviour {
     private GameObject myPlayerGO;
 	private string[] itemNames;
 
+    void Awake()
+    {
+        //Find spawn spot for player
+        spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
+    }
+    
 	// Use this for initialization
 	void Start () {
-		//Find spawn spot for player
-		spawnSpots= GameObject.FindObjectsOfType <SpawnSpot>();
 		itemSpawnSpots= GameObject.FindObjectsOfType <ItemSpawnSpot>();
 		//turn off physics for collisions between player and item
 		//Physics2D.IgnoreLayerCollision (8, 9, true);
 		GetPrefabList ();
-		Connect ();
+        //Connect ();
 	}
 
 	void GetPrefabList()
@@ -61,37 +65,25 @@ public class NetworkManager : MonoBehaviour {
 		}
 	}
 
-	void Connect()
-	{
-		//This connects to photon server using the settings specified in PhotonServerSettings under resources
-		PhotonNetwork.ConnectUsingSettings ("FirstVersion");  
-	}
-
 	void OnGUI()
 	{
 		//Print connection state in top left corner
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString ());
 	}
+    
+    void OnCreatedRoom()
+    {
+        Debug.Log("Created Room");
+        //PhotonNetwork.isMessageQueueRunning = true;
+        SpawnMyPlayer();
+    }
 
-	void OnJoinedLobby()
-	{
-		Debug.Log ("Joined lobby");
-		//Create a room 
-		PhotonNetwork.JoinRandomRoom ();
-	}
-
-	//If failed to join random room this is executed
-	void OnPhotonRandomJoinFailed()
-	{
-		Debug.Log ("Joined lobby failed");
-		PhotonNetwork.CreateRoom("(Room name)");
-	}
-
-	void OnJoinedRoom()
+    
+    void OnJoinedRoom()
 	{
 		Debug.Log ("Joined room");
-		SpawnMyPlayer ();
-	}
+        SpawnMyPlayer();
+    }
 
     void OnPhotonPlayerDisconnected()
     {
@@ -115,9 +107,10 @@ public class NetworkManager : MonoBehaviour {
 		}
 		//Get random spawnspot
 		SpawnSpot grabbedSpawnSpot = spawnSpots [Random.Range (0,spawnSpots.Length)];
-		/*This instantiates a player on the network so that everyone has the instantiation
+        /*This instantiates a player on the network so that everyone has the instantiation
 		 * but the prefab must be located in the resource folder
 		*/
+        Camera.main.GetComponent<AudioListener>().enabled = false;
 		myPlayerGO= (GameObject) PhotonNetwork.Instantiate ("Bandit",grabbedSpawnSpot.transform.position, 
 		                           grabbedSpawnSpot.transform.rotation, 
 		                           grabbedSpawnSpot.teamId);

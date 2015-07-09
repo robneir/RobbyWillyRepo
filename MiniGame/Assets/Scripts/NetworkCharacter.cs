@@ -104,7 +104,6 @@ public class NetworkCharacter : Photon.MonoBehaviour { //THIS IS monobehavior wi
 		animator.speed = (float)stream.ReceiveNext();
 		anRot = (Quaternion)stream.ReceiveNext ();
 		afRot = (Quaternion)stream.ReceiveNext ();
-		Debug.Log (anRot);
 	}
 
 	void InTankSend(PhotonStream stream, PhotonMessageInfo info)

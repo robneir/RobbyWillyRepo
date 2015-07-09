@@ -9,6 +9,7 @@ public class TankMovement : Photon.MonoBehaviour {
     public float speed;
     public Vector3 playerInTankOffset= Vector3.zero;
     public bool onGround;
+    public GameObject currentDriver;
 
     [HideInInspector]
     public bool tankIsManned;
@@ -57,8 +58,8 @@ public class TankMovement : Photon.MonoBehaviour {
     void NewDriver(string player)
     {
         tankIsManned = true;
-        GameObject newDriver = GameObject.Find(player);
-        newDriver.GetComponentInParent<PlayerMovement>().PlayerInVehicle(transform.GetChild(0).gameObject);
+        currentDriver = GameObject.Find(player);
+        currentDriver.GetComponentInParent<PlayerMovement>().PlayerInVehicle(transform.GetChild(0).gameObject);
     }
 
     void OnGUI()

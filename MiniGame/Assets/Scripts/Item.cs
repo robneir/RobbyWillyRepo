@@ -186,8 +186,9 @@ public class Item : MonoBehaviour
 		{
 			Vector3 sendV = new Vector3 (FireTip.right.x * this.transform.root.localScale.x, FireTip.right.y, FireTip.right.z) * FireSpeed;
 			float lScale = this.transform.root.localScale.x;
-			pv.RPC ("FireBullet", PhotonTargets.All, PhotonNetwork.player.ID, FireTip.position, FireTip.rotation, sendV, this.Damage, lScale);
-		}
+            //ROB'S METHOD//pv.RPC("FireBullet2", PhotonTargets.All, PhotonNetwork.player.ID, FireTip.position, FireTip.rotation, FireTip.right, this.Damage, FireSpeed);
+            pv.RPC ("FireBullet", PhotonTargets.All, PhotonNetwork.player.ID, FireTip.position, FireTip.rotation, sendV, this.Damage, lScale); 
+        }
 	}
 
     void InstantiateBulletCasing()
