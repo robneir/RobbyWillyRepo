@@ -3,7 +3,7 @@ using System.Collections;
 using ExitGames.Client.Photon;
 using PhotonHashTable = ExitGames.Client.Photon.Hashtable;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : Photon.MonoBehaviour {
 
 	//Publics
     public Vector2 barOffSet = Vector2.zero;
@@ -51,8 +51,27 @@ public class PlayerHealth : MonoBehaviour {
 		dead = true;
 		this.gameObject.active = false;
 	}
-    
-	[RPC]
+
+    [RPC]
+    void AddHealth(int health)
+    {
+        //Subtract Health and check to see if dead
+        if (statusBar != null)
+        {
+            if(statusBar.GetComponent<StatusBar>().targetHealth+health> statusBar.GetComponent<StatusBar>().maxHealth)
+            {
+                statusBar.GetComponent<StatusBar>().targetHealth += statusBar.GetComponent<StatusBar>().maxHealth;
+                statusBar.GetComponent<StatusBar>().currentHealth += statusBar.GetComponent<StatusBar>().maxHealth;
+            }
+            else
+            {
+                statusBar.GetComponent<StatusBar>().targetHealth += health;
+                statusBar.GetComponent<StatusBar>().currentHealth += health;
+            }
+        }
+    }
+
+    [RPC]
 	void TakeDamage(int d, int dealerID, int deathID)
 	{
 		Debug.Log (dealerID + " just injured " + deathID);

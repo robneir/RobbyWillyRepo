@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Item : MonoBehaviour 
 {
-	#region Visible In Inspector
-	/// <summary>
-	/// Weather or not the item is being used by a player.
-	/// </summary>
-	public bool HasUser = false;
+    #region Visible In Inspector
+    /// <summary>
+    /// Weather or not the item is being used by a player.
+    /// </summary>
+    public bool HasUser = false;
 	/// <summary>
 	/// The name of the item.
 	/// </summary>
@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
 	/// <summary>
 	/// The defense, if any, of the item
 	/// </summary>
-	public int Defense = 0;
+	public int addHealth = 0;
 	/// <summary>
 	/// The ItemType.
 	/// </summary>
@@ -133,7 +133,15 @@ public class Item : MonoBehaviour
 						break;
 				}
 				break;
-		}
+            case ItemType.OneShot:
+                switch (Name)
+                {
+                    case "HealthPotion":
+                        UseFunc = AddHealth;
+                        break;
+                }
+                break;
+        }
 	}
 	
 	// Update is called once per frame
@@ -156,7 +164,7 @@ public class Item : MonoBehaviour
 	//EG---> SwingSword() may be applicable to both a baseball bat and a katana
 	//EG---> FireRocket() will probably be different than FireHandgun()
 
-	private void FireSemiAuto()
+	private void FireSemiAuto(GameObject owner)
 	{
 		InstantiateBullet ();
 		DoRecoil ();
@@ -171,9 +179,15 @@ public class Item : MonoBehaviour
 		rotateArm.transform.GetComponent<PointTowardMouse> ().recoilOffset += 5f;
 	}
 
-    private void SwingSword()
+    private void SwingSword(GameObject owner)
     {
         isBeingUsed = true;
+    }
+
+    private void AddHealth(GameObject owner)
+    {
+        owner.GetComponent<PhotonView>().RPC("AddHealth", PhotonTargets.AllBuffered, addHealth);
+        Debug.Log("Added health");
     }
 
 	void InstantiateBullet()
@@ -199,7 +213,7 @@ public class Item : MonoBehaviour
         bulletCasing.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-10, 10)*ejectForce, ForceMode2D.Impulse);
     }
 
-    public delegate void UseItem();
+    public delegate void UseItem(GameObject owner);
 
 	#endregion
 }

@@ -79,7 +79,7 @@ public class PlayerItems : Photon.MonoBehaviour {
                 {
                     #region IF SEMI-AUTO/SWORD
                     //play swing sword animation/fire or whatever
-                    i.UseFunc();
+                    i.UseFunc(this.gameObject);
 
                     if (photonView.isMine)
                     {
@@ -105,7 +105,7 @@ public class PlayerItems : Photon.MonoBehaviour {
                     if(Time.time- i.lastShotTime>i.timeBetweenShots)
                     {
                         i.lastShotTime = Time.time;
-                        i.UseFunc();
+                        i.UseFunc(this.gameObject);
                     }
                     #endregion
                 }
@@ -175,37 +175,45 @@ public class PlayerItems : Photon.MonoBehaviour {
 
 	void OnCollisionStay2D(Collision2D c)
 	{
-		//if youre colliding with an item with no user
-		if(c.gameObject.tag.Equals("Item") && !c.gameObject.GetComponent<Item>().HasUser)
-		{
-			if(Input.GetButtonDown("Swap"))
-			{
-				if(Current != null)
-				{
-					Current.GetComponent<PhotonView>().enabled = true;
-					ThrowItem(Current);
-				}
-				
-				AssignItem(c.gameObject);
-				if(photonView.isMine)
-				{
-					Item i = Current.GetComponent<Item>();
-					//tell everyone else we picked it up. also turn photonview off
-					Current.GetComponent<PhotonView>().enabled = false;
-					this.photonView.RPC("PickedUpItem", PhotonTargets.Others, i.Name, i.posOffset, i.rotOffset, i.OriginalScale);
-				}
-			}
-			if(Current != null)
-			{
-				pickupUI.text = "Press E to swap for " + c.gameObject.GetComponent<Item>().Name + ".";
-			}
-			else if(pickupUI!=null)
-			{
-				pickupUI.text = "Press E to pickup " + c.gameObject.GetComponent<Item>().Name + ".";
-			}
+        //if youre colliding with an item with no user
+        if (c.gameObject.tag.Equals("Item") && !c.gameObject.GetComponent<Item>().HasUser)
+        {
+            Item colItem = c.gameObject.GetComponent<Item>();
+            if (colItem.Type==Item.ItemType.OneShot)
+            {
+                colItem.UseFunc(this.gameObject);
+            }
             else
             {
-                pickupUI = GameObject.FindGameObjectWithTag("TextUI").GetComponent<Text>();
+                if (Input.GetButtonDown("Swap"))
+                {
+                    if (Current != null)
+                    {
+                        Current.GetComponent<PhotonView>().enabled = true;
+                        ThrowItem(Current);
+                    }
+
+                    AssignItem(colItem.gameObject);
+                    if (photonView.isMine)
+                    {
+                        Item i = Current.GetComponent<Item>();
+                        //tell everyone else we picked it up. also turn photonview off
+                        Current.GetComponent<PhotonView>().enabled = false;
+                        this.photonView.RPC("PickedUpItem", PhotonTargets.Others, i.Name, i.posOffset, i.rotOffset, i.OriginalScale);
+                    }
+                }
+                if (Current != null)
+                {
+                    pickupUI.text = "Press E to swap for " + colItem.Name + ".";
+                }
+                else if (pickupUI != null)
+                {
+                    pickupUI.text = "Press E to pickup " + colItem.Name + ".";
+                }
+                else
+                {
+                    pickupUI = GameObject.FindGameObjectWithTag("TextUI").GetComponent<Text>();
+                }
             }
 		}
 		else if(pickupUI != null) pickupUI.text = "";

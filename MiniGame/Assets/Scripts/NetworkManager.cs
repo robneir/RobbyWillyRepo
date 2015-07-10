@@ -28,7 +28,8 @@ public class NetworkManager : MonoBehaviour {
 		//Physics2D.IgnoreLayerCollision (8, 9, true);
 		GetPrefabList ();
 		spawnTimerReset = spawnTimer;
-	}
+        SpawnMyPlayer();
+    }
 
 	void GetPrefabList()
 	{    
@@ -111,25 +112,6 @@ public class NetworkManager : MonoBehaviour {
 			}
 		}
 	}
-    
-    void OnCreatedRoom()
-    {
-        Debug.Log("Created Room");
-        //PhotonNetwork.isMessageQueueRunning = true;
-    }
-
-	void OnJoinedRoom()
-	{
-		Debug.Log ("Joined room");
-
-		PhotonHashTable pht = new PhotonHashTable();
-		pht ["Kills"] = 0;
-		pht ["Deaths"] = 0;
-		pht ["Assists"] = 0;
-		PhotonNetwork.player.SetCustomProperties (pht);
-
-		SpawnMyPlayer ();
-	}
 
     void OnPhotonPlayerDisconnected()
     {
@@ -138,10 +120,8 @@ public class NetworkManager : MonoBehaviour {
 		if(myPlayerGO != null)
 		{
         	PhotonView pv = myPlayerGO.GetComponent<PhotonView>();
-	        if(pv.isMine)
-	        {
-	            pv.RPC("DestroyStatusBar", PhotonTargets.AllBuffered,100f);
-	        }
+            //Destory health bar 
+            myPlayerGO.GetComponent<PlayerHealth>().Die();
 		}
     }
 

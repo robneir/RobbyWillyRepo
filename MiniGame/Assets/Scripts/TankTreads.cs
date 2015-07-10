@@ -7,7 +7,7 @@ public class TankTreads : MonoBehaviour {
     {
         if (col.gameObject.tag == "Ground" && col.gameObject.ToString()!=this.gameObject.ToString())
         {
-            transform.root.gameObject.GetComponent<TankMovement>().onGround = true;
+            //transform.root.gameObject.GetComponent<TankMovement>().onGround = true;
         }
     }
 }

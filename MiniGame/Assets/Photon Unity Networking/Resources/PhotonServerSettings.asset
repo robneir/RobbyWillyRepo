@@ -39,4 +39,5 @@ MonoBehaviour:
   - ShootShell
   - SyncTrigger
   - TakeDamage
+  - AddHealth
   DisableAutoOpenWizard: 1
