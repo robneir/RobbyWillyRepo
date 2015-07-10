@@ -3,14 +3,13 @@ using System.Collections;
 using ExitGames.Client.Photon;
 using PhotonHashTable = ExitGames.Client.Photon.Hashtable;
 
-public class PlayerHealth : Photon.MonoBehaviour {
+public class PlayerStatus : Photon.MonoBehaviour {
 
 	//Publics
     public Vector2 barOffSet = Vector2.zero;
-	public GameObject StatusBar;
+    public StatusBar statusBar;
 
     //Privates
-    private GameObject statusBar;
     private GameObject UICanvas;
 
 	public bool dead = false;
@@ -52,6 +51,11 @@ public class PlayerHealth : Photon.MonoBehaviour {
 		this.gameObject.active = false;
 	}
 
+    public bool HasMana()
+    {
+        return statusBar.currentMana > 0;
+    }
+
     [RPC]
     void AddHealth(int health)
     {
@@ -60,13 +64,51 @@ public class PlayerHealth : Photon.MonoBehaviour {
         {
             if(statusBar.GetComponent<StatusBar>().targetHealth+health>= statusBar.GetComponent<StatusBar>().maxHealth)
             {
-                statusBar.GetComponent<StatusBar>().targetHealth += statusBar.GetComponent<StatusBar>().maxHealth;
-                statusBar.GetComponent<StatusBar>().currentHealth += statusBar.GetComponent<StatusBar>().maxHealth;
+                statusBar.GetComponent<StatusBar>().targetHealth = statusBar.GetComponent<StatusBar>().maxHealth;
+                statusBar.GetComponent<StatusBar>().currentHealth = statusBar.GetComponent<StatusBar>().maxHealth;
             }
             else
             {
                 statusBar.GetComponent<StatusBar>().targetHealth += health;
                 statusBar.GetComponent<StatusBar>().currentHealth += health;
+            }
+        }
+    }
+
+    [RPC]
+    void AddMana(int mana)
+    {
+        //Subtract Health and check to see if dead
+        if (statusBar != null)
+        {
+            if (statusBar.GetComponent<StatusBar>().targetMana + mana >= statusBar.GetComponent<StatusBar>().maxMana)
+            {
+                statusBar.GetComponent<StatusBar>().targetMana = statusBar.GetComponent<StatusBar>().maxMana;
+                statusBar.GetComponent<StatusBar>().currentMana = statusBar.GetComponent<StatusBar>().maxMana;
+            }
+            else
+            {
+                statusBar.GetComponent<StatusBar>().targetMana += mana;
+                statusBar.GetComponent<StatusBar>().currentMana += mana;
+            }
+        }
+    }
+
+    [RPC]
+    void TakeMana(float mana)
+    {
+        //Subtract Health and check to see if dead
+        if (statusBar != null)
+        {
+            if (statusBar.GetComponent<StatusBar>().targetMana - mana <= 0)
+            {
+                statusBar.GetComponent<StatusBar>().targetMana = 0;
+                statusBar.GetComponent<StatusBar>().currentMana = 0;
+            }
+            else
+            {
+                statusBar.GetComponent<StatusBar>().targetMana -= mana;
+                statusBar.GetComponent<StatusBar>().currentMana -= mana;
             }
         }
     }
@@ -151,12 +193,12 @@ public class PlayerHealth : Photon.MonoBehaviour {
     {
 		if(startHealth == null)
 		{
-			statusBar = (GameObject)Instantiate(StatusBar, Camera.main.WorldToScreenPoint(this.transform.position), Quaternion.identity);
+			statusBar = (StatusBar)Instantiate(statusBar, Camera.main.WorldToScreenPoint(this.transform.position), Quaternion.identity);
 			statusBar.transform.SetParent(FindObjectOfType<Canvas>().transform);
 		}
 		else
 		{
-			statusBar = (GameObject)Instantiate(StatusBar,this.transform.position, Quaternion.identity);
+			statusBar = (StatusBar)Instantiate(statusBar, this.transform.position, Quaternion.identity);
 			statusBar.transform.SetParent(FindObjectOfType<Canvas>().transform);
 			statusBar.GetComponent<StatusBar>().targetHealth = (float)startHealth;
 			statusBar.GetComponent<StatusBar>().currentHealth = (float)startHealth;

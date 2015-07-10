@@ -11,7 +11,6 @@ TagManager:
   - LEVEL_BOUNDS
   - Sign
   - TextUI
-  - New Tag
   - Platform
   layers:
   - Default
@@ -25,7 +24,7 @@ TagManager:
   - Players
   - Items
   - Visual Effects (Bullet Casings)
-  - 
+  - No Collide With Player
   - 
   - 
   - 

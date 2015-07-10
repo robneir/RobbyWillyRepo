@@ -23,7 +23,7 @@ public class ItemEditor : Editor {
         {
             case Item.ItemType.Ammo:
                 break;
-            case Item.ItemType.OneShot:
+            case Item.ItemType.Immediate:
                 //EditorGUILayout.ObjectField("FireTip", null, typeof(Transform));
                 break;
             case Item.ItemType.Melee:

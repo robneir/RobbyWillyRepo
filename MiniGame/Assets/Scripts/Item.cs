@@ -19,11 +19,19 @@ public class Item : MonoBehaviour
 	/// <summary>
 	/// The defense, if any, of the item
 	/// </summary>
-	public int addHealth = 0;
-	/// <summary>
-	/// The ItemType.
-	/// </summary>
-	public ItemType Type;
+	public int healthPotionStrength = 0;
+    /// <summary>
+    /// The defense, if any, of the item
+    /// </summary>
+    public int manaPotionStrength = 0;
+    /// <summary>
+    /// The defense, if any, of the item
+    /// </summary>
+    public int specialPotionStrength = 0;
+    /// <summary>
+    /// The ItemType.
+    /// </summary>
+    public ItemType Type;
 	/// <summary>
 	/// The transform used to fire out of the tip of an ammo based weapon.
 	/// </summary>
@@ -82,7 +90,7 @@ public class Item : MonoBehaviour
 	{
 		Melee,
 		Ammo,
-		OneShot,
+		Immediate,
 		Special
 	}
 
@@ -133,11 +141,17 @@ public class Item : MonoBehaviour
 						break;
 				}
 				break;
-            case ItemType.OneShot:
+            case ItemType.Immediate:
                 switch (Name)
                 {
                     case "HealthPotion":
                         UseFunc = AddHealth;
+                        break;
+                    case "ManaPotion":
+                        UseFunc = AddMana;
+                        break;
+                    case "SpecialPotion":
+                        UseFunc = AddSpecial;
                         break;
                 }
                 break;
@@ -186,11 +200,23 @@ public class Item : MonoBehaviour
 
     private void AddHealth(GameObject owner)
     {
-        owner.GetComponent<PhotonView>().RPC("AddHealth", PhotonTargets.AllBuffered, addHealth);
+        owner.GetComponent<PhotonView>().RPC("AddHealth", PhotonTargets.AllBuffered, healthPotionStrength);
         Debug.Log("Added health");
     }
 
-	void InstantiateBullet()
+    private void AddMana(GameObject owner)
+    {
+        owner.GetComponent<PhotonView>().RPC("AddMana", PhotonTargets.AllBuffered, manaPotionStrength);
+        Debug.Log("Added Mana");
+    }
+
+    private void AddSpecial(GameObject owner)
+    {
+        //owner.GetComponent<PhotonView>().RPC("AddSpecial", PhotonTargets.AllBuffered, specialPotionStrength);
+        Debug.Log("NEED TO IMPLEMENT ADD SPECIAL POTION");
+    }
+
+    void InstantiateBullet()
 	{
 		GameObject muz = (GameObject)GameObject.Instantiate (MuzzleFlash, this.FireTip.position, Quaternion.identity);
 		GameObject.Destroy(muz, 1f);

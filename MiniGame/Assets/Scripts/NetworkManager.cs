@@ -89,7 +89,7 @@ public class NetworkManager : MonoBehaviour {
 
 	void ControlSpawnPlayers()
 	{
-		if(myPlayerGO!= null && myPlayerGO.GetComponent<PlayerHealth>().dead)
+		if(myPlayerGO!= null && myPlayerGO.GetComponent<PlayerStatus>().dead)
 		{
 			spawnTimer--;
 		}
@@ -100,7 +100,7 @@ public class NetworkManager : MonoBehaviour {
 		//Print connection state in top left corner
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString ());
 
-		if(myPlayerGO!= null && myPlayerGO.GetComponent<PlayerHealth>().dead && initialSpawn)
+		if(myPlayerGO!= null && myPlayerGO.GetComponent<PlayerStatus>().dead && initialSpawn)
 		{
 			if(spawnTimer > 0)
 			{
@@ -121,7 +121,7 @@ public class NetworkManager : MonoBehaviour {
 		{
         	PhotonView pv = myPlayerGO.GetComponent<PhotonView>();
             //Destory health bar 
-            myPlayerGO.GetComponent<PlayerHealth>().Die();
+            myPlayerGO.GetComponent<PlayerStatus>().Die();
 		}
     }
 

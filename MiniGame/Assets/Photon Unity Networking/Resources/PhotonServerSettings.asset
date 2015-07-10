@@ -41,4 +41,6 @@ MonoBehaviour:
   - TakeDamage
   - AddHealth
   - Destroy
+  - AddMana
+  - TakeMana
   DisableAutoOpenWizard: 1

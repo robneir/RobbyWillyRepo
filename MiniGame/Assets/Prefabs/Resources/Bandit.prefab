@@ -561,6 +561,7 @@ Transform:
   m_RootOrder: 3
 --- !u!50 &5054592
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -569,11 +570,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &6167612
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -665,7 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barOffSet: {x: 1, y: 4}
-  StatusBar: {fileID: 106704, guid: 87eeb1787ef309349aa5618c16caa7ce, type: 2}
+  statusBar: {fileID: 11462812, guid: 87eeb1787ef309349aa5618c16caa7ce, type: 2}
   dead: 0
 --- !u!114 &11473306
 MonoBehaviour:
@@ -720,6 +721,7 @@ MonoBehaviour:
   zAxisEnabled: 0
   regSpeed: 15
   sprintSpeed: 25
+  sprintManaCost: .400000006
   friction: 0
   jumpPower: 5000
   climbSpeed: 15
@@ -1174,7 +1176,16 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: sprintManaCost
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: statusBar
+      value: 
+      objectReference: {fileID: 11462812, guid: 87eeb1787ef309349aa5618c16caa7ce,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127248}

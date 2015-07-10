@@ -9,6 +9,7 @@ public class PlayerMovement : Photon.MonoBehaviour {
 
 	public float regSpeed;
     public float sprintSpeed;
+    public float sprintManaCost;
 	public float friction;
 	public float jumpPower;
 	public float climbSpeed;
@@ -58,9 +59,11 @@ public class PlayerMovement : Photon.MonoBehaviour {
                 UpdateBasicMovementInput();
 
                 //Change run speed if sprinting or not
-                if (Input.GetButton("Sprint") && !animator.GetBool("Jump"))
+                if (Input.GetButton("Sprint") && !animator.GetBool("Jump") && this.GetComponent<PlayerStatus>().HasMana())
                 {
                     currentRunSpeed = sprintSpeed;
+                    //subtract mana from status bar
+                    this.GetComponent<PhotonView>().RPC("TakeMana", PhotonTargets.AllBuffered,sprintManaCost);
                 }
                 else if (!animator.GetBool("Jump"))
                 {
