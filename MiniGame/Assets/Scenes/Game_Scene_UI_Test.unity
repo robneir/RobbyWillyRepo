@@ -19994,9 +19994,10 @@ GameObject:
   - 50: {fileID: 1962896065}
   - 60: {fileID: 1962896064}
   - 114: {fileID: 1962896063}
+  - 114: {fileID: 1962896066}
   m_Layer: 0
   m_Name: red
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20053,7 +20054,7 @@ MonoBehaviour:
   HasUser: 0
   Name: HealthPotion
   Damage: 0
-  addHealth: 0
+  addHealth: 20
   Type: 2
   FireTip: {fileID: 0}
   MuzzleFlash: {fileID: 0}
@@ -20167,6 +20168,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1962896066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1962896060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2d0990d98e78e4cb892fe8c8893d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 1962896062}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 3
+  instantiationId: 3
+  isRuntimeInstantiated: 0
 --- !u!1 &1965982823
 GameObject:
   m_ObjectHideFlags: 0

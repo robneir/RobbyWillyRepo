@@ -58,7 +58,7 @@ public class PlayerHealth : Photon.MonoBehaviour {
         //Subtract Health and check to see if dead
         if (statusBar != null)
         {
-            if(statusBar.GetComponent<StatusBar>().targetHealth+health> statusBar.GetComponent<StatusBar>().maxHealth)
+            if(statusBar.GetComponent<StatusBar>().targetHealth+health>= statusBar.GetComponent<StatusBar>().maxHealth)
             {
                 statusBar.GetComponent<StatusBar>().targetHealth += statusBar.GetComponent<StatusBar>().maxHealth;
                 statusBar.GetComponent<StatusBar>().currentHealth += statusBar.GetComponent<StatusBar>().maxHealth;

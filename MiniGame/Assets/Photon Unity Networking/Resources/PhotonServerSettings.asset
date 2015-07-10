@@ -40,4 +40,5 @@ MonoBehaviour:
   - SyncTrigger
   - TakeDamage
   - AddHealth
+  - Destroy
   DisableAutoOpenWizard: 1

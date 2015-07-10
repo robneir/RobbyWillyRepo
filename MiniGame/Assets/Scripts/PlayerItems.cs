@@ -182,6 +182,7 @@ public class PlayerItems : Photon.MonoBehaviour {
             if (colItem.Type==Item.ItemType.OneShot)
             {
                 colItem.UseFunc(this.gameObject);
+                colItem.GetComponent<PhotonView>().RPC("Destroy", PhotonTargets.AllBuffered);
             }
             else
             {

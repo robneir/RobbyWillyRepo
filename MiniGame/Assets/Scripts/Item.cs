@@ -215,5 +215,11 @@ public class Item : MonoBehaviour
 
     public delegate void UseItem(GameObject owner);
 
+    [RPC]
+    public void Destroy()
+    {
+        GameObject.Destroy(this.gameObject);
+    }
+
 	#endregion
 }
