@@ -125,7 +125,7 @@ public class NetworkManagerDebug : MonoBehaviour {
 	
 	void ControlSpawnPlayers()
 	{
-		if(myPlayerGO!= null && myPlayerGO.GetComponent<PlayerStatus>().dead)
+		if(myPlayerGO != null && myPlayerGO.GetComponent<PlayerStatus>().dead)
 		{
 			spawnTimer--;
 		}
@@ -136,7 +136,7 @@ public class NetworkManagerDebug : MonoBehaviour {
 		//Print connection state in top left corner
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString ());
 		
-		if(myPlayerGO!= null && myPlayerGO.GetComponent<PlayerStatus>().dead && initialSpawn)
+		if(myPlayerGO != null && myPlayerGO.GetComponent<PlayerStatus>().dead && initialSpawn)
 		{
 			if(spawnTimer > 0)
 			{
@@ -199,6 +199,7 @@ public class NetworkManagerDebug : MonoBehaviour {
 		{
 			pv.RPC ("InstantiateHealthBar", PhotonTargets.AllBuffered, 100f);
 		}
+		initialSpawn = true;
 		//If camera is attached to palyer then: myPlayerGo.transform.FindChild("string of camera").gameobject.setactive(true);
 	}
 }
