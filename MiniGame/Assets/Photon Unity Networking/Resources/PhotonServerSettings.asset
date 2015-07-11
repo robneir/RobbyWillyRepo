@@ -43,4 +43,5 @@ MonoBehaviour:
   - Destroy
   - AddMana
   - TakeMana
+  - FireTurretBullet
   DisableAutoOpenWizard: 1

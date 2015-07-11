@@ -12,6 +12,8 @@ TagManager:
   - Sign
   - TextUI
   - Platform
+  - PlayerRig
+  - GravityLift
   layers:
   - Default
   - TransparentFX

@@ -64,6 +64,7 @@ GameObject:
   - 114: {fileID: 11400672}
   - 114: {fileID: 11461266}
   - 81: {fileID: 8113746}
+  - 61: {fileID: 6101428}
   m_Layer: 8
   m_Name: Bandit
   m_TagString: Player
@@ -292,7 +293,7 @@ GameObject:
   - 61: {fileID: 6167612}
   m_Layer: 8
   m_Name: PlayerRig
-  m_TagString: Player
+  m_TagString: PlayerRig
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,7 +374,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -88.7007828, y: 86.9484558, z: -79.9590302}
+  m_LocalPosition: {x: -66.363121, y: 41.1425362, z: -79.9590302}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452066}
@@ -561,7 +562,6 @@ Transform:
   m_RootOrder: 3
 --- !u!50 &5054592
 Rigidbody2D:
-  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -570,11 +570,24 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+--- !u!61 &6101428
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127248}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: .434890747, y: .646770477}
+  serializedVersion: 2
+  m_Size: {x: 3.92161989, y: 6.2187624}
 --- !u!61 &6167612
 BoxCollider2D:
   m_ObjectHideFlags: 1

@@ -130,15 +130,19 @@ public class ServerBrowser : MonoBehaviour {
         Debug.Log("Created room");
     }
 
+	void SetupHash()
+	{
+		PhotonHashTable pht = new PhotonHashTable();
+		pht["Kills"] = 0;
+		pht["Deaths"] = 0;
+		pht["Assists"] = 0;
+		PhotonNetwork.player.SetCustomProperties(pht);
+	}
+
     void OnJoinedRoom()
     {
         Debug.Log ("Joined room");
-        PhotonNetwork.LoadLevel("Game_Scene_UI_Test");
-
-        PhotonHashTable pht = new PhotonHashTable();
-        pht["Kills"] = 0;
-        pht["Deaths"] = 0;
-        pht["Assists"] = 0;
-        PhotonNetwork.player.SetCustomProperties(pht);
+        PhotonNetwork.LoadLevel("Game_Scene_UI_Test");		
+		SetupHash ();
     }
 }

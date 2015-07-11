@@ -156,25 +156,6 @@ public class PlayerStatus : Photon.MonoBehaviour {
         }
     }
 
-	/*void TakeDamage(int d)
-	{
-        //Subtract Health and check to see if dead
-        if (statusBar != null)
-        {
-            statusBar.GetComponent<StatusBar>().targetHealth -= d;
-            statusBar.GetComponent<StatusBar>().currentHealth -= d;
-            if (statusBar.GetComponent<StatusBar>().currentHealth <= 0)
-            {
-                //Die
-                Die();
-            }
-        }
-        else
-        {
-            Debug.LogError("StatusBar is null therefore cannot subtract health from it");
-        }
-    }*/
-
     public void UseEnergy(int mana)
     {
         if (statusBar != null)

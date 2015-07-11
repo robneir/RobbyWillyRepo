@@ -35,20 +35,19 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5026672
 Rigidbody2D:
-  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106422}
-  m_Mass: 1
+  m_Mass: .00999999978
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: .100000001
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!61 &6135490
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -86,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95930372cdef0fa49aa4e3f0398f0bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: -1
   Damage: 20
   hitExplosion: {fileID: 116008, guid: 2c8d99aee37069b409056798a040860e, type: 2}
   rotateEffectOn: 0
