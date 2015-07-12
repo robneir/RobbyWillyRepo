@@ -100,21 +100,11 @@ public class PlayerMovement : Photon.MonoBehaviour {
 		}
 	}
 
-	float maxGravLiftY = 25f;
-	float gravLiftBoost = .7f;
 	void OnTriggerStay2D(Collider2D c)
 	{
 		if(c.gameObject.tag == "Sign")
 		{
 
-		}
-		else if(c.gameObject.tag == "GravityLift")
-		{
-			//do some wacky shit mayne
-			if(rigidBody2D.velocity.y < maxGravLiftY)
-			{
-				rigidBody2D.velocity += Vector2.up * gravLiftBoost;
-			}
 		}
 	}
 

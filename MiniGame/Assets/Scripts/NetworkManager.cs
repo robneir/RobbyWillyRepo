@@ -158,6 +158,7 @@ public class NetworkManager : MonoBehaviour {
 		//Disabled means seen over network and enabled means needed to be locally seen
 		myPlayerGO.GetComponent<PlayerMovement> ().enabled = true;
 		myPlayerGO.GetComponent<AudioListener> ().enabled = true;
+		myPlayerGO.GetComponent<GravityLiftEffector> ().enabled = true;
 		myPlayerGO.GetComponent<Rigidbody2D> ().gravityScale = 4;
 		//myPlayerGO.GetComponent<Scorecard> ().enabled = true;
 
