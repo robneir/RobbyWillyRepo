@@ -3,21 +3,25 @@ using System.Collections;
 
 public class Turret : MonoBehaviour {
 
+    public GameObject gun;
     public GameObject bulletPrefab;
     public Transform fireTip;
     public float bulletSpeed;
 	public int bulletDamage = 25;
     public float timeBetweenShots;
+    public AudioClip fireSound;
 
     private float lastShotTime;
 
 	private LookAtObject l;
+    private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () 
 	{
         lastShotTime = -timeBetweenShots;
-		l = GetComponent<LookAtObject> ();
+		l = gun.GetComponent<LookAtObject> ();
+        audioSource = this.GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -76,6 +80,8 @@ public class Turret : MonoBehaviour {
     [RPC]
     void FireTurretBullet(Vector3 position, Quaternion rotation, Vector3 direction, int damage, float speed)
     {
+        audioSource.clip = fireSound;
+        audioSource.Play();
         GameObject bull = (GameObject)Instantiate(bulletPrefab, position, rotation);
         bull.GetComponent<Bullet>().Damage = damage;
 		bull.GetComponent<Bullet> ().ID = -1;//turret should have an ID that doesnt match any players ever.

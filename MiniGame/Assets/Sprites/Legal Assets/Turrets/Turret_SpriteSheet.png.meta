@@ -1,0 +1,247 @@
+fileFormatVersion: 2
+guid: 3df8bb8805431f045ae85340650964e1
+timeCreated: 1436644143
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Turret_Wire_1
+    21300002: Turret_Gun
+    21300004: Turret_Wire_2
+    21300006: Turret_Antenna
+    21300008: Turret_Brain
+    21300010: Turret_Shield
+    21300012: Turret_Shield_Front
+    21300014: Turret_Wire_3
+    21300016: Turret_Wire_4
+    21300018: Turret_Thigh
+    21300020: Turret_Shield_Body
+    21300022: Turret_Wire_5
+    21300024: Turret_Shin
+    21300026: Turret_Hip
+    21300028: Turret_Bolt
+    21300030: Turret_Foot
+    21300032: Turret_SpriteSheet_0
+    21300034: Turret_SpriteSheet_1
+    21300036: Turret_SpriteSheet_2
+    21300038: Turret_SpriteSheet_3
+    21300040: Turret_SpriteSheet_4
+    21300042: Turret_SpriteSheet_5
+    21300044: Turret_SpriteSheet_6
+    21300046: Turret_SpriteSheet_7
+    21300048: Turret_SpriteSheet_8
+    21300050: Turret_SpriteSheet_9
+    21300052: Turret_SpriteSheet_10
+    21300054: Turret_SpriteSheet_11
+    21300056: Turret_SpriteSheet_12
+    21300058: Turret_SpriteSheet_13
+    21300060: Turret_SpriteSheet_14
+    21300062: Turret_SpriteSheet_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Turret_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 1029
+        width: 259
+        height: 172
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 1116
+        width: 1053
+        height: 310
+      alignment: 9
+      pivot: {x: .271981418, y: .329461068}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 734
+        width: 358
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 742
+        width: 67
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 793
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 832
+        width: 245
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 476
+        width: 221
+        height: 560
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 553
+        width: 176
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 540
+        width: 116
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 467
+        width: 108
+        height: 245
+      alignment: 9
+      pivot: {x: .499999434, y: .850646973}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 448
+        width: 551
+        height: 272
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 175
+        width: 353
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 323
+        width: 143
+        height: 124
+      alignment: 9
+      pivot: {x: .515403926, y: .748700559}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 239
+        width: 480
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 374
+        width: 132
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Turret_SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 186
+        width: 187
+        height: 100
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
