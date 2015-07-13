@@ -191,6 +191,8 @@ public class NetworkManagerDebug : MonoBehaviour {
 		//Enable and disable player components depending on if they should be seen locally or over network
 		//Disabled means seen over network and enabled means needed to be locally seen
 		myPlayerGO.GetComponent<PlayerMovement> ().enabled = true;
+		myPlayerGO.GetComponent<AudioListener> ().enabled = true;
+		myPlayerGO.GetComponent<GravityLiftEffector> ().enabled = true;
 		myPlayerGO.GetComponent<Rigidbody2D> ().gravityScale = 4;
 
 		PhotonView pv = myPlayerGO.GetComponent<PhotonView> ();
