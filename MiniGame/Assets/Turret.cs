@@ -10,11 +10,13 @@ public class Turret : MonoBehaviour {
 	public int bulletDamage = 25;
     public float timeBetweenShots;
     public AudioClip fireSound;
+    public ParticleSystem fireEffect;
 
     private float lastShotTime;
 
 	private LookAtObject l;
     private AudioSource audioSource;
+    private Recoil recoil;
 
 	// Use this for initialization
 	void Start () 
@@ -22,6 +24,7 @@ public class Turret : MonoBehaviour {
         lastShotTime = -timeBetweenShots;
 		l = gun.GetComponent<LookAtObject> ();
         audioSource = this.GetComponent<AudioSource>();
+        recoil = l.GetComponent<Recoil>();
     }
 	
 	// Update is called once per frame
@@ -34,7 +37,12 @@ public class Turret : MonoBehaviour {
 				if (Time.time - lastShotTime >= timeBetweenShots)
             	{
                     lastShotTime = Time.time;
-					this.GetComponent<PhotonView>().RPC("FireTurretBullet", PhotonTargets.All, fireTip.position, fireTip.rotation, fireTip.right, bulletDamage, bulletSpeed);
+
+                    /*FIX THIS SO THAT TURRETFIRES IN OPPOSITE DIRECTION AS WELL*/
+                    if(transform.localScale.x>0)
+					    this.GetComponent<PhotonView>().RPC("FireTurretBullet", PhotonTargets.All, fireTip.position, fireTip.rotation, fireTip.right, bulletDamage, bulletSpeed);
+                    else
+                        this.GetComponent<PhotonView>().RPC("FireTurretBullet", PhotonTargets.All, fireTip.position, fireTip.rotation, fireTip.right*-1, bulletDamage, bulletSpeed);
                 }
 
 				//check if your target is dead, if he is, make him null
@@ -80,8 +88,11 @@ public class Turret : MonoBehaviour {
     [RPC]
     void FireTurretBullet(Vector3 position, Quaternion rotation, Vector3 direction, int damage, float speed)
     {
+        recoil.DoRecoil();
         audioSource.clip = fireSound;
         audioSource.Play();
+        ParticleSystem fireEff = (ParticleSystem)Instantiate(fireEffect, fireTip.position, fireTip.rotation);
+        fireEffect.Play();
         GameObject bull = (GameObject)Instantiate(bulletPrefab, position, rotation);
         bull.GetComponent<Bullet>().Damage = damage;
 		bull.GetComponent<Bullet> ().ID = -1;//turret should have an ID that doesnt match any players ever.

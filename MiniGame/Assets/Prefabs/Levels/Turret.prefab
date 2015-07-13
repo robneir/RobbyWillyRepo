@@ -154,10 +154,7 @@ GameObject:
   - 4: {fileID: 497314}
   - 212: {fileID: 21277322}
   - 114: {fileID: 11425220}
-  - 114: {fileID: 11413332}
-  - 114: {fileID: 11410660}
-  - 61: {fileID: 6168680}
-  - 82: {fileID: 8238380}
+  - 114: {fileID: 11447116}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -189,6 +186,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 436116}
+  - 61: {fileID: 6194278}
+  - 82: {fileID: 8214126}
+  - 114: {fileID: 11495174}
+  - 114: {fileID: 11448690}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -442,8 +443,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.2999992, y: 21.2000008, z: .078050673}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -13.8999996, y: 2.0999999, z: .078050673}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 491104}
   m_Father: {fileID: 0}
@@ -611,12 +612,12 @@ Transform:
   - {fileID: 458612}
   m_Father: {fileID: 406268}
   m_RootOrder: 1
---- !u!61 &6168680
+--- !u!61 &6194278
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140822}
+  m_GameObject: {fileID: 151656}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -624,12 +625,12 @@ BoxCollider2D:
   m_Offset: {x: 20.4907436, y: .325381756}
   serializedVersion: 2
   m_Size: {x: 26.7896614, y: 24.645525}
---- !u!82 &8238380
+--- !u!82 &8214126
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140822}
+  m_GameObject: {fileID: 151656}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -693,12 +694,38 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &11410660
+--- !u!114 &11425220
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdb3caf766f2ef4e97dc0263f98ab6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!114 &11447116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6794aaef9020545a3131b7cc176f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilRotAmount: 0
+  recoilPosAmount: .5
+  recoilPosClamp: 2
+--- !u!114 &11448690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151656}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b2d0990d98e78e4cb892fe8c8893d6c, type: 3}
@@ -718,35 +745,25 @@ MonoBehaviour:
   viewIdField: 0
   instantiationId: -1
   isRuntimeInstantiated: 0
---- !u!114 &11413332
+--- !u!114 &11495174
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140822}
+  m_GameObject: {fileID: 151656}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98e9610f5a88ac8418d7fa23fe1246a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 140822}
   bulletPrefab: {fileID: 106422, guid: a522eca2fec3a1b47ac761e433d401cd, type: 2}
   fireTip: {fileID: 483446}
   bulletSpeed: 100
-  bulletDamage: 25
-  timeBetweenShots: 3
-  fireSound: {fileID: 0}
---- !u!114 &11425220
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bdb3caf766f2ef4e97dc0263f98ab6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  bulletDamage: 1
+  timeBetweenShots: .150000006
+  fireSound: {fileID: 8300000, guid: dcfdb01ae02af404a9bab3ff97e2baee, type: 3}
+  fireEffect: {fileID: 19867670, guid: c34102df06809f146b1bd352121aedd2, type: 2}
 --- !u!212 &21209778
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -16,7 +16,15 @@ public class LookAtObject : MonoBehaviour {
 		{
 	        Vector3 diff = target.transform.position - this.transform.position;
 	        diff.Normalize();
-	        float angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            float angle;
+            if (transform.root.localScale.x>0)
+            {
+                angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            }
+            else
+            {
+                angle = Mathf.Atan2(diff.y, -diff.x) * Mathf.Rad2Deg;
+            }
 	        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		}
     }

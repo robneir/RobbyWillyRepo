@@ -91,7 +91,7 @@ public class NetworkManagerDebug : MonoBehaviour {
 	{
 		Debug.Log ("Joined lobby");
 		//Create a room 
-		PhotonNetwork.JoinRandomRoom ();
+		PhotonNetwork.CreateRoom ("Rob");
 	}
 
 	//If failed to join random room this is executed
@@ -188,8 +188,9 @@ public class NetworkManagerDebug : MonoBehaviour {
 	 	myPlayerGO = (GameObject) PhotonNetwork.Instantiate ("Bandit",grabbedSpawnSpot.transform.position, 
 		                           grabbedSpawnSpot.transform.rotation, 
 		                           grabbedSpawnSpot.teamId);
-		//Enable and disable player components depending on if they should be seen locally or over network
-		//Disabled means seen over network and enabled means needed to be locally seen
+        //Enable and disable player components depending on if they should be seen locally or over network
+        //Disabled means seen over network and enabled means needed to be locally seen
+        Camera.main.GetComponent<AudioListener>().enabled = false;
 		myPlayerGO.GetComponent<PlayerMovement> ().enabled = true;
 		myPlayerGO.GetComponent<AudioListener> ().enabled = true;
 		myPlayerGO.GetComponent<GravityLiftEffector> ().enabled = true;
