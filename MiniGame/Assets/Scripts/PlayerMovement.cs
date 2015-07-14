@@ -113,8 +113,8 @@ public class PlayerMovement : Photon.MonoBehaviour {
         #region Get Basic Movement input
         if (xAxisEnabled)
         {
-            deltaPos.x = Input.GetAxis("Horizontal") * currentRunSpeed * Time.deltaTime;
-            animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal"))); //Set float in animator to control run animation blend tree //Mathf.Abs(deltaX)
+            deltaPos.x = Input.GetAxisRaw("Horizontal") * currentRunSpeed * Time.deltaTime;
+            animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal"))); //Set float in animator to control run animation blend tree //Mathf.Abs(deltaX)
         }
         if (zAxisEnabled)
             deltaPos.z = Input.GetAxis("Vertical") * currentRunSpeed * Time.deltaTime;

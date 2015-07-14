@@ -46,6 +46,54 @@ public class ServerBrowser : MonoBehaviour {
         rooms = PhotonNetwork.GetRoomList();
     }
 
+    void DoServerBrowserWindow(int iD)
+    {
+        //Give option to create room
+        GUILayout.BeginHorizontal();
+        string roomName = "room name";
+        if (GUILayout.Button("Create room") && PhotonNetwork.connectedAndReady)
+        {
+            if (roomName == string.Empty)
+            {
+                Debug.Log("Need room name to create room");
+            }
+            else
+            {
+                PhotonNetwork.CreateRoom(roomName);
+            }
+        }
+        //Random join button
+        if (GUILayout.Button("Join random room"))
+        {
+            PhotonNetwork.JoinRandomRoom();
+        }
+        GUILayout.EndHorizontal();
+
+        //Print rooms
+        if (rooms.Length >= 0)
+        {
+            //Room list
+            GUILayout.BeginScrollView(new Vector2(100, 100), GUIStyle.none);
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Join?", GUILayout.Width(150));
+            GUILayout.Label("Room Name", GUILayout.Width(150));
+            GUILayout.Label("# Players", GUILayout.Width(150));
+            GUILayout.EndHorizontal();
+            foreach (RoomInfo game in rooms)
+            {
+                GUILayout.BeginHorizontal();
+                if (GUILayout.Button("Join"))
+                {
+                    PhotonNetwork.JoinRoom(game.name);
+                }
+                GUILayout.Label(game.name);
+                GUILayout.Label("" + game.playerCount + "/" + game.maxPlayers);
+                GUILayout.EndHorizontal();
+            }
+            GUILayout.EndScrollView();
+        }
+    }
+
     void OnGUI()
     {
         //Print connection state in top left corner
@@ -53,51 +101,7 @@ public class ServerBrowser : MonoBehaviour {
         if (PhotonNetwork.insideLobby == true)
         {
             //Create entire browser in middle of screen
-            GUI.BeginGroup(new Rect(Screen.width/2,Screen.height/2, 500, 300));
-            //Give option to create room
-            GUILayout.BeginHorizontal();
-            string roomName = "room name";
-            if (GUILayout.Button("Create room") && PhotonNetwork.connectedAndReady)
-            {
-                if(roomName==string.Empty)
-                {
-                    Debug.Log("Need room name to create room");
-                }else
-                {
-                    PhotonNetwork.CreateRoom(roomName);
-                }
-            }
-            GUILayout.EndHorizontal();
-
-            //Print rooms
-            if (rooms.Length > 0)
-            {
-                //Random join button
-                if (GUILayout.Button("Join random room"))
-                {
-                    PhotonNetwork.JoinRandomRoom();
-                }
-                //Room list
-                GUILayout.BeginScrollView(new Vector2(100, 100), GUIStyle.none);
-                GUILayout.BeginHorizontal();
-                GUILayout.Label("Join?", GUILayout.Width(150));
-                GUILayout.Label("Room Name", GUILayout.Width(150));
-                GUILayout.Label("# Players", GUILayout.Width(150));
-                GUILayout.EndHorizontal();
-                foreach (RoomInfo game in rooms)
-                {
-                    GUILayout.BeginHorizontal();
-                    if (GUILayout.Button("Join"))
-                    {
-                        PhotonNetwork.JoinRoom(game.name);
-                    }
-                    GUILayout.Label(game.name);
-                    GUILayout.Label("" + game.playerCount + "/" + game.maxPlayers);
-                    GUILayout.EndHorizontal();
-                }
-                GUILayout.EndScrollView();
-            }
-            GUI.EndGroup();
+            GUILayout.Window(0, new Rect(this.GetComponent<RectTransform>().anchoredPosition.x+Screen.width, this.GetComponent<RectTransform>().anchoredPosition.y, 0, 0), DoServerBrowserWindow, "Server Browser", GUILayout.Width(500),GUILayout.Height(240));
         }
     }
 
