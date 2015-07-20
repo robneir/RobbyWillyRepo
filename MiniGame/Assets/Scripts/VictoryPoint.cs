@@ -7,6 +7,7 @@ public class VictoryPoint : MonoBehaviour {
     public Image captureBar;
     public float captureRate;
     public float recoveryRate;
+    public int victoryPointNumber;
 
     private bool beingCaptured;
     private bool isCaptured;

@@ -91,6 +91,7 @@ public class Item : MonoBehaviour
 		Melee,
 		Ammo,
 		Immediate,
+        OneTime,
 		Special
 	}
 
@@ -155,6 +156,14 @@ public class Item : MonoBehaviour
                         break;
                 }
                 break;
+            case ItemType.OneTime:
+                switch(name)
+                {
+                    case "LandMine":
+                        UseFunc = BlowUpMine;
+                        break;
+                }
+                break;
         }
 	}
 	
@@ -214,6 +223,11 @@ public class Item : MonoBehaviour
     {
         //owner.GetComponent<PhotonView>().RPC("AddSpecial", PhotonTargets.AllBuffered, specialPotionStrength);
         Debug.Log("NEED TO IMPLEMENT ADD SPECIAL POTION");
+    }
+
+    private void BlowUpMine(GameObject owner)
+    {
+
     }
 
     void InstantiateBullet()
