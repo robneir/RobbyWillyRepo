@@ -42,7 +42,6 @@ GameObject:
   - 50: {fileID: 5038840}
   - 114: {fileID: 11499370}
   - 114: {fileID: 11454244}
-  - 114: {fileID: 11406322}
   - 82: {fileID: 8202032}
   - 61: {fileID: 6152606}
   - 60: {fileID: 6094316}
@@ -93,6 +92,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5038840
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -101,11 +101,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 2
-  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!60 &6094316
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -238,31 +238,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &11406322
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2d0990d98e78e4cb892fe8c8893d6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  prefixBackup: -1
-  observed: {fileID: 0}
-  synchronization: 3
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 412698}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
-  isRuntimeInstantiated: 0
 --- !u!114 &11454244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,7 +277,9 @@ MonoBehaviour:
   HasUser: 0
   Name: SMG
   Damage: 30
-  Defense: 0
+  healthPotionStrength: 0
+  manaPotionStrength: 0
+  specialPotionStrength: 0
   Type: 1
   FireTip: {fileID: 463062}
   MuzzleFlash: {fileID: 177958, guid: c34102df06809f146b1bd352121aedd2, type: 2}
