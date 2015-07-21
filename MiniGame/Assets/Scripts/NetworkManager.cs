@@ -134,7 +134,7 @@ public class NetworkManager : MonoBehaviour {
 		
 		//if (pv.isMine) 
 		//{
-			pv.RPC ("InstantiateHealthBar", PhotonTargets.AllBuffered, 100f);
+			//pv.RPC ("InstantiateHealthBar", PhotonTargets.AllBuffered, 100f);
 		//}
 	}
 

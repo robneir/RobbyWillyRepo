@@ -44,4 +44,5 @@ MonoBehaviour:
   - AddMana
   - TakeMana
   - FireTurretBullet
+  - HideStatusBar
   DisableAutoOpenWizard: 1

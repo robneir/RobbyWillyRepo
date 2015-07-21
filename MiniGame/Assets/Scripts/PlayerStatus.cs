@@ -37,6 +37,7 @@ public class PlayerStatus : Photon.MonoBehaviour {
 		this.gameObject.active = true;
 		this.transform.position = pos;
 		this.transform.rotation = rot;	
+		ShowStatusBar ();
 	}
 
     void Update()
@@ -46,7 +47,7 @@ public class PlayerStatus : Photon.MonoBehaviour {
 
 	public void Die()
 	{
-        this.GetComponent<PhotonView>().RPC("DestroyStatusBar", PhotonTargets.AllBuffered);
+		this.GetComponent<PhotonView>().RPC("HideStatusBar", PhotonTargets.All);
 		dead = true;
 		this.gameObject.active = false;
 	}
@@ -186,9 +187,22 @@ public class PlayerStatus : Photon.MonoBehaviour {
 		}
     }
 
+	[RPC]
+	void HideStatusBar()
+	{
+		statusBar.gameObject.active = false;
+	}
+
+	void ShowStatusBar()
+	{
+		statusBar.gameObject.active = true;
+		statusBar.targetHealth = statusBar.maxHealth;
+		statusBar.targetMana = statusBar.maxMana;
+	}
+
     [RPC]
     void DestroyStatusBar()
     {
-        GameObject.Destroy(statusBar);
+        //GameObject.Destroy(statusBar);
     }
 }
