@@ -8,12 +8,16 @@ using System.Linq;
 public class GameUIManager : MonoBehaviour {
 
     public GameObject victoryPointStar;
+    public GameObject gold;
 
     private VictoryPoint[] victoryPoints;
     private List<GameObject> victoryPointsUI= new List<GameObject>();
+    private GameObject player;
 
 	// Use this for initialization
-	void Start () {
+    void Start()
+    {
+        //Grabbing victory points for UI purposes
         victoryPoints = GameObject.FindObjectsOfType<VictoryPoint>();
         for(int i=0;i<victoryPoints.Length;i++)
         {
@@ -25,7 +29,18 @@ public class GameUIManager : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+    void Update()
+    {
+        //Grabs the initial value of the gold and sets the gold text = to the amount of gold the player has in the playerstatus class
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        else
+        {
+            gold.GetComponent<Text>().text = "$" + player.GetComponent<PlayerStatus>().gold;
+        }
+        //Setting Victory point fill amounts (depends on how captured they are)
 	    for(int i=0;i<victoryPointsUI.Count;i++)
         {
             victoryPointsUI[victoryPoints[i].victoryPointNumber].transform.FindChild("Fill").GetComponent<Image>().fillAmount = victoryPoints[i].captureBar.fillAmount;

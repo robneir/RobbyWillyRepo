@@ -9,6 +9,9 @@ public class PlayerStatus : Photon.MonoBehaviour {
     public Vector2 barOffSet = Vector2.zero;
     public StatusBar statusBar;
 
+    [HideInInspector]
+    public int gold = 250;
+
     //Privates
     private GameObject UICanvas;
 
@@ -42,6 +45,16 @@ public class PlayerStatus : Photon.MonoBehaviour {
     void Update()
     {
 
+    }
+
+    public void AddGold(int gold)
+    {
+        this.gold += gold;
+    }
+
+    public void SubtractGold()
+    {
+        this.gold -= gold;
     }
 
 	public void Die()
