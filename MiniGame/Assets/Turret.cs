@@ -95,7 +95,7 @@ public class Turret : MonoBehaviour {
         fireEffect.Play();
         GameObject bull = (GameObject)Instantiate(bulletPrefab, position, rotation);
         bull.GetComponent<Bullet>().Damage = damage;
-		bull.GetComponent<Bullet> ().ID = -1;//turret should have an ID that doesnt match any players ever.
+		bull.GetComponent<Bullet> ().ID = (int)AI_Constants.ID.Turret;//turret should have an ID that doesnt match any players ever.
         bull.GetComponent<Rigidbody2D>().AddForce(speed * direction);
     }
 }

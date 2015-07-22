@@ -70,6 +70,31 @@ public class PlayerStatus : Photon.MonoBehaviour {
         return statusBar.currentMana > 0;
     }
 
+	string GetPlayerName(int viewID)
+	{
+		if(viewID == (int)AI_Constants.ID.Turret)
+		{
+			return "Turret";
+		}
+		for(int i =0; i < PhotonNetwork.playerList.Length; ++i)
+		{
+			if (PhotonNetwork.player.ID == viewID)
+			{
+				return "You";
+			}
+			else if(PhotonNetwork.playerList[i].ID == viewID)
+			{
+				if (PhotonNetwork.playerList[i].name != "")
+				{
+					return PhotonNetwork.playerList[i].name;
+				}
+				else return "Player " + PhotonNetwork.playerList[i].ID.ToString();
+			}
+		}
+		
+		return "???";
+	}
+
     [RPC]
     void AddHealth(int health)
     {
@@ -161,6 +186,9 @@ public class PlayerStatus : Photon.MonoBehaviour {
 					PhotonNetwork.player.customProperties["Assists"] = (int)PhotonNetwork.player.customProperties["Assists"];
 					PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
 				}
+
+				string msg = GetPlayerName(dealerID) + " was killed by " + GetPlayerName(deathID); 
+				GameObject.FindGameObjectWithTag("TextConsole").GetComponent<TextConsole>().AddMessage(msg);
                 Die();
             }
         }
@@ -169,6 +197,50 @@ public class PlayerStatus : Photon.MonoBehaviour {
             Debug.LogError("StatusBar is null therefore cannot subtract health from it");
         }
     }
+
+	[RPC]
+	void RocketDamage(int maxDamage, int minRadius, int dealerID, int deathID, Vector3 rocketPos)
+	{
+		float dist = Vector3.Distance (transform.position, rocketPos);
+
+		if(dist < minRadius)
+		{
+			float d = Mathf.Abs(dist - minRadius) * maxDamage;
+			Debug.Log (dealerID + " just did " + d + " damage to " + deathID);
+			//Subtract Health and check to see if dead
+			if (statusBar != null)
+			{
+				statusBar.GetComponent<StatusBar>().targetHealth -= d;
+				statusBar.GetComponent<StatusBar>().currentHealth -= d;
+				
+				if (statusBar.GetComponent<StatusBar>().currentHealth <= 0)
+				{	
+					if(PhotonNetwork.player.ID == dealerID)
+					{
+						//you are dope you killed him
+						//PhotonHashTable pht = new PhotonHashTable();
+						PhotonNetwork.player.customProperties["Kills"] = (int)PhotonNetwork.player.customProperties["Kills"] + 1;
+						PhotonNetwork.player.customProperties["Deaths"] = (int)PhotonNetwork.player.customProperties["Deaths"];
+						PhotonNetwork.player.customProperties["Assists"] = (int)PhotonNetwork.player.customProperties["Assists"];
+						PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
+					}
+					else if(PhotonNetwork.player.ID == deathID)
+					{
+						//you suck you are dead
+						//PhotonHashTable pht = new PhotonHashTable();
+						PhotonNetwork.player.customProperties["Kills"] = (int)PhotonNetwork.player.customProperties["Kills"];
+						PhotonNetwork.player.customProperties["Deaths"] = (int)PhotonNetwork.player.customProperties["Deaths"] + 1;
+						PhotonNetwork.player.customProperties["Assists"] = (int)PhotonNetwork.player.customProperties["Assists"];
+						PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
+					}
+					
+					string msg = GetPlayerName(dealerID) + " was blown up by " + GetPlayerName(deathID); 
+					GameObject.FindGameObjectWithTag("TextConsole").GetComponent<TextConsole>().AddMessage(msg);
+					Die();
+				}
+			}
+		}
+	}
 
     public void UseEnergy(int mana)
     {

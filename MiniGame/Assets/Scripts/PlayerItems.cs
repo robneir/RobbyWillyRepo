@@ -12,11 +12,13 @@ public class PlayerItems : Photon.MonoBehaviour {
 
 	public Text pickupUI;
 	public GameObject bulletPrefab;
+	GameObject rocketPrefab;
 
 	[RPC]
 	void SyncTrigger(string trigName)
 	{
 		this.GetComponentInChildren<Animator> ().SetTrigger (trigName);
+		rocketPrefab = Resources.Load<GameObject> ("Rocket");
 	}
 
 	[RPC]
@@ -55,6 +57,23 @@ public class PlayerItems : Photon.MonoBehaviour {
 			float z = rotation.z;
 			float w = rotation.w;
 			bull.transform.rotation = new Quaternion (0, 0, w, z);
+		}
+	}
+
+	[RPC]
+	void FireRocket(int playerID, Vector3 position, Quaternion rotation, Vector3 velocity, int damage, float scale)
+	{
+		GameObject rocket = (GameObject)Instantiate (rocketPrefab, position, rotation);	
+		rocket.GetComponent<Rocket> ().MaxDamage = damage;
+		rocket.GetComponent<Rocket> ().ID = playerID;
+		rocket.GetComponent<Rigidbody2D> ().velocity = velocity;
+		
+		if (scale < 0)
+		{
+			//change rotation. switch Quaternion's z and w values.
+			float z = rotation.z;
+			float w = rotation.w;
+			rocket.transform.rotation = new Quaternion (0, 0, w, z);
 		}
 	}
 

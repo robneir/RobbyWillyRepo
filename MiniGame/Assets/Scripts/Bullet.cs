@@ -26,48 +26,39 @@ public class Bullet : MonoBehaviour {
         }
     }
 
-	void OnCollisionEnter2D(Collision2D  c)
+	void Collisions(Collision2D c)
 	{
 		if(c.gameObject.tag.Equals("Player"))
 		{
 			//only send the takeDamage to eveeryone on one client
 			if(c.gameObject.GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID)
 			{
-                PlayerStatus sb = c.gameObject.GetComponent<PlayerStatus>();
+				PlayerStatus sb = c.gameObject.GetComponent<PlayerStatus>();
 				c.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBuffered, Damage, ID, c.gameObject.GetComponent<PhotonView>().ownerId);
+				Destroy(this.gameObject);
 			}
-        }
+		}
 		if(c.gameObject.tag != "Bullet")
 		{
 			if(hitExplosion != null)
 			{
-                Instantiate(hitExplosion, new Vector3(transform.position.x,transform.position.y,transform.position.z), this.transform.rotation);
+				Instantiate(hitExplosion, new Vector3(transform.position.x,transform.position.y,transform.position.z), this.transform.rotation);
 			}
 			else Debug.Log("Var HitExplosion is null.");
-
+			
 			Destroy(this.gameObject);
-	        //PhotonNetwork.Destroy(this.gameObject);
+			//PhotonNetwork.Destroy(this.gameObject);
 		}
+	}
+
+	void OnCollisionEnter2D(Collision2D  c)
+	{
+		Collisions (c);
     }
 
     void OnCollisionStay2D(Collision2D c)
     {
-        if (c.gameObject.tag.Equals("Player"))
-        {
-            PlayerStatus sb = c.gameObject.GetComponent<PlayerStatus>();
-            c.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBuffered, Damage);
-        }
-        if (c.gameObject.tag != "Bullet")
-        {
-            if (hitExplosion != null)
-            {
-                Instantiate(hitExplosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), this.transform.rotation);
-            }
-            else Debug.Log("Var HitExplosion is null.");
-
-            Destroy(this.gameObject);
-            //PhotonNetwork.Destroy(this.gameObject);
-        }
+		Collisions (c);
     }
 
     void OnTriggerExit2D(Collider2D c)

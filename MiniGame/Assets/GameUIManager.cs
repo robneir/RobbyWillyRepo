@@ -34,7 +34,7 @@ public class GameUIManager : MonoBehaviour {
         //Grabs the initial value of the gold and sets the gold text = to the amount of gold the player has in the playerstatus class
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+			player = Helpers.GetMyLocalPlayer();
         }
         else
         {

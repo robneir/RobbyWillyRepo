@@ -70,7 +70,7 @@ public class Item : MonoBehaviour
 	[HideInInspector]
 	public Vector3 posOffset;
     [HideInInspector]
-    public bool isAutomatic;
+	public bool isAutomatic = false;
     [HideInInspector]
     public float lastShotTime;
     [HideInInspector]
@@ -130,6 +130,11 @@ public class Item : MonoBehaviour
                         isAutomatic = true;
                         timeBetweenShots = .1f;
                         break;
+					case "Rocket Launcher":
+						posOffset = new Vector3(1.48f, -1.5f, 0);
+						rotOffset = new Vector3(0, 0, 276.1943f);
+						UseFunc = FireRocket;
+						break;
                 }
 			break;
 			case ItemType.Melee:
@@ -191,9 +196,15 @@ public class Item : MonoBehaviour
 	{
 		InstantiateBullet ();
 		DoRecoil ();
-        this.GetComponent<AudioSource>().clip = useItemSoundClip;
-        this.GetComponent<AudioSource>().Play();
+		AudioSource.PlayClipAtPoint (useItemSoundClip, transform.position);
         InstantiateBulletCasing();
+	}
+
+	private void FireRocket(GameObject owner)
+	{
+		InstantiateRocket ();
+		DoRecoil ();
+		AudioSource.PlayClipAtPoint (useItemSoundClip, transform.position);
 	}
 
 	void DoRecoil ()
@@ -243,6 +254,21 @@ public class Item : MonoBehaviour
             //ROB'S METHOD//pv.RPC("FireBullet2", PhotonTargets.All, PhotonNetwork.player.ID, FireTip.position, FireTip.rotation, FireTip.right, this.Damage, FireSpeed);
             pv.RPC ("FireBullet", PhotonTargets.All, PhotonNetwork.player.ID, FireTip.position, FireTip.rotation, sendV, this.Damage, lScale); 
         }
+	}
+
+	void InstantiateRocket()
+	{
+		GameObject muz = (GameObject)GameObject.Instantiate (MuzzleFlash, this.FireTip.position, Quaternion.identity);
+		GameObject.Destroy(muz, 1f);
+		
+		PhotonView pv = this.transform.root.gameObject.GetComponent<PhotonView>();
+		if(pv.isMine)
+		{
+			Vector3 sendV = new Vector3 (FireTip.right.x * this.transform.root.localScale.x, FireTip.right.y, FireTip.right.z) * FireSpeed;
+			float lScale = this.transform.root.localScale.x;
+			//ROB'S METHOD//pv.RPC("FireBullet2", PhotonTargets.All, PhotonNetwork.player.ID, FireTip.position, FireTip.rotation, FireTip.right, this.Damage, FireSpeed);
+			pv.RPC ("FireRocket", PhotonTargets.All, PhotonNetwork.player.ID, FireTip.position, FireTip.rotation, sendV, this.Damage, lScale); 
+		}
 	}
 
     void InstantiateBulletCasing()

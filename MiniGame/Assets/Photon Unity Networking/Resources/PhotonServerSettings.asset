@@ -45,4 +45,6 @@ MonoBehaviour:
   - TakeMana
   - FireTurretBullet
   - HideStatusBar
+  - FireRocket
+  - RocketDamage
   DisableAutoOpenWizard: 1

@@ -61,7 +61,7 @@ GameObject:
   - 114: {fileID: 11450714}
   - 61: {fileID: 6123160}
   m_Layer: 0
-  m_Name: Victory_Point
+  m_Name: Victory Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

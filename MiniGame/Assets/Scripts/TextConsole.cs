@@ -27,28 +27,14 @@ public class TextConsole : MonoBehaviour
 	public void AddMessage(string text)
 	{
 		Text m = (Text)GameObject.Instantiate(TextObject, this.transform.position, Quaternion.identity);
-		m.transform.SetParent (GameObject.Find ("Canvas").transform);
+		m.transform.SetParent(this.transform,false);
+		m.transform.localPosition = new Vector2 (0, 400);
 		m.GetComponent<Text> ().text = text;	
 		MessageTimes.Add (Time.time);
-		Vector3 correctV = UpdateCorrectPosition (Messages.Count);
-		MessagePositions.Add (correctV);
+		//Vector3 correctV = UpdateCorrectPosition (Messages.Count);
+		//MessagePositions.Add (correctV);
 		Messages.Add (m);
-		UpdateCorrectPosition (Messages.Count);
-	}
-
-	void OnGUI()
-	{
-		PrintToScreen ();
-	}
-
-	void PrintToScreen()
-	{
-		string build = "";
-		foreach (var f in Messages)
-		{
-			build += f.text + "" + "\n";
-		}
-		GUI.Label (new Rect(0,0,800,800),build);
+		//UpdateCorrectPosition (Messages.Count);
 	}
 
 	Vector3 UpdateCorrectPosition(int mLength)
@@ -83,7 +69,7 @@ public class TextConsole : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-
+		return;
 		for(int i = 0; i < Messages.Count; ++i)
 		{
 			try
