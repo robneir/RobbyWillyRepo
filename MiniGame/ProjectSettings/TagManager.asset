@@ -16,6 +16,7 @@ TagManager:
   - GravityLift
   - Rocket
   - TextConsole
+  - Drone
   layers:
   - Default
   - TransparentFX

@@ -1,11 +1,13 @@
 fileFormatVersion: 2
 guid: 2511ea8319e52a143a48f461a1f97362
-timeCreated: 1437531012
+timeCreated: 1437550740
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Drone_0
     21300002: Drone_1
+    21300004: Drone_2
+    21300006: Drone_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,21 +57,41 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4
-        y: 710
+        y: 910
         width: 309
         height: 309
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Drone_1
       rect:
         serializedVersion: 2
         x: 802
-        y: 824
+        y: 1024
         width: 161
         height: 161
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Drone_2
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 850
+        width: 26
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Drone_3
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 2
+        width: 915
+        height: 927
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
