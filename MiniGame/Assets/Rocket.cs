@@ -28,31 +28,22 @@ public class Rocket : MonoBehaviour {
 
 	void Collisions(Collision2D c)
 	{
-		if(c.gameObject.tag.Equals("Player"))
+		//if you are the shooter
+		if(ID == PhotonNetwork.player.ID)
 		{
-			//if you are the shooter 
-			if(ID == PhotonNetwork.player.ID)
+			//handle the damaging across network
+			GameObject[] pList = GameObject.FindGameObjectsWithTag("Player");
+
+			foreach(var p in pList)
 			{
-				c.gameObject.GetComponent<PhotonView>().RPC("RocketDamage", PhotonTargets.AllBuffered, MaxDamage, MinRadius, ID, c.gameObject.GetComponent<PhotonView>().ownerId);
-				Destroy(this.gameObject);
+				p.gameObject.GetComponent<PhotonView>().RPC("RocketDamage", PhotonTargets.AllBuffered,
+				                                            MaxDamage, MinRadius, ID, p.GetComponent<PhotonView>().ownerId, this.transform.position);
 			}
 		}
-		else
-		{
-			//if you are the shooter
-			if(ID == PhotonNetwork.player.ID)
-			{
-				GameObject[] pList = GameObject.FindGameObjectsWithTag("Player");
 
-				foreach(var p in pList)
-				{
-					p.gameObject.GetComponent<PhotonView>().RPC("RocketDamage", PhotonTargets.AllBuffered, MaxDamage, MinRadius, ID, AI_Constants.ID.None);
-				}
-			}
+		Destroy(this.gameObject);
+		//PhotonNetwork.Destroy(this.gameObject);
 
-			Destroy(this.gameObject);
-			//PhotonNetwork.Destroy(this.gameObject);
-		}
 
 		if(hitExplosion != null)
 		{

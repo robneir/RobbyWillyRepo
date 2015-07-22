@@ -1,4 +1,4 @@
-﻿	using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -12,13 +12,12 @@ public class PlayerItems : Photon.MonoBehaviour {
 
 	public Text pickupUI;
 	public GameObject bulletPrefab;
-	GameObject rocketPrefab;
+	public GameObject rocketPrefab;
 
 	[RPC]
 	void SyncTrigger(string trigName)
 	{
 		this.GetComponentInChildren<Animator> ().SetTrigger (trigName);
-		rocketPrefab = Resources.Load<GameObject> ("Rocket");
 	}
 
 	[RPC]

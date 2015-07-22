@@ -27,14 +27,12 @@ public class TextConsole : MonoBehaviour
 	public void AddMessage(string text)
 	{
 		Text m = (Text)GameObject.Instantiate(TextObject, this.transform.position, Quaternion.identity);
-		m.transform.SetParent(this.transform,false);
-		m.transform.localPosition = new Vector2 (0, 400);
+		m.transform.SetParent (this.transform, false);
 		m.GetComponent<Text> ().text = text;	
 		MessageTimes.Add (Time.time);
-		//Vector3 correctV = UpdateCorrectPosition (Messages.Count);
-		//MessagePositions.Add (correctV);
+		Vector3 correctV = UpdateCorrectPosition (Messages.Count);
+		MessagePositions.Add (new Vector3(0,Messages.Count,0));
 		Messages.Add (m);
-		//UpdateCorrectPosition (Messages.Count);
 	}
 
 	Vector3 UpdateCorrectPosition(int mLength)
@@ -69,13 +67,13 @@ public class TextConsole : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		return;
+
 		for(int i = 0; i < Messages.Count; ++i)
 		{
 			try
 			{
-				Debug.Log(MessagePositions[i]);
-				Messages[i].transform.position = Vector3.Lerp(Messages[i].transform.position, MessagePositions[i], .13f);
+				Messages[i].transform.position = Vector3.Lerp(Messages[i].transform.position,
+				                                              this.transform.position + MessagePositions[i], .1f);
 			}
 			catch(Exception e)
 			{
@@ -84,12 +82,8 @@ public class TextConsole : MonoBehaviour
 
 			if(i >= msgNumberCutoff || (Time.time % 60) - MessageTimes[i] > delTime)
 			{
-				Color c = new Color(Messages[i].material.color.r, 
-				                    Messages[i].material.color.g,
-				                    Messages[i].material.color.b,
-				                    Messages[i].material.color.a - .06f);
-
-				Messages[i].material.color = c;
+				//fade out this dumb ass shit
+				Messages[i].CrossFadeAlpha(0f,3f,false);
 			}
 			else if(i > msgNumberCutoff )
 			{

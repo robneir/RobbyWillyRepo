@@ -70,7 +70,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 19d92d9fd7636d24797558841183d15e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -90,19 +90,19 @@ TrailRenderer:
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4291427327
     m_Color[1]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4290624957
     m_Color[2]:
       serializedVersion: 2
       rgba: 4294967295
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4291019775
     m_Color[4]:
       serializedVersion: 2
-      rgba: 16777215
+      rgba: 14671839
   m_MinVertexDistance: .100000001
   m_Autodestruct: 0
 --- !u!114 &11485920
@@ -119,7 +119,7 @@ MonoBehaviour:
   ID: -1
   MaxDamage: 120
   MinRadius: 10
-  hitExplosion: {fileID: 0}
+  hitExplosion: {fileID: 19800010, guid: 93f2c95ad8a9048aba5958f95784f8f5, type: 2}
   rotateEffectOn: 0
   rotateSpeed: 0
 --- !u!212 &21246970

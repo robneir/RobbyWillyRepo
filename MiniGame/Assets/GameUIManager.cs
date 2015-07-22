@@ -26,6 +26,9 @@ public class GameUIManager : MonoBehaviour {
             vP.transform.localPosition = new Vector2(Screen.width/24-Screen.width/2+i*60,Screen.height/2- Screen.width / 24);
             victoryPointsUI.Add(vP);
         }
+
+		GameObject[] pList = GameObject.FindGameObjectsWithTag("Player");
+		Debug.Log(pList.Length);
     }
 	
 	// Update is called once per frame
@@ -34,6 +37,7 @@ public class GameUIManager : MonoBehaviour {
         //Grabs the initial value of the gold and sets the gold text = to the amount of gold the player has in the playerstatus class
         if (player == null)
         {
+			Debug.Log("Trying to find local player..");
 			player = Helpers.GetMyLocalPlayer();
         }
         else

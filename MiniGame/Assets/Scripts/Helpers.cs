@@ -1,22 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public static class Helpers
 {
 	public static GameObject GetMyLocalPlayer()
 	{
 		GameObject[] pList = GameObject.FindGameObjectsWithTag("Player");
-		Debug.Log(pList.Length);
+
 		if(pList.Length > 0)
 		{
 			foreach(GameObject p in pList)
 			{
-				//if id of player is same as me
-				if(p.GetComponent<PhotonView>().ownerId == PhotonNetwork.player.ID)
+				//if player movement is enabled
+				try
 				{
-					//this is the correct local player.
+					if(p.GetComponent<PlayerMovement>().enabled)
+					{
+						//this is the correct local player.
+						return p;
+					}
+				}
+
+				catch(NullReferenceException e)
+				{
+					Debug.Log(e.Message);
 					return p;
-					break;
 				}
 			}
 		}

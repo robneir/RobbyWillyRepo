@@ -187,7 +187,13 @@ public class PlayerStatus : Photon.MonoBehaviour {
 					PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
 				}
 
-				string msg = GetPlayerName(dealerID) + " was killed by " + GetPlayerName(deathID); 
+				string msg = GetPlayerName(deathID) + " was killed by " + GetPlayerName(dealerID); 
+
+				if(GetPlayerName(deathID) == "You")
+				{
+					msg = GetPlayerName(deathID) + " were killed by " + GetPlayerName(dealerID); 
+				}
+
 				GameObject.FindGameObjectWithTag("TextConsole").GetComponent<TextConsole>().AddMessage(msg);
                 Die();
             }
@@ -234,7 +240,13 @@ public class PlayerStatus : Photon.MonoBehaviour {
 						PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
 					}
 					
-					string msg = GetPlayerName(dealerID) + " was blown up by " + GetPlayerName(deathID); 
+					string msg = GetPlayerName(deathID) + " was blown up by " + GetPlayerName(dealerID); 
+
+					if(GetPlayerName(deathID) == "You")
+					{
+						msg = GetPlayerName(deathID) + " were blown up by " + GetPlayerName(dealerID); 
+					}
+
 					GameObject.FindGameObjectWithTag("TextConsole").GetComponent<TextConsole>().AddMessage(msg);
 					Die();
 				}
