@@ -47,4 +47,5 @@ MonoBehaviour:
   - HideStatusBar
   - FireRocket
   - RocketDamage
+  - FireDroneBullet
   DisableAutoOpenWizard: 1

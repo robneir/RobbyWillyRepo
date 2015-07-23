@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 public class StatusBar : MonoBehaviour {
 
+	public bool AI = false;
     //Healh variables
 	public Image healthFullImage;
     public float maxHealth = 100f;
@@ -21,14 +22,18 @@ public class StatusBar : MonoBehaviour {
     public float targetMana;
 
     // Use this for initialization
-    void Start () {
+    void Start () 
+	{
         currentHealth = maxHealth/2;
 		healthFullImage.fillAmount = .5f;
 		targetHealth = maxHealth;
 
-        currentMana = maxMana / 2;
-        manaFullImage.fillAmount = .5f;
-        targetMana = maxMana;
+		if(!AI)
+		{
+	        currentMana = maxMana / 2;
+	        manaFullImage.fillAmount = .5f;
+	        targetMana = maxMana;
+		}
     }
 	
 	// Update is called once per frame
@@ -40,11 +45,15 @@ public class StatusBar : MonoBehaviour {
         {
             currentHealth = Mathf.Lerp(currentHealth, targetHealth, .1f);
         }
-        //Update Mana
-        manaFullImage.fillAmount = currentMana / maxMana;
-        if (currentMana!= targetMana)
-        {
-            currentMana = Mathf.Lerp(currentMana, targetMana, .1f);
-        }
+
+		if(!AI)
+		{
+	        //Update Mana
+	        manaFullImage.fillAmount = currentMana / maxMana;
+	        if (currentMana!= targetMana)
+	        {
+	            currentMana = Mathf.Lerp(currentMana, targetMana, .1f);
+	        }
+		}
     }
 }

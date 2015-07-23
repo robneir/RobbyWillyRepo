@@ -70,31 +70,6 @@ public class PlayerStatus : Photon.MonoBehaviour {
         return statusBar.currentMana > 0;
     }
 
-	string GetPlayerName(int viewID)
-	{
-		if(viewID == (int)AI_Constants.ID.Turret)
-		{
-			return "Turret";
-		}
-		for(int i =0; i < PhotonNetwork.playerList.Length; ++i)
-		{
-			if (PhotonNetwork.player.ID == viewID)
-			{
-				return "You";
-			}
-			else if(PhotonNetwork.playerList[i].ID == viewID)
-			{
-				if (PhotonNetwork.playerList[i].name != "")
-				{
-					return PhotonNetwork.playerList[i].name;
-				}
-				else return "Player " + PhotonNetwork.playerList[i].ID.ToString();
-			}
-		}
-		
-		return "???";
-	}
-
     [RPC]
     void AddHealth(int health)
     {
@@ -187,11 +162,11 @@ public class PlayerStatus : Photon.MonoBehaviour {
 					PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
 				}
 
-				string msg = GetPlayerName(deathID) + " was killed by " + GetPlayerName(dealerID); 
+				string msg = Helpers.GetPlayerName(deathID) + " was killed by " + Helpers.GetPlayerName(dealerID); 
 
-				if(GetPlayerName(deathID) == "You")
+				if(Helpers.GetPlayerName(deathID) == "You")
 				{
-					msg = GetPlayerName(deathID) + " were killed by " + GetPlayerName(dealerID); 
+					msg = Helpers.GetPlayerName(deathID) + " were killed by " + Helpers.GetPlayerName(dealerID); 
 				}
 
 				GameObject.FindGameObjectWithTag("TextConsole").GetComponent<TextConsole>().AddMessage(msg);
@@ -240,11 +215,11 @@ public class PlayerStatus : Photon.MonoBehaviour {
 						PhotonNetwork.player.SetCustomProperties(PhotonNetwork.player.customProperties);
 					}
 					
-					string msg = GetPlayerName(deathID) + " was blown up by " + GetPlayerName(dealerID); 
+					string msg = Helpers.GetPlayerName(deathID) + " was blown up by " + Helpers.GetPlayerName(dealerID); 
 
-					if(GetPlayerName(deathID) == "You")
+					if(Helpers.GetPlayerName(deathID) == "You")
 					{
-						msg = GetPlayerName(deathID) + " were blown up by " + GetPlayerName(dealerID); 
+						msg = Helpers.GetPlayerName(deathID) + " were blown up by " + Helpers.GetPlayerName(dealerID); 
 					}
 
 					GameObject.FindGameObjectWithTag("TextConsole").GetComponent<TextConsole>().AddMessage(msg);

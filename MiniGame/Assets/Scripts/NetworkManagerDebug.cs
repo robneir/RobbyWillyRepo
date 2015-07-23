@@ -79,6 +79,13 @@ public class NetworkManagerDebug : MonoBehaviour {
 				spawnTimer = spawnTimerReset;
 			}
 		}
+
+		if(Input.GetKeyDown(KeyCode.B))
+		{
+			//spawn drone
+			GameObject drone = PhotonNetwork.Instantiate("Drone",new Vector3(-65, 50,0), Quaternion.identity, 0);
+			drone.GetComponent<PhotonView>().RPC("InstantiateHealthBar", PhotonTargets.AllBuffered, 50f);
+		}
 	}
 
 	void Connect()

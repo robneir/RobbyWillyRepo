@@ -38,6 +38,15 @@ public class Bullet : MonoBehaviour {
 				Destroy(this.gameObject);
 			}
 		}
+		else if(ID != (int)AI_Constants.ID.Drone && c.gameObject.tag.Equals("Drone"))
+		{
+			//if you are the shooter
+			if(ID == PhotonNetwork.player.ID)
+			{
+				c.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", PhotonTargets.AllBuffered, Damage, ID);
+				Destroy(this.gameObject);
+			}
+		}
 		if(c.gameObject.tag != "Bullet")
 		{
 			if(hitExplosion != null)
